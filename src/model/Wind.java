@@ -1,11 +1,11 @@
-package Model;
+package model;
 
 /**
  * Information about the wind
  * Created by Mati on 26/04/2017.
  */
 public class Wind {
-.
+
     int chill;
     int direction;
     int speed;

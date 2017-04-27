@@ -1,4 +1,5 @@
-package Model;
+package model;
+import model.unit.barometricPressure;
 
 /**
  * Information about the atmosphere
@@ -7,18 +8,14 @@ package Model;
 public class Atmosphere {
 
     int humidity;
-    float pressure;
+    barometricPressure pressure;
     int rising;
     float visibility;
 
     public Atmosphere() {
-        humidity = 0;
-        pressure = 0;
-        rising = 0;
-        visibility = 0;
     }
 
-    public Atmosphere(int humidity, float pressure, int rising, float visibility) {
+    public Atmosphere(int humidity, barometricPressure pressure, int rising, float visibility) {
         this.humidity = humidity;
         this.pressure = pressure;
         this.rising = rising;
@@ -33,11 +30,11 @@ public class Atmosphere {
         this.humidity = humidity;
     }
 
-    public float getPressure() {
+    public barometricPressure getPressure() {
         return pressure;
     }
 
-    public void setPressure(float pressure) {
+    public void setPressure(barometricPressure pressure) {
         this.pressure = pressure;
     }
 
@@ -60,7 +57,7 @@ public class Atmosphere {
     public String toString() {
         return "Atmosphere{" +
                 "humidity=" + humidity +
-                ", pressure=" + pressure +
+                ", pressure=" + pressure.toString() +
                 ", rising=" + rising +
                 ", visibility=" + visibility +
                 '}';

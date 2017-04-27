@@ -1,5 +1,5 @@
-package Model;
-import org.joda.time.*;
+package model;
+import java.time.LocalTime;
 /**
  * When the sun rises and sets
  * Created by Mati on 26/04/2017.
@@ -10,7 +10,7 @@ public class Astronomy {
     LocalTime sunSet;
 
     public Astronomy() {
-        sunRise= new LocalTime(0,0);
+        sunRise= LocalTime.MIN;
     }
 
     public Astronomy(LocalTime sunRise, LocalTime sunSet){
