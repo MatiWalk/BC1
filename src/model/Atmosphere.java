@@ -8,14 +8,14 @@ import model.unit.barometricPressure;
 public class Atmosphere {
 
     int humidity;
-    barometricPressure pressure;
-    int rising;
+    float pressure;
+    barometricPressure rising;
     float visibility;
 
     public Atmosphere() {
     }
 
-    public Atmosphere(int humidity, barometricPressure pressure, int rising, float visibility) {
+    public Atmosphere(int humidity, float pressure, barometricPressure rising, float visibility) {
         this.humidity = humidity;
         this.pressure = pressure;
         this.rising = rising;
@@ -30,19 +30,19 @@ public class Atmosphere {
         this.humidity = humidity;
     }
 
-    public barometricPressure getPressure() {
+    public float getPressure() {
         return pressure;
     }
 
-    public void setPressure(barometricPressure pressure) {
+    public void setPressure(float pressure) {
         this.pressure = pressure;
     }
 
-    public int getRising() {
+    public barometricPressure getRising() {
         return rising;
     }
 
-    public void setRising(int rising) {
+    public void setRising(barometricPressure rising) {
         this.rising = rising;
     }
 
@@ -57,8 +57,8 @@ public class Atmosphere {
     public String toString() {
         return "Atmosphere{" +
                 "humidity=" + humidity +
-                ", pressure=" + pressure.toString() +
-                ", rising=" + rising +
+                ", pressure=" + pressure +
+                ", rising=" + rising.toString() +
                 ", visibility=" + visibility +
                 '}';
     }
