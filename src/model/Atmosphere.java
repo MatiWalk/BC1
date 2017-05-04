@@ -11,6 +11,9 @@ public class Atmosphere {
     barometricPressure rising;
     float visibility;
 
+    public Atmosphere() {
+    }
+
     public Atmosphere(int humidity, float pressure, barometricPressure rising, float visibility) {
         this.humidity = humidity;
         this.pressure = pressure;

@@ -13,6 +13,9 @@ public class Day {
     private int lowTemperature;
     private int highTemperature;
 
+    public Day() {
+    }
+
     public Day(WeatherCode weatherCode, LocalDate date, int currentTemperature, int lowTemperature, int highTemperature) {
         this.weatherCode = weatherCode;
         this.date = date;

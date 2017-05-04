@@ -1,10 +1,10 @@
 package controller;
-import model.Day;
-import model.Result;
-import model.WeatherCode;
+import model.*;
+import model.unit.Temperature;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Date;
+import java.util.*;
 
 /**
  * Created by Mati on 02/05/2017.
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class DBController {
 
     private Connection con;
+    private int key;
     private static DBController instance;
 
     private DBController() {
@@ -58,8 +59,6 @@ public class DBController {
                 "atmosphere_barometricpressure, atmosphere_visibility, pubDate, unit)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        int key = 0;
-
         try {
             openConnection();
             PreparedStatement preparedStmt  = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -90,12 +89,13 @@ public class DBController {
             if (rs.next()) {
                 key = rs.getInt(1);
             }
+            insertDays(result.getDays(), key);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         closeConnection();
-        insertDays(result.getDays(), key);
     }
 
     private void insertDays(ArrayList<Day> days, int key){
@@ -146,6 +146,87 @@ public class DBController {
         return weatherCodes;
     }
 
+    public WeatherCode loadWeatherCode (int code) {
+        String sql = "select * from weather_code where idweather_code = " + code;
+        WeatherCode weatherCode = new WeatherCode();
+        openConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                weatherCode.setCode(rs.getInt(1));
+                weatherCode.setText(rs.getString(2));
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error loading weather codes "+ ex);
+        }
+
+        closeConnection();
+        return weatherCode;
+    }
+
+    public Result loadLastInsert () {
+
+        //busca los dias
+        String sql = "SELECT * FROM day where idresult = "+ key;
+        ArrayList<Day> days = new ArrayList<>();
+        openConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Day t = new Day();
+
+                t.setDate(rs.getDate(2).toLocalDate());
+                //busca el weathercode especifico de este dia
+                WeatherCode w = loadWeatherCode(rs.getInt(3));
+                t.setWeatherCode(w);
+                t.setCurrentTemperature(rs.getInt(4));
+                t.setLowTemperature(rs.getInt(5));
+                t.setHighTemperature(rs.getInt(6));
+
+                days.add(t);
+
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving days "+ ex);
+        }
+        closeConnection();
+
+        //busca el resultado
+        sql = "SELECT * FROM result  where idresult = "+ key;
+        Result r = new Result();
+        openConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                r.setTitle(rs.getString(2));
+
+                Location l = new Location(rs.getString(3), rs.getString(4));
+                Astronomy as = new Astronomy(rs.getTime(5).toLocalTime(), rs.getTime(6).toLocalTime());
+                Wind w = new Wind(rs.getInt(7), rs.getInt(8), rs.getInt(9));
+                Atmosphere at = new Atmosphere(rs.getInt(10), rs.getFloat(11),
+                        barometricPressure.values()[rs.getInt(12)], rs.getFloat(13));
+                r.setPuDate(rs.getTimestamp(14).toLocalDateTime());
+                Units u = new Units(Temperature.values()[rs.getByte(15)]);
+                r.setLocation(l);
+                r.setAstronomy(as);
+                r.setWind(w);
+                r.setAtmosphere(at);
+                r.setUnits(u);
+                r.setDays(days);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving result "+ ex);
+        }
+        closeConnection();
+
+        return r;
+    }
 
 
 }

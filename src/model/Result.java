@@ -18,6 +18,9 @@ public class Result {
     LocalDateTime puDate;
     Units units;
 
+    public Result() {
+    }
+
     public Result(String title, ArrayList<Day> days, Location location, Wind wind, Atmosphere atmosphere,
                   Astronomy astronomy, LocalDateTime puDate, Units units) {
         this.title = title;
@@ -78,13 +81,9 @@ public class Result {
         this.astronomy = astronomy;
     }
 
-    public LocalDateTime getPuDate() {
-        return puDate;
-    }
+    public LocalDateTime getPuDate() { return puDate; }
 
-    public void setPuDate(LocalDateTime puDate) {
-        this.puDate = puDate;
-    }
+    public void setPuDate(LocalDateTime puDate) { this.puDate = puDate; }
 
     public Units getUnits() {
         return units;
