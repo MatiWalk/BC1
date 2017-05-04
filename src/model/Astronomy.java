@@ -1,5 +1,6 @@
 package model;
 import java.time.LocalTime;
+
 /**
  * When the sun rises and sets
  * Created by Mati on 26/04/2017.
@@ -10,7 +11,6 @@ public class Astronomy {
     LocalTime sunSet;
 
     public Astronomy() {
-        sunRise= LocalTime.MIN;
     }
 
     public Astronomy(LocalTime sunRise, LocalTime sunSet){

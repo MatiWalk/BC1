@@ -1,5 +1,4 @@
 package model;
-import model.unit.barometricPressure;
 
 /**
  * Information about the atmosphere
@@ -11,9 +10,6 @@ public class Atmosphere {
     float pressure;
     barometricPressure rising;
     float visibility;
-
-    public Atmosphere() {
-    }
 
     public Atmosphere(int humidity, float pressure, barometricPressure rising, float visibility) {
         this.humidity = humidity;

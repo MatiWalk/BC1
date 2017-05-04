@@ -1,5 +1,4 @@
 package model;
-
 import model.unit.*;
 
 /**
@@ -15,18 +14,15 @@ public class Units {
     public Units() {
     }
 
-    public Units(Distance distanceUnit, Pressure pressureUnit, Speed speedUnit, Temperature temperatureUnit) {
-        this.distanceUnit = distanceUnit;
-        this.pressureUnit = pressureUnit;
-        this.speedUnit = speedUnit;
-        this.temperatureUnit = temperatureUnit;
+    public Units(Temperature temperatureUnit) {
+        setTemperatureUnit(temperatureUnit);
     }
 
     public Distance getDistanceUnit() {
         return distanceUnit;
     }
 
-    public void setDistanceUnit(Distance distanceUnit) {
+    private void setDistanceUnit(Distance distanceUnit) {
         this.distanceUnit = distanceUnit;
     }
 
@@ -34,7 +30,7 @@ public class Units {
         return pressureUnit;
     }
 
-    public void setPressureUnit(Pressure pressureUnit) {
+    private void setPressureUnit(Pressure pressureUnit) {
         this.pressureUnit = pressureUnit;
     }
 
@@ -42,7 +38,7 @@ public class Units {
         return speedUnit;
     }
 
-    public void setSpeedUnit(Speed speedUnit) {
+    private void setSpeedUnit(Speed speedUnit) {
         this.speedUnit = speedUnit;
     }
 
@@ -51,7 +47,18 @@ public class Units {
     }
 
     public void setTemperatureUnit(Temperature temperatureUnit) {
+
         this.temperatureUnit = temperatureUnit;
+        if (this.temperatureUnit.equals(Temperature.F)){
+            distanceUnit = Distance.MI;
+            pressureUnit = Pressure.IN;
+            speedUnit = Speed.MPH;
+        }
+        if (this.temperatureUnit.equals(Temperature.C)){
+            distanceUnit = Distance.KM;
+            pressureUnit = Pressure.MB;
+            speedUnit = Speed.KPH;
+        }
     }
 
     public String toString() {

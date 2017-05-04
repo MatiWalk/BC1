@@ -5,9 +5,9 @@ package model.unit;
  */
 public enum Temperature {
 
-    //Calsius
-    C,
+    //Farenheit
+    F,
 
-    //Farenhet
-    F;
+    //Celsius
+    C
 }

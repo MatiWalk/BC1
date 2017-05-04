@@ -1,57 +1,74 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
- * Created by Mati on 27/04/2017.
+ * Created by Mati on 01/05/2017.
  */
-abstract public class Day {
+public class Day {
 
-    protected int code;
-    protected LocalDateTime date;
-    protected String text;
+    private WeatherCode weatherCode;
+    private LocalDate date;
+    private int currentTemperature;
+    private int lowTemperature;
+    private int highTemperature;
 
-    public Day (){
-        code = 0;
-        date = LocalDateTime.MIN;
-        text = "";
-    }
-
-    public Day(int code, LocalDateTime date, String text) {
-        this.code = code;
+    public Day(WeatherCode weatherCode, LocalDate date, int currentTemperature, int lowTemperature, int highTemperature) {
+        this.weatherCode = weatherCode;
         this.date = date;
-        this.text = text;
+        this.currentTemperature = currentTemperature;
+        this.lowTemperature = lowTemperature;
+        this.highTemperature = highTemperature;
     }
 
-    public int getCode() {
-        return code;
+    public WeatherCode getWeatherCode() {
+        return weatherCode;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setWeatherCode(WeatherCode weatherCode) {
+        this.weatherCode = weatherCode;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getText() {
-        return text;
+    public int getCurrentTemperature() {
+        return currentTemperature;
     }
 
-    public void setText(String text) {
-        text = text;
+    public void setCurrentTemperature(int currentTemperature) {
+        this.currentTemperature = currentTemperature;
     }
 
+    public int getLowTemperature() {
+        return lowTemperature;
+    }
+
+    public void setLowTemperature(int lowTemperature) {
+        this.lowTemperature = lowTemperature;
+    }
+
+    public int getHighTemperature() {
+        return highTemperature;
+    }
+
+    public void setHighTemperature(int highTemperature) {
+        this.highTemperature = highTemperature;
+    }
+
+    @Override
     public String toString() {
         return "Day{" +
-                "code=" + code +
+                "weatherCode=" + weatherCode +
                 ", date=" + date +
-                ", Text='" + text + '\'' +
+                ", currentTemperature=" + currentTemperature +
+                ", lowTemperature=" + lowTemperature +
+                ", highTemperature=" + highTemperature +
                 '}';
     }
 }

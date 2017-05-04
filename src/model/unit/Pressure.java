@@ -9,5 +9,5 @@ public enum Pressure {
     IN,
 
     //Milibars
-    MB,
+    MB
 }

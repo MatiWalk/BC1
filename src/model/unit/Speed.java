@@ -9,5 +9,5 @@ public enum Speed {
     MPH,
 
     //Kilometers per Hour
-    KPH;
+    KPH
 }

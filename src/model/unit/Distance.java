@@ -7,5 +7,5 @@ public enum Distance {
     //Miles
     MI,
     //Kilometers
-    KM;
+    KM
 }
