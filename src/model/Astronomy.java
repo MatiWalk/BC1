@@ -34,8 +34,9 @@ public class Astronomy {
         this.sunSet = sunSet;
     }
 
+    @Override
     public String toString() {
-        return "Astronomy{" +
+        return "model.Astronomy{" +
                 "sunRise=" + sunRise +
                 ", sunSet=" + sunSet +
                 '}';

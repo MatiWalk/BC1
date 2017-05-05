@@ -2,6 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 /**
@@ -95,7 +96,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "model.Result{" +
                 "title='" + title + '\'' +
                 ", Days=" + Days +
                 ", location=" + location +

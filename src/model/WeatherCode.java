@@ -34,8 +34,8 @@ public class WeatherCode {
 
     @Override
     public String toString() {
-        return "WeatherCode{" +
-                "weatherCode=" + code +
+        return "model.WeatherCode{" +
+                "code=" + code +
                 ", text='" + text + '\'' +
                 '}';
     }

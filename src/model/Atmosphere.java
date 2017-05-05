@@ -53,11 +53,12 @@ public class Atmosphere {
         this.visibility = visibility;
     }
 
+    @Override
     public String toString() {
-        return "Atmosphere{" +
+        return "model.Atmosphere{" +
                 "humidity=" + humidity +
                 ", pressure=" + pressure +
-                ", rising=" + rising.toString() +
+                ", rising=" + rising +
                 ", visibility=" + visibility +
                 '}';
     }

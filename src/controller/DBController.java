@@ -16,6 +16,8 @@ public class DBController {
     private Connection con;
     private int key;
     private static DBController instance;
+    private ArrayList<WeatherCode> we = new ArrayList<>();
+
 
     private DBController() {
     }
@@ -27,17 +29,20 @@ public class DBController {
         return instance;
     }
 
+    public int getKey() {
+        return key;
+    }
+
     private void openConnection() {
         try {
             String username = "root";
             String password = "admin";
-            String url = "jdbc:mysql://localhost:3306/weatherapi";
+            String url = "jdbc:mysql://localhost:3306/weatherapi?useSSL=false";
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             con = DriverManager.getConnection(url, username, password);
-            System.out.println("Successful connection");
         } catch (Exception e) {
 
-            System.out.println(e.toString());
+            System.out.println("Error trying to open connection" + e.toString());
 
         }
     }
@@ -45,9 +50,8 @@ public class DBController {
     private void closeConnection() {
         try {
             con.close();
-            System.out.println("Connection closed");
         } catch (Exception e) {
-            System.out.println("Error trying to close connection");
+            System.out.println("Error trying to close connection" + e.toString());
         }
 
     }
@@ -58,9 +62,9 @@ public class DBController {
                 "wind_chill, wind_direction, wind_speed, atmosphere_humidity, atmosphere_pressure," +
                 "atmosphere_barometricpressure, atmosphere_visibility, pubDate, unit)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        openConnection();
         try {
-            openConnection();
+
             PreparedStatement preparedStmt  = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStmt.setString(1, result.getTitle());
             //location
@@ -125,7 +129,6 @@ public class DBController {
 
     public ArrayList<WeatherCode> loadWeatherCodes () {
         String sql = "select * from weather_code";
-        ArrayList<WeatherCode> weatherCodes = new ArrayList<>();
         openConnection();
         try {
             Statement st = con.createStatement();
@@ -134,7 +137,7 @@ public class DBController {
                 WeatherCode wc = new WeatherCode();
                 wc.setCode(rs.getInt(1));
                 wc.setText(rs.getString(2));
-                weatherCodes.add(wc);
+                we.add(wc);
 
             }
             rs.close();
@@ -143,9 +146,12 @@ public class DBController {
         }
 
         closeConnection();
-        return weatherCodes;
+
+        return we;
     }
 
+
+    //No usage RN
     public WeatherCode loadWeatherCode (int code) {
         String sql = "select * from weather_code where idweather_code = " + code;
         WeatherCode weatherCode = new WeatherCode();
@@ -166,10 +172,11 @@ public class DBController {
         return weatherCode;
     }
 
-    public Result loadLastInsert () {
+    public Result loadResult(int k) {
 
+        //Segun el ID del ultimo insert
         //busca los dias
-        String sql = "SELECT * FROM day where idresult = "+ key;
+        String sql = "SELECT * FROM day where idresult = "+ k;
         ArrayList<Day> days = new ArrayList<>();
         openConnection();
         try {
@@ -179,12 +186,10 @@ public class DBController {
                 Day t = new Day();
 
                 t.setDate(rs.getDate(2).toLocalDate());
-                //busca el weathercode especifico de este dia
-                WeatherCode w = loadWeatherCode(rs.getInt(3));
-                t.setWeatherCode(w);
+                t.setWeatherCode(we.get(rs.getInt(3)));
                 t.setCurrentTemperature(rs.getInt(4));
-                t.setLowTemperature(rs.getInt(5));
-                t.setHighTemperature(rs.getInt(6));
+                t.setHighTemperature(rs.getInt(5));
+                t.setLowTemperature(rs.getInt(6));
 
                 days.add(t);
 
@@ -196,7 +201,7 @@ public class DBController {
         closeConnection();
 
         //busca el resultado
-        sql = "SELECT * FROM result  where idresult = "+ key;
+        sql = "SELECT * FROM result  where idresult = "+ k;
         Result r = new Result();
         openConnection();
         try {

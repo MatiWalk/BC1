@@ -46,8 +46,9 @@ public class Wind {
         this.speed = speed;
     }
 
+    @Override
     public String toString() {
-        return "Wind{" +
+        return "model.Wind{" +
                 "chill=" + chill +
                 ", direction=" + direction +
                 ", speed=" + speed +

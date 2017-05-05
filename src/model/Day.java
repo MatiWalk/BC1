@@ -10,18 +10,19 @@ public class Day {
     private WeatherCode weatherCode;
     private LocalDate date;
     private int currentTemperature;
-    private int lowTemperature;
+
     private int highTemperature;
+    private int lowTemperature;
 
     public Day() {
     }
 
-    public Day(WeatherCode weatherCode, LocalDate date, int currentTemperature, int lowTemperature, int highTemperature) {
+    public Day(WeatherCode weatherCode, LocalDate date, int currentTemperature, int highTemperature,  int lowTemperature) {
         this.weatherCode = weatherCode;
         this.date = date;
         this.currentTemperature = currentTemperature;
-        this.lowTemperature = lowTemperature;
         this.highTemperature = highTemperature;
+        this.lowTemperature = lowTemperature;
     }
 
     public WeatherCode getWeatherCode() {
@@ -48,14 +49,6 @@ public class Day {
         this.currentTemperature = currentTemperature;
     }
 
-    public int getLowTemperature() {
-        return lowTemperature;
-    }
-
-    public void setLowTemperature(int lowTemperature) {
-        this.lowTemperature = lowTemperature;
-    }
-
     public int getHighTemperature() {
         return highTemperature;
     }
@@ -64,14 +57,22 @@ public class Day {
         this.highTemperature = highTemperature;
     }
 
+    public int getLowTemperature() {
+        return lowTemperature;
+    }
+
+    public void setLowTemperature(int lowTemperature) {
+        this.lowTemperature = lowTemperature;
+    }
+
     @Override
     public String toString() {
-        return "Day{" +
+        return "model.Day{" +
                 "weatherCode=" + weatherCode +
                 ", date=" + date +
                 ", currentTemperature=" + currentTemperature +
-                ", lowTemperature=" + lowTemperature +
                 ", highTemperature=" + highTemperature +
+                ", lowTemperature=" + lowTemperature +
                 '}';
     }
 }

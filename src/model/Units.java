@@ -61,8 +61,9 @@ public class Units {
         }
     }
 
+    @Override
     public String toString() {
-        return "Units{" +
+        return "model.Units{" +
                 "distanceUnit=" + distanceUnit +
                 ", pressureUnit=" + pressureUnit +
                 ", speedUnit=" + speedUnit +

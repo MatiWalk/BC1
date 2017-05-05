@@ -34,7 +34,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "model.Location{" +
                 "country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 '}';
