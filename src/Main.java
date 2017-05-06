@@ -47,6 +47,7 @@ public class Main {
                     break;
                 default: exit=!exit;
                     System.out.println("See you in hell");
+                    dbc.closeConnection();
                     break;
             }
 

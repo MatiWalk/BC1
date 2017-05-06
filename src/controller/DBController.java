@@ -16,10 +16,22 @@ public class DBController {
     private Connection con;
     private int key;
     private static DBController instance;
-    private ArrayList<WeatherCode> we = new ArrayList<>();
+    private ArrayList<WeatherCode> we ;
 
 
     private DBController() {
+        try {
+            String username = "root";
+            String password = "admin";
+            String url = "jdbc:mysql://localhost:3306/weatherapi?useSSL=false";
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            con = DriverManager.getConnection(url, username, password);
+            we = new ArrayList<>();
+        } catch (Exception e) {
+
+            System.out.println("Error trying to open connection" + e.toString());
+
+        }
     }
 
     public static DBController getInstance(){
@@ -33,21 +45,8 @@ public class DBController {
         return key;
     }
 
-    private void openConnection() {
-        try {
-            String username = "root";
-            String password = "admin";
-            String url = "jdbc:mysql://localhost:3306/weatherapi?useSSL=false";
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(url, username, password);
-        } catch (Exception e) {
 
-            System.out.println("Error trying to open connection" + e.toString());
-
-        }
-    }
-
-    private void closeConnection() {
+    public void closeConnection() {
         try {
             con.close();
         } catch (Exception e) {
@@ -62,7 +61,6 @@ public class DBController {
                 "wind_chill, wind_direction, wind_speed, atmosphere_humidity, atmosphere_pressure," +
                 "atmosphere_barometricpressure, atmosphere_visibility, pubDate, unit)"
                 + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        openConnection();
         try {
 
             PreparedStatement preparedStmt  = con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -99,15 +97,12 @@ public class DBController {
             e.printStackTrace();
         }
 
-        closeConnection();
     }
 
     private void insertDays(ArrayList<Day> days, int key){
         String query = " insert into day ( day , idweather_code, current_temperature, high_temperature," +
                 "low_temperature, idresult)"
                 + " values (?, ?, ?, ?, ?, ?)";
-
-        openConnection();
         try{
             for (Day d: days) {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -124,12 +119,10 @@ public class DBController {
             e.printStackTrace();
         }
 
-        closeConnection();
     }
 
     public ArrayList<WeatherCode> loadWeatherCodes () {
         String sql = "select * from weather_code";
-        openConnection();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -145,8 +138,6 @@ public class DBController {
             System.out.println("Error loading weather codes "+ ex);
         }
 
-        closeConnection();
-
         return we;
     }
 
@@ -155,7 +146,6 @@ public class DBController {
     public WeatherCode loadWeatherCode (int code) {
         String sql = "select * from weather_code where idweather_code = " + code;
         WeatherCode weatherCode = new WeatherCode();
-        openConnection();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -168,7 +158,6 @@ public class DBController {
             System.out.println("Error loading weather codes "+ ex);
         }
 
-        closeConnection();
         return weatherCode;
     }
 
@@ -178,7 +167,6 @@ public class DBController {
         //busca los dias
         String sql = "SELECT * FROM day where idresult = "+ k;
         ArrayList<Day> days = new ArrayList<>();
-        openConnection();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -198,12 +186,10 @@ public class DBController {
         } catch (SQLException ex) {
             System.out.println("Error retrieving days "+ ex);
         }
-        closeConnection();
 
         //busca el resultado
         sql = "SELECT * FROM result  where idresult = "+ k;
         Result r = new Result();
-        openConnection();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -228,7 +214,6 @@ public class DBController {
         } catch (SQLException ex) {
             System.out.println("Error retrieving result "+ ex);
         }
-        closeConnection();
 
         return r;
     }
