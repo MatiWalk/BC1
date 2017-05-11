@@ -1,0 +1,15 @@
+model\Day.class
+model\Astronomy.class
+model\barometricPressure.class
+model\unit\Pressure.class
+model\Result.class
+model\Units.class
+controller\DBController.class
+model\Location.class
+model\Atmosphere.class
+model\unit\Speed.class
+model\WeatherCode.class
+Main.class
+model\Wind.class
+model\unit\Temperature.class
+model\unit\Distance.class
