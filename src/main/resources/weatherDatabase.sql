@@ -34,8 +34,6 @@ CREATE TABLE `day` (
   `low_temperature` int(11) DEFAULT NULL,
   `idresult` int(11) NOT NULL,
   PRIMARY KEY (`idday`),
-  KEY `idresult_idx` (`idresult`),
-  KEY `idweathercode_idx` (`idweather_code`),
   CONSTRAINT `idresult` FOREIGN KEY (`idresult`) REFERENCES `result` (`idresult`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idweathercode` FOREIGN KEY (`idweather_code`) REFERENCES `weather_code` (`idweather_code`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,5 +1,3 @@
-CREATE DATABASE Weather;
-use Weather;
 CREATE TABLE `result` (
   `idresult` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
