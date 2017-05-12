@@ -17,12 +17,12 @@ public class DBManager {
 
     public DBManager(){
         con = DBConnector.getInstance().getCon();
-        we = new LinkedList<>();
+        loadWeatherCodes();
     }
 
     public DBManager(Connection con){
         this.con = con;
-        we = new LinkedList<>();
+        loadWeatherCodes();
     }
 
     public int getKey() {
@@ -67,6 +67,7 @@ public class DBManager {
             }
             insertDays(result.getDays(), key);
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -97,6 +98,8 @@ public class DBManager {
 
     public LinkedList<WeatherCode> loadWeatherCodes () {
         String sql = "select * from weather_code";
+        we = new LinkedList<>();
+
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -105,7 +108,6 @@ public class DBManager {
                 wc.setCode(rs.getInt(1));
                 wc.setText(rs.getString(2));
                 we.add(wc);
-
             }
             rs.close();
         } catch (SQLException ex) {
@@ -144,9 +146,9 @@ public class DBManager {
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
+
             while (rs.next()) {
                 Day t = new Day();
-
                 t.setDate(rs.getDate(2).toLocalDate());
                 t.setWeatherCode(we.get(rs.getInt(3)));
                 t.setCurrentTemperature(rs.getInt(4));

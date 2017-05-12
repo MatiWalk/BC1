@@ -16,17 +16,17 @@ import static org.junit.Assert.assertEquals;
  */
 public class ResultTest {
 
-    static Result r;
-    static String t;
-    static WeatherCode wc;
-    static Day d;
-    static LinkedList<Day> ad;
-    static Location l;
-    static Wind w;
-    static Atmosphere at;
-    static Astronomy as;
-    static LocalDateTime pd;
-    static Units u;
+    private static Result r;
+    private static String t;
+    private static WeatherCode wc;
+    private static Day d;
+    private static LinkedList<Day> ad;
+    private static Location l;
+    private static Wind w;
+    private static Atmosphere at;
+    private static Astronomy as;
+    private static LocalDateTime pd;
+    private static Units u;
 
     @BeforeClass
     public static void initialize(){
