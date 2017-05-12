@@ -1,1 +1,10 @@
+model\LocationTest.class
+model\WeatherCodeTest.class
+controller\DBControllerTest.class
+model\DayTest.class
+model\AstronomyTest.class
+model\AtmosphereTest.class
 model\WindTest.class
+controller\DBManagerTest.class
+model\UnitsTest.class
+model\ResultTest.class

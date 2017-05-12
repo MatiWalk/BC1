@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Vector;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Vector;
 public class Result {
 
     String title;
-    ArrayList<Day> Days;
+    LinkedList<Day> Days;
     Location location;
     Wind wind;
     Atmosphere atmosphere;
@@ -22,7 +23,7 @@ public class Result {
     public Result() {
     }
 
-    public Result(String title, ArrayList<Day> days, Location location, Wind wind, Atmosphere atmosphere,
+    public Result(String title, LinkedList<Day> days, Location location, Wind wind, Atmosphere atmosphere,
                   Astronomy astronomy, LocalDateTime puDate, Units units) {
         this.title = title;
         Days = days;
@@ -42,11 +43,11 @@ public class Result {
         this.title = title;
     }
 
-    public ArrayList<Day> getDays() {
+    public LinkedList<Day> getDays() {
         return Days;
     }
 
-    public void setDays(ArrayList<Day> days) {
+    public void setDays(LinkedList<Day> days) {
         Days = days;
     }
 

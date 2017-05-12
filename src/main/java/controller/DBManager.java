@@ -1,58 +1,32 @@
 package controller;
+
 import model.*;
 import model.unit.Temperature;
 
 import java.sql.*;
-import java.sql.Date;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
- * Created by Mati on 02/05/2017.
+ * Created by Mati on 11/05/2017.
  */
-
-
-public class DBController {
-
-    private Connection con;
+public class DBManager {
     private int key;
-    private static DBController instance;
-    private ArrayList<WeatherCode> we ;
+    private LinkedList<WeatherCode> we ;
+    private Connection con;
 
-
-    private DBController() {
-        try {
-            String username = "root";
-            String password = "admin";
-            String url = "jdbc:mysql://localhost:3306/weatherapi?useSSL=false";
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(url, username, password);
-            we = new ArrayList<>();
-        } catch (Exception e) {
-
-            System.out.println("Error trying to open connection" + e.toString());
-
-        }
+    public DBManager(){
+        con = DBConnector.getInstance().getCon();
+        we = new LinkedList<>();
     }
 
-    public static DBController getInstance(){
-        if(instance == null) {
-            instance = new DBController();
-        }
-        return instance;
+    public DBManager(Connection con){
+        this.con = con;
+        we = new LinkedList<>();
     }
 
     public int getKey() {
         return key;
-    }
-
-
-    public void closeConnection() {
-        try {
-            con.close();
-        } catch (Exception e) {
-            System.out.println("Error trying to close connection" + e.toString());
-        }
-
     }
 
     public void insertResult (Result result) {
@@ -99,7 +73,7 @@ public class DBController {
 
     }
 
-    private void insertDays(ArrayList<Day> days, int key){
+    private void insertDays(LinkedList<Day> days, int key){
         String query = " insert into day ( day , idweather_code, current_temperature, high_temperature," +
                 "low_temperature, idresult)"
                 + " values (?, ?, ?, ?, ?, ?)";
@@ -121,7 +95,7 @@ public class DBController {
 
     }
 
-    public ArrayList<WeatherCode> loadWeatherCodes () {
+    public LinkedList<WeatherCode> loadWeatherCodes () {
         String sql = "select * from weather_code";
         try {
             Statement st = con.createStatement();
@@ -166,7 +140,7 @@ public class DBController {
         //Segun el ID del ultimo insert
         //busca los dias
         String sql = "SELECT * FROM day where idresult = "+ k;
-        ArrayList<Day> days = new ArrayList<>();
+        LinkedList<Day> days = new LinkedList<>();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -217,6 +191,4 @@ public class DBController {
 
         return r;
     }
-
-
 }

@@ -1,25 +1,25 @@
 
-import controller.DBController;
+import controller.DBManager;
 import model.*;
 import model.unit.Temperature;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 
     static Scanner sc;
-    static DBController dbc;
-    static ArrayList<WeatherCode> we;
+    static DBManager dbm;
+    static LinkedList<WeatherCode> we;
 
     public static void main(String[] args) {
 
         sc = new Scanner(System.in);
-        dbc = DBController.getInstance();
-        we = DBController.getInstance().loadWeatherCodes();
+        dbm = new DBManager();
+        we = dbm.loadWeatherCodes();
         int o;
         boolean exit = true;
 
@@ -43,11 +43,10 @@ public class Main {
                     System.out.println("Write the ID to check (be sure it exists pls)");
                     int k = Integer.parseInt(sc.nextLine());
                     System.out.println("Stored result by id "+ k + ":");
-                    System.out.println(dbc.loadResult(k).toString());
+                    System.out.println(dbm.loadResult(k).toString());
                     break;
                 default: exit=!exit;
                     System.out.println("See you in hell");
-                    dbc.closeConnection();
                     break;
             }
 
@@ -67,16 +66,16 @@ public class Main {
                 64, 58);
         Day d2 = new Day(we.get(30), LocalDate.of(2017, 04, 22), -99,
                 67, 53);
-        ArrayList<Day> ad = new ArrayList<>();
+        LinkedList<Day> ad = new LinkedList<>();
         ad.add(d1);
         ad.add(d2);
         Units u = new Units(Temperature.F);
         Result r = new Result("Yahoo! Weather - Cordoba, CBA, AR", ad, l, w, at, as, LocalDateTime.now(), u);
         System.out.println("Hardcoded result is:");
         System.out.println(r.toString());
-        dbc.insertResult(r);
+        dbm.insertResult(r);
         System.out.println("Last Insert query:");
-        System.out.println(dbc.loadResult(dbc.getKey()).toString());
+        System.out.println(dbm.loadResult(dbm.getKey()).toString());
     }
 
     private static void inputManually(){
@@ -88,7 +87,7 @@ public class Main {
         Wind t2 = null;
         Atmosphere t3 = null;
         Astronomy t4 = null;
-        ArrayList<Day> t5 = new ArrayList<>();
+        LinkedList<Day> t5 = new LinkedList<>();
         Units t6 = null;
         Result t7;
 
@@ -212,9 +211,9 @@ public class Main {
                         System.out.println("Insert Title for these results");
                         String t = sc.nextLine();
                         t7 = new Result(t, t5, t1, t2, t3, t4, LocalDateTime.now(), t6);
-                        dbc.insertResult(t7);
+                        Main.dbm.insertResult(t7);
                         System.out.println("Last Inserted:");
-                        System.out.println(dbc.loadResult(dbc.getKey()).toString());
+                        System.out.println(Main.dbm.loadResult(Main.dbm.getKey()).toString());
                         exit = !exit;
                     }
                     else{

@@ -2,6 +2,7 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Astronomy.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Wind.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\unit\Speed.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Units.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\controller\DBConnector.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Result.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\unit\Distance.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\unit\Pressure.java
@@ -10,6 +11,6 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\WeatherCode.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Day.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\barometricPressure.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Atmosphere.java
-C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\controller\DBController.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\controller\DBManager.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\Main.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\model\Location.java
