@@ -3,8 +3,8 @@ package controller;
 import model.*;
 import model.unit.Temperature;
 import org.h2.tools.RunScript;
-import org.junit.Assert;
-import org.junit.Before;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -16,35 +16,20 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.LinkedList;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.*;
 
 /**
  * Created by Mati on 11/05/2017.
  */
-public class DBManagerTest {
+public class DBConnectorTest {
 
     private static final String driver = "org.h2.Driver";
+    private static final String username = "root";
+    private static final String password = "admin";
     private static final String url = "jdbc:h2:mem:test_mem";
-    private static Connection con;
     private static Result r;
-    private static DBManager dbm;
+    private static DBConnector dbc;
 
-    private static void setConnection() {
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            con = DriverManager.getConnection(url);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     private static void setResult(){
         String t = "Test title";
@@ -63,32 +48,39 @@ public class DBManagerTest {
 
     @BeforeClass
     public static void initialize(){
-        setConnection();
+
+        DBConnector.setTestStrings(driver, username, password, url);
         setResult();
+        dbc = DBConnector.getInstance();
+
         try {
-            RunScript.execute(con, new FileReader("src/test/resources/weatherDatabase.sql"));
+            RunScript.execute(dbc.getCon(), new FileReader("src/test/resources/TestDatabase.sql"));
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        dbm = new DBManager(con);
+        dbc.loadWeatherCodes();
     }
 
     @Test
     public void weatherCodesTest(){
-        LinkedList<WeatherCode> wc = dbm.loadWeatherCodes();
+        LinkedList<WeatherCode> wc = dbc.loadWeatherCodes();
         assertEquals("Error, must be same quantity", 49, wc.size());
     }
 
     @Test
-    public void selectTest(){
-        dbm.insertResult(r);
-        Result inserted = dbm.loadResult(dbm.getKey());
-        boolean test = true;
-        //if (inserted == r) test = false;
-        //assertFalse(test);
+    public void insertResultTest(){
+        dbc.insertResult(r);
+        //chekcing just some of the values
+        Result inserted = dbc.loadResult(1);
+        assertTrue(r.getTitle().equals(inserted.getTitle()));
+        assertTrue(r.getDays().size() == inserted.getDays().size());
+        assertTrue(r.getPuDate().equals(inserted.getPuDate()));
+
     }
+
+
 
 }

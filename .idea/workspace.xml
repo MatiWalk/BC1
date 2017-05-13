@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47a1a462-af00-4b31-bb46-fd07214e8947" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/controller/DBControllerTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/controller/DBControllerTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/controller/DBManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/DBConnector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/controller/DBManager.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/controller/DBManagerTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-classes/weatherDatabase.sql" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/DBConnectorTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/resources/weatherDatabase.sql" afterPath="$PROJECT_DIR$/src/test/resources/TestDatabase.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-0.8.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-0.8.0-SNAPSHOT.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Main.class" afterPath="$PROJECT_DIR$/target/classes/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/DBManager.java" afterPath="$PROJECT_DIR$/src/main/java/controller/DBManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/model/ResultTest.java" afterPath="$PROJECT_DIR$/src/test/java/model/ResultTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Main.java" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/DBConnector.java" afterPath="$PROJECT_DIR$/src/main/java/controller/DBConnector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-controller.DBManagerTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-controller.DBManagerTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-model.DayTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-model.DayTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-model.LocationTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-model.LocationTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/controller.DBManagerTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/controller.DBManagerTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/model.DayTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/model.DayTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/model.LocationTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/model.LocationTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/model.ResultTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/model.ResultTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/model.UnitsTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/model.UnitsTest.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DayTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/model/DayTest.java">
+      <file leaf-file-name="DBConnectorTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/controller/DBConnectorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+            <state relative-caret-position="518">
+              <caret line="75" column="42" lean-forward="false" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,43 +53,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResultTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/model/ResultTest.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="646">
+              <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DBManagerTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java">
+      <file leaf-file-name="DBConnector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/DBConnector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+            <state relative-caret-position="925">
+              <caret line="112" column="27" lean-forward="false" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/DBManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1494562452217" expanded="true" signature="636:976" ph="insert into Result... " />
-                <marker date="1494562452217" expanded="true" signature="2711:2883" ph="insert into day... " />
-                <marker date="1494562452217" expanded="true" signature="3606:3632" ph="select * fro... weather_code" />
-                <marker date="1494562452217" expanded="true" signature="4253:4303" ph="select * fro... weather_code" />
-                <marker date="1494562452217" expanded="true" signature="4930:4965" ph="SELECT * FRO... day" />
-                <marker date="1494562452217" expanded="true" signature="5695:5734" ph="SELECT * FRO... result" />
+                <marker date="1494640182868" expanded="true" signature="1610:1950" ph="insert into Result... " />
+                <marker date="1494640182868" expanded="true" signature="3685:3857" ph="insert into day... " />
+                <marker date="1494640182868" expanded="true" signature="4580:4606" ph="select * fro... weather_code" />
+                <marker date="1494640182868" expanded="true" signature="5227:5277" ph="select * fro... weather_code" />
+                <marker date="1494640182868" expanded="true" signature="5904:5939" ph="SELECT * FRO... day" />
+                <marker date="1494640182868" expanded="true" signature="6669:6708" ph="SELECT * FRO... result" />
               </folding>
             </state>
           </provider>
@@ -82,8 +84,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+            <state relative-caret-position="0">
+              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -92,8 +94,8 @@
       <file leaf-file-name="Result.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/Result.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-114">
-              <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+            <state relative-caret-position="243">
+              <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -131,8 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Model/ForecastDay.java" />
-        <option value="$PROJECT_DIR$/src/Model/Day.java" />
         <option value="$PROJECT_DIR$/src/Model/Item.java" />
         <option value="$PROJECT_DIR$/src/Model/Guid.java" />
         <option value="$PROJECT_DIR$/src/Model/Units/WeatherCode.java" />
@@ -175,13 +175,15 @@
         <option value="$PROJECT_DIR$/src/test/java/model/DayTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/DBController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/DBConnector.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/test/java/controller/DBControllerTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/model/ResultTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/DBManager.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controller/DBConnector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/DBConnector.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controller/DBConnectorTest.java" />
       </list>
     </option>
   </component>
@@ -193,6 +195,34 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -256,6 +286,10 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -276,10 +310,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -324,80 +354,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bootcamp1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -964,32 +920,11 @@
       <workItem from="1493694701895" duration="622000" />
       <workItem from="1493732397747" duration="46294000" />
       <workItem from="1494046969647" duration="1354000" />
-      <workItem from="1494549283513" duration="11929000" />
+      <workItem from="1494549283513" duration="21758000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 00h 27m 24s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 00h 28m 47s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 00h 29m 27s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 00h 39m 51s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 00h 53m 31s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 01h 03m 48s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 01h 04m 16s.xml">
-      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 01h 04m 23s.xml">
       <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
     </history-entry>
@@ -999,9 +934,30 @@
     <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 01h 14m 16s.xml">
       <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 15h 28m 59s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 22h 41m 49s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 22h 43m 08s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 22h 45m 17s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 22h 45m 37s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 22h 47m 20s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Bootcamp1_(2) - 2017.05.12 at 23h 06m 32s.xml">
+      <configuration name="All in Bootcamp1 (2)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108987000" />
+    <option name="totallyTimeSpent" value="118816000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
@@ -1055,7 +1011,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/modelViejo/Wind.java" />
     <entry file="file://$PROJECT_DIR$/src/modelViejo/Guid.java" />
     <entry file="file://$PROJECT_DIR$/src/modelViejo/Units.java" />
     <entry file="file://$PROJECT_DIR$/src/modelViejo/unit/barometricPressure.java" />
@@ -1163,13 +1118,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/weatherDatabase.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/model/WeatherCode.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/model/WeatherCode.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1271,7 +1219,7 @@
         <state relative-caret-position="357">
           <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1284,30 +1232,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/DBConnector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#911#912#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/h2database/h2/1.4.195/h2-1.4.195.jar!/org/h2/tools/RunScript.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="38" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="26" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1338,42 +1266,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Result.java">
+    <entry file="file://$PROJECT_DIR$/Bootcamp1.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-114">
-          <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Result.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="21" column="17" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+        <state relative-caret-position="243">
+          <caret line="20" column="10" lean-forward="false" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/DBManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        <state relative-caret-position="68">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="194" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="41" column="21" lean-forward="false" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/TestDatabase.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/DBConnector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="925">
+          <caret line="112" column="27" lean-forward="false" selection-start-line="112" selection-start-column="17" selection-end-line="112" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1494562452217" expanded="true" signature="636:976" ph="insert into Result... " />
-            <marker date="1494562452217" expanded="true" signature="2711:2883" ph="insert into day... " />
-            <marker date="1494562452217" expanded="true" signature="3606:3632" ph="select * fro... weather_code" />
-            <marker date="1494562452217" expanded="true" signature="4253:4303" ph="select * fro... weather_code" />
-            <marker date="1494562452217" expanded="true" signature="4930:4965" ph="SELECT * FRO... day" />
-            <marker date="1494562452217" expanded="true" signature="5695:5734" ph="SELECT * FRO... result" />
+            <marker date="1494640182868" expanded="true" signature="1610:1950" ph="insert into Result... " />
+            <marker date="1494640182868" expanded="true" signature="3685:3857" ph="insert into day... " />
+            <marker date="1494640182868" expanded="true" signature="4580:4606" ph="select * fro... weather_code" />
+            <marker date="1494640182868" expanded="true" signature="5227:5277" ph="select * fro... weather_code" />
+            <marker date="1494640182868" expanded="true" signature="5904:5939" ph="SELECT * FRO... day" />
+            <marker date="1494640182868" expanded="true" signature="6669:6708" ph="SELECT * FRO... result" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/controller/DBManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/controller/DBConnectorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+        <state relative-caret-position="518">
+          <caret line="75" column="42" lean-forward="false" selection-start-line="75" selection-start-column="42" selection-end-line="75" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1469,6 +1429,7 @@
   <component name="mavenExecuteGoalHistory">
     <option value="$PROJECT_DIR$" />
     <option value="clean install" />
+    <option value="clean deploy" />
     <option value="-mvn clean install" />
   </component>
 </project>

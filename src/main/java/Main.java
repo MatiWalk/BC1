@@ -1,5 +1,5 @@
 
-import controller.DBManager;
+import controller.DBConnector;
 import model.*;
 import model.unit.Temperature;
 
@@ -12,13 +12,13 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner sc;
-    static DBManager dbm;
+    static DBConnector dbm;
     static LinkedList<WeatherCode> we;
 
     public static void main(String[] args) {
 
         sc = new Scanner(System.in);
-        dbm = new DBManager();
+        dbm = DBConnector.getInstance();
         we = dbm.loadWeatherCodes();
         int o;
         boolean exit = true;
