@@ -3,8 +3,6 @@ package controller;
 import model.*;
 import model.unit.Temperature;
 import org.h2.tools.RunScript;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,8 +32,8 @@ public class DBConnectorTest {
     private static void setResult(){
         String t = "Test title";
         WeatherCode wc = new WeatherCode(1, "tropical storm");
-        Day d = new Day(wc, LocalDate.of(2017, 12, 3), 20, 30, 10);;
-        LinkedList<Day> ad = new LinkedList<>();
+        Today d = new Today(wc, LocalDate.of(2017, 12, 3), 20, 30, 10);;
+        LinkedList<Today> ad = new LinkedList<>();
         ad.add(d);
         Location l = new Location("Test COuntry", "Test City");
         Wind w = new Wind(20, 30, 40);

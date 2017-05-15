@@ -11,11 +11,11 @@ import static org.junit.Assert.assertEquals;
  */
 public class DayTest {
 
-    Day d;
+    Today d;
 
     @Test
     public void emptyConstructorTests(){
-        d = new Day();
+        d = new Today();
         assertEquals("empty constructor, Country error", null, d.getWeatherCode());
         assertEquals("empty constructor, City error", null, d.getDate());
         assertEquals("empty constructor, City error", 0, d.getCurrentTemperature());
@@ -26,7 +26,7 @@ public class DayTest {
     @Test
     public void parameterConstructorTests(){
         WeatherCode w = new WeatherCode(1, "sunny");
-        d = new Day(w, LocalDate.MIN, 20, 30, 10);
+        d = new Today(w, LocalDate.MIN, 20, 30, 10);
         assertEquals("Full constructor, Country error", w, d.getWeatherCode());
         assertEquals("Full constructor, City error", LocalDate.MIN, d.getDate());
         assertEquals("Full constructor, City error", 20, d.getCurrentTemperature());
@@ -37,7 +37,7 @@ public class DayTest {
     @Test
     public void setterTest(){
         WeatherCode w = new WeatherCode(1, "sunny");
-        d = new Day();
+        d = new Today();
         d.setWeatherCode(w);
         d.setDate(LocalDate.MAX);
         d.setCurrentTemperature(20);

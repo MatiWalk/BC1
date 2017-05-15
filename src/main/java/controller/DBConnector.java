@@ -59,7 +59,7 @@ public class DBConnector {
     public DBManager(Connection con){
         this.con = con;
         loadWeatherCodes();
-    }*/
+    }
 
     public int getKey() {
         return key;
@@ -110,12 +110,12 @@ public class DBConnector {
 
     }
 
-    private void insertDays(LinkedList<Day> days, int key){
+    private void insertDays(LinkedList<Today> days, int key){
         String query = " insert into day ( day , idweather_code, current_temperature, high_temperature," +
                 "low_temperature, idresult)"
                 + " values (?, ?, ?, ?, ?, ?)";
         try{
-            for (Day d: days) {
+            for (Today d: days) {
                 PreparedStatement preparedStmt = con.prepareStatement(query);
                 preparedStmt.setDate(1, Date.valueOf(d.getDate()));
                 preparedStmt.setInt(2, d.getWeatherCode().getCode());
@@ -178,13 +178,13 @@ public class DBConnector {
         //Segun el ID del ultimo insert
         //busca los dias
         String sql = "SELECT * FROM day where idresult = "+ k;
-        LinkedList<Day> days = new LinkedList<>();
+        LinkedList<Today> days = new LinkedList<>();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
 
             while (rs.next()) {
-                Day t = new Day();
+                Today t = new Today();
                 t.setDate(rs.getDate(2).toLocalDate());
                 t.setWeatherCode(we.get(rs.getInt(3)));
                 t.setCurrentTemperature(rs.getInt(4));
@@ -228,7 +228,7 @@ public class DBConnector {
         }
 
         return r;
-    }
+    }*/
 
 
 }

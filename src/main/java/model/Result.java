@@ -1,10 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Vector;
+import java.util.*;
 
 /**
  * Created by Mati on 01/05/2017.
@@ -12,28 +9,11 @@ import java.util.Vector;
 public class Result {
 
     String title;
-    LinkedList<Day> Days;
     Location location;
-    Wind wind;
-    Atmosphere atmosphere;
-    Astronomy astronomy;
+    Today today;
+    List<Forecast> forecasts = new LinkedList<>();
     LocalDateTime puDate;
     Units units;
-
-    public Result() {
-    }
-
-    public Result(String title, LinkedList<Day> days, Location location, Wind wind, Atmosphere atmosphere,
-                  Astronomy astronomy, LocalDateTime puDate, Units units) {
-        this.title = title;
-        Days = days;
-        this.location = location;
-        this.wind = wind;
-        this.atmosphere = atmosphere;
-        this.astronomy = astronomy;
-        this.puDate = puDate;
-        this.units = units;
-    }
 
     public String getTitle() {
         return title;
@@ -41,14 +21,6 @@ public class Result {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public LinkedList<Day> getDays() {
-        return Days;
-    }
-
-    public void setDays(LinkedList<Day> days) {
-        Days = days;
     }
 
     public Location getLocation() {
@@ -59,33 +31,29 @@ public class Result {
         this.location = location;
     }
 
-    public Wind getWind() {
-        return wind;
+    public Today getToday() {
+        return today;
     }
 
-    public void setWind(Wind wind) {
-        this.wind = wind;
+    public void setToday(Today today) {
+        this.today = today;
     }
 
-    public Atmosphere getAtmosphere() {
-        return atmosphere;
+    public List<Forecast> getForecasts() {
+        return forecasts;
     }
 
-    public void setAtmosphere(Atmosphere atmosphere) {
-        this.atmosphere = atmosphere;
+    public void setForecasts(List<Forecast> forecasts) {
+        this.forecasts = forecasts;
     }
 
-    public Astronomy getAstronomy() {
-        return astronomy;
+    public LocalDateTime getPuDate() {
+        return puDate;
     }
 
-    public void setAstronomy(Astronomy astronomy) {
-        this.astronomy = astronomy;
+    public void setPuDate(LocalDateTime puDate) {
+        this.puDate = puDate;
     }
-
-    public LocalDateTime getPuDate() { return puDate; }
-
-    public void setPuDate(LocalDateTime puDate) { this.puDate = puDate; }
 
     public Units getUnits() {
         return units;
@@ -99,11 +67,9 @@ public class Result {
     public String toString() {
         return "model.Result{" +
                 "title='" + title + '\'' +
-                ", Days=" + Days +
                 ", location=" + location +
-                ", wind=" + wind +
-                ", atmosphere=" + atmosphere +
-                ", astronomy=" + astronomy +
+                ", today=" + today +
+                ", forecasts=" + forecasts +
                 ", puDate=" + puDate +
                 ", units=" + units +
                 '}';

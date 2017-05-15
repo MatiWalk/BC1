@@ -19,8 +19,8 @@ public class ResultTest {
     private static Result r;
     private static String t;
     private static WeatherCode wc;
-    private static Day d;
-    private static LinkedList<Day> ad;
+    private static Today d;
+    private static LinkedList<Today> ad;
     private static Location l;
     private static Wind w;
     private static Atmosphere at;
@@ -33,7 +33,7 @@ public class ResultTest {
         ad = new LinkedList<>();
         t = "Test title";
         wc = new WeatherCode(1, "Sunny");
-        d = new Day(wc, LocalDate.of(2017, 12, 3), 20, 30, 10);
+        d = new Today(wc, LocalDate.of(2017, 12, 3), 20, 30, 10);
         ad.add(d);
         l = new Location("Test COuntry", "Test City");
         w = new Wind(20, 30, 40);

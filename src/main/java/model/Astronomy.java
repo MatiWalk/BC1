@@ -10,10 +10,10 @@ public class Astronomy {
     LocalTime sunRise;
     LocalTime sunSet;
 
-    public Astronomy() {
+    private Astronomy() {
     }
 
-    public Astronomy(LocalTime sunRise, LocalTime sunSet){
+    private Astronomy(LocalTime sunRise, LocalTime sunSet){
         this.sunRise = sunRise;
         this.sunSet = sunSet;
     }
@@ -41,4 +41,11 @@ public class Astronomy {
                 ", sunSet=" + sunSet +
                 '}';
     }
+
+    public static class AstronomyBuilder{
+        Astronomy astronomy;
+
+    }
 }
+
+

@@ -62,11 +62,11 @@ public class Main {
         Wind w = new Wind(65, 203, 7);
         Atmosphere at = new Atmosphere(66, 965.0f, barometricPressure.FALLING, 16.1f);
         Astronomy as = new Astronomy(LocalTime.of(7, 41), LocalTime.of(18, 45));
-        Day d1 = new Day(we.get(30), LocalDate.of(2017, 04, 21), 64,
+        Today d1 = new Today(we.get(30), LocalDate.of(2017, 04, 21), 64,
                 64, 58);
-        Day d2 = new Day(we.get(30), LocalDate.of(2017, 04, 22), -99,
+        Today d2 = new Today(we.get(30), LocalDate.of(2017, 04, 22), -99,
                 67, 53);
-        LinkedList<Day> ad = new LinkedList<>();
+        LinkedList<Today> ad = new LinkedList<>();
         ad.add(d1);
         ad.add(d2);
         Units u = new Units(Temperature.F);
@@ -87,7 +87,7 @@ public class Main {
         Wind t2 = null;
         Atmosphere t3 = null;
         Astronomy t4 = null;
-        LinkedList<Day> t5 = new LinkedList<>();
+        LinkedList<Today> t5 = new LinkedList<>();
         Units t6 = null;
         Result t7;
 
@@ -100,7 +100,7 @@ public class Main {
                     "2- Load Wind\n" +
                     "3- Load Atmosphere\n" +
                     "4- Load Astronomy\n" +
-                    "5- Load Day\n" +
+                    "5- Load Today\n" +
                     "6- Load Unit standard\n" +
                     "7- Insert Result (if everything else is loaded)\n" +
                     "Other- Exit \n" +
@@ -175,7 +175,7 @@ public class Main {
                     //Days
                     System.out.println("Insert weather code (Integer Please, according to documentation)");
                     int wc = Integer.parseInt(sc.nextLine());
-                    System.out.println("Day date:");
+                    System.out.println("Today date:");
                     System.out.println("Insert year");
                     int y = Integer.parseInt(sc.nextLine());
                     System.out.println("Insert month");
@@ -192,7 +192,7 @@ public class Main {
                     System.out.println("Low temperature? (Integer please)");
                     int lt = Integer.parseInt(sc.nextLine());
 
-                    t5.add(new Day(we.get(wc), LocalDate.of(y, m, d), ct, ht, lt));
+                    t5.add(new Today(we.get(wc), LocalDate.of(y, m, d), ct, ht, lt));
 
                     break;
                 case 6:
