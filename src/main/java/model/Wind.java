@@ -55,6 +55,9 @@ public class Wind {
         int direction;
         int speed;
 
+        public Builder() {
+        }
+
         public Builder withChill (int chill){
             this.chill = chill;
             return this;

@@ -68,6 +68,9 @@ public class Forecast {
         int highTemperature;
         int lowTemperature;
 
+        public Builder() {
+        }
+
         public Builder withForecastWeather(WeatherCode forecastWeather){
             this.forecastWeather = forecastWeather;
             return this;

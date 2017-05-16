@@ -72,6 +72,9 @@ public class Units {
     public static class Builder {
         Temperature temperature;
 
+        public Builder() {
+        }
+
         public Builder withTemperatureUnit(Temperature temperature){
             this.temperature = temperature;
             return this;

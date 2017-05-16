@@ -42,6 +42,9 @@ public class WeatherCode {
         int code;
         String text;
 
+        public Builder() {
+        }
+
         public Builder withCode(int code){
             this.code = code;
             return this;

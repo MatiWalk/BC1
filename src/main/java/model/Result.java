@@ -93,6 +93,9 @@ public class Result {
         private LocalDateTime pubDate;
         private Units units;
 
+        public Builder() {
+        }
+
         public Builder withTitle(String title){
             this.title = title;
             return this;

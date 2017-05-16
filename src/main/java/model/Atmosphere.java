@@ -67,6 +67,9 @@ public class Atmosphere {
         barometricPressure rising;
         float visibility;
 
+        public Builder() {
+        }
+
         public Builder withHumidity(int humidity){
             this.humidity = humidity;
             return this;

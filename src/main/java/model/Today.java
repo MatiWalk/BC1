@@ -85,6 +85,9 @@ public class Today extends Forecast{
         private Atmosphere atmosphere;
         private Wind wind;
 
+        public Builder() {
+        }
+
         public Builder withCurrentWeather(WeatherCode currentWeather){
             this.currentWeather = currentWeather;
             return this;

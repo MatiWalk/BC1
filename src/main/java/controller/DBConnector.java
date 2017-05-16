@@ -13,8 +13,6 @@ public class DBConnector {
 
     private Connection con;
     private static DBConnector instance;
-    private int key;
-    private LinkedList<WeatherCode> we ;
     private static String driver = "com.mysql.cj.jdbc.Driver";
     private static String username = "root";
     private static String password = "admin";

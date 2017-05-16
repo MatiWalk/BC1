@@ -54,6 +54,9 @@ public class Location {
         private String zone;
         private String city;
 
+        public Builder() {
+        }
+
         public Builder withCountry(String country){
             this.country = country;
             return this;

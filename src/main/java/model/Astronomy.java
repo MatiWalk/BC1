@@ -45,6 +45,10 @@ public class Astronomy {
         LocalTime sunSet;
         LocalTime sunRise;
 
+        public Builder() {
+        }
+
+
         public Builder withSunrise(LocalTime sunRise){
             sunRise = sunRise;
             return this;
