@@ -8,7 +8,7 @@ public class WeatherCode {
     int code;
     String text;
 
-    private WeatherCode(WeatherCodeBuilder weatherCodeBuilder) {
+    private WeatherCode(Builder weatherCodeBuilder) {
         this.code = code;
         this.text = text;
     }
@@ -37,17 +37,17 @@ public class WeatherCode {
                 '}';
     }
 
-    public static class WeatherCodeBuilder{
+    public static class Builder {
 
         int code;
         String text;
 
-        public WeatherCodeBuilder withCode(int code){
+        public Builder withCode(int code){
             this.code = code;
             return this;
         }
 
-        public WeatherCodeBuilder withString(String text){
+        public Builder withString(String text){
             this.text = text;
             return this;
         }

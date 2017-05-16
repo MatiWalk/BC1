@@ -11,7 +11,7 @@ public class Atmosphere {
     barometricPressure rising;
     float visibility;
 
-    private Atmosphere(AtmosphereBuilder atmosphereBuilder) {
+    private Atmosphere(Builder atmosphereBuilder) {
         this.humidity = atmosphereBuilder.humidity;
         this.pressure = atmosphereBuilder.pressure;
         this.rising = atmosphereBuilder.rising;
@@ -60,29 +60,29 @@ public class Atmosphere {
                 '}';
     }
 
-    public static class AtmosphereBuilder {
+    public static class Builder {
 
         int humidity;
         float pressure;
         barometricPressure rising;
         float visibility;
 
-        public AtmosphereBuilder withHumidity(int humidity){
+        public Builder withHumidity(int humidity){
             this.humidity = humidity;
             return this;
         }
 
-        public AtmosphereBuilder withPressure(float pressure){
+        public Builder withPressure(float pressure){
             this.pressure = pressure;
             return this;
         }
 
-        public AtmosphereBuilder withRising(barometricPressure rising){
+        public Builder withRising(barometricPressure rising){
             this.rising = rising;
             return this;
         }
 
-        public AtmosphereBuilder withVisibility(float visibility){
+        public Builder withVisibility(float visibility){
             this.visibility = visibility;
             return this;
         }

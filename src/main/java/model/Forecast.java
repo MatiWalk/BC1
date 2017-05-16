@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Created by Mati on 15/05/2017.
@@ -13,7 +12,7 @@ public class Forecast {
     protected int highTemperature;
     protected int lowTemperature;
 
-    private Forecast(ForecastBuilder forecastBuilder) {
+    protected Forecast(Builder forecastBuilder) {
         this.forecastWeather = forecastBuilder.forecastWeather;
         this.date = forecastBuilder.date;
         this.highTemperature = forecastBuilder.highTemperature;
@@ -62,29 +61,29 @@ public class Forecast {
                 '}';
     }
 
-    public static class ForecastBuilder {
+    public static class Builder <T extends Builder<T>> {
 
         WeatherCode forecastWeather;
         LocalDate date;
         int highTemperature;
         int lowTemperature;
 
-        public ForecastBuilder withForecastWeather(WeatherCode forecastWeather){
+        public Builder withForecastWeather(WeatherCode forecastWeather){
             this.forecastWeather = forecastWeather;
             return this;
         }
 
-        public ForecastBuilder withDate(LocalDate date){
+        public Builder withDate(LocalDate date){
             this.date = date;
             return this;
         }
 
-        public ForecastBuilder withHighTemperature(int highTemperature){
+        public Builder withHighTemperature(int highTemperature){
             this.highTemperature = highTemperature;
             return this;
         }
 
-        public ForecastBuilder withLowTemperature(int lowTemperature){
+        public Builder withLowTemperature(int lowTemperature){
             this.lowTemperature = lowTemperature;
             return this;
         }

@@ -12,7 +12,7 @@ public class Units {
     Temperature temperatureUnit;
 
 
-    private Units(UnitsBuilder unitsBuilder){
+    private Units(Builder unitsBuilder){
         this.setTemperatureUnit(unitsBuilder.temperature);
     }
 
@@ -69,10 +69,10 @@ public class Units {
                 '}';
     }
 
-    public static class UnitsBuilder{
+    public static class Builder {
         Temperature temperature;
 
-        public UnitsBuilder withTemperatureUnit(Temperature temperature){
+        public Builder withTemperatureUnit(Temperature temperature){
             this.temperature = temperature;
             return this;
         }

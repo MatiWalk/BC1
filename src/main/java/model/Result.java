@@ -15,7 +15,7 @@ public class Result {
     LocalDateTime puDate;
     Units units;
 
-    private Result(ResultBuilder resultBuilder) {
+    private Result(Builder resultBuilder) {
         this.title = resultBuilder.title;
         this.location = resultBuilder.location;
         this.today = resultBuilder.today;
@@ -84,7 +84,7 @@ public class Result {
                 '}';
     }
 
-    public static class ResultBuilder{
+    public static class Builder {
 
         private String title;
         private Location location;
@@ -93,32 +93,32 @@ public class Result {
         private LocalDateTime pubDate;
         private Units units;
 
-        public ResultBuilder withTitle(String title){
+        public Builder withTitle(String title){
             this.title = title;
             return this;
         }
 
-        public ResultBuilder withLocation(Location location){
+        public Builder withLocation(Location location){
             this.location = location;
             return this;
         }
 
-        public ResultBuilder withToday(Today today){
+        public Builder withToday(Today today){
             this.today = today;
             return this;
         }
 
-        public ResultBuilder withForecasts(List<Forecast> forecasts){
+        public Builder withForecasts(List<Forecast> forecasts){
             this.forecasts = forecasts;
             return this;
         }
 
-        public ResultBuilder withPubDate(LocalDateTime pubDate){
+        public Builder withPubDate(LocalDateTime pubDate){
             this.pubDate = pubDate;
             return this;
         }
 
-        public ResultBuilder withUnits(Units units){
+        public Builder withUnits(Units units){
             this.units = units;
             return this;
         }

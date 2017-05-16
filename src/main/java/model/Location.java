@@ -9,7 +9,7 @@ public class Location {
     private String zone;
     private String city;
 
-    private Location(LocationBuilder locationBuilder) {
+    private Location(Builder locationBuilder) {
         this.country = locationBuilder.country;
         this.zone = locationBuilder.zone;
         this.city = locationBuilder.city;
@@ -48,23 +48,23 @@ public class Location {
                 '}';
     }
 
-    public static class LocationBuilder {
+    public static class Builder {
 
         private String country;
         private String zone;
         private String city;
 
-        public LocationBuilder withCountry(String country){
+        public Builder withCountry(String country){
             this.country = country;
             return this;
         }
 
-        public LocationBuilder withZone(String zone){
+        public Builder withZone(String zone){
             this.zone = zone;
             return this;
         }
 
-        public LocationBuilder withCity(String city){
+        public Builder withCity(String city){
             this.city = city;
             return this;
         }
