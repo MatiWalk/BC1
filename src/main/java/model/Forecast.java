@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -7,10 +8,17 @@ import java.time.LocalDateTime;
  */
 public class Forecast {
 
-    private WeatherCode forecastWeather;
-    private LocalDateTime date;
-    private int highTemperature;
-    private int lowTemperature;
+    protected WeatherCode forecastWeather;
+    protected LocalDate date;
+    protected int highTemperature;
+    protected int lowTemperature;
+
+    private Forecast(ForecastBuilder forecastBuilder) {
+        this.forecastWeather = forecastBuilder.forecastWeather;
+        this.date = forecastBuilder.date;
+        this.highTemperature = forecastBuilder.highTemperature;
+        this.lowTemperature = forecastBuilder.lowTemperature;
+    }
 
     public WeatherCode getForecastWeather() {
         return forecastWeather;
@@ -20,11 +28,11 @@ public class Forecast {
         this.forecastWeather = forecastWeather;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -52,5 +60,38 @@ public class Forecast {
                 ", highTemperature=" + highTemperature +
                 ", lowTemperature=" + lowTemperature +
                 '}';
+    }
+
+    public static class ForecastBuilder {
+
+        WeatherCode forecastWeather;
+        LocalDate date;
+        int highTemperature;
+        int lowTemperature;
+
+        public ForecastBuilder withForecastWeather(WeatherCode forecastWeather){
+            this.forecastWeather = forecastWeather;
+            return this;
+        }
+
+        public ForecastBuilder withDate(LocalDate date){
+            this.date = date;
+            return this;
+        }
+
+        public ForecastBuilder withHighTemperature(int highTemperature){
+            this.highTemperature = highTemperature;
+            return this;
+        }
+
+        public ForecastBuilder withLowTemperature(int lowTemperature){
+            this.lowTemperature = lowTemperature;
+            return this;
+        }
+
+        public Forecast build(){
+            return new Forecast(this);
+        }
+
     }
 }

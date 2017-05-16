@@ -11,11 +11,9 @@ public class Units {
     Speed speedUnit;
     Temperature temperatureUnit;
 
-    public Units() {
-    }
 
-    public Units(Temperature temperatureUnit) {
-        setTemperatureUnit(temperatureUnit);
+    private Units(UnitsBuilder unitsBuilder){
+        this.setTemperatureUnit(unitsBuilder.temperature);
     }
 
     public Distance getDistanceUnit() {
@@ -69,5 +67,18 @@ public class Units {
                 ", speedUnit=" + speedUnit +
                 ", temperatureUnit=" + temperatureUnit +
                 '}';
+    }
+
+    public static class UnitsBuilder{
+        Temperature temperature;
+
+        public UnitsBuilder withTemperatureUnit(Temperature temperature){
+            this.temperature = temperature;
+            return this;
+        }
+
+        public Units build (){
+            return new Units(this);
+        }
     }
 }

@@ -10,12 +10,9 @@ public class Astronomy {
     LocalTime sunRise;
     LocalTime sunSet;
 
-    private Astronomy() {
-    }
-
-    private Astronomy(LocalTime sunRise, LocalTime sunSet){
-        this.sunRise = sunRise;
-        this.sunSet = sunSet;
+    private Astronomy(Builder astronomyBuilder) {
+        sunRise = astronomyBuilder.sunRise;
+        sunSet = astronomyBuilder.sunSet;
     }
 
     public LocalTime getSunRise() {
@@ -42,8 +39,25 @@ public class Astronomy {
                 '}';
     }
 
-    public static class AstronomyBuilder{
-        Astronomy astronomy;
+
+    public static class Builder {
+
+        LocalTime sunSet;
+        LocalTime sunRise;
+
+        public Builder withSunrise(LocalTime sunRise){
+            sunRise = sunRise;
+            return this;
+        }
+
+        public Builder withSunset(LocalTime sunSet){
+            sunSet = sunSet;
+            return this;
+        }
+
+        public Astronomy build(){
+            return new Astronomy(this);
+        }
 
     }
 }

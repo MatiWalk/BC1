@@ -7,8 +7,8 @@ import java.util.List;
  */
 public interface weatherDAO<T> {
     int insert(T t);
-    void updateByObject(T t);
-    void deleteByObject(T t);
+    void update(T t);
+    void delete(T t);
     T selectByID(int i);
     List<T> selectAll();
 }

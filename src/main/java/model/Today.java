@@ -56,11 +56,19 @@ public class Today extends Forecast{
     @Override
     public String toString() {
         return "model.Today{" +
-                "currentWeather=" + currentWeather +
+                "forecastWeather=" + forecastWeather +
+                ", currentWeather=" + currentWeather +
                 ", currentTemperature=" + currentTemperature +
+                ", date=" + date +
+                ", highTemperature=" + highTemperature +
                 ", astronomy=" + astronomy +
+                ", lowTemperature=" + lowTemperature +
                 ", atmosphere=" + atmosphere +
                 ", wind=" + wind +
                 '}';
+    }
+
+    public static class TodayBuilder {
+
     }
 }

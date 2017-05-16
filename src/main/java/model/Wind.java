@@ -1,5 +1,7 @@
 package model;
 
+import javafx.stage.WindowBuilder;
+
 /**
  * Information about the wind
  * Created by Mati on 26/04/2017.
@@ -10,16 +12,10 @@ public class Wind {
     int direction;
     int speed;
 
-    public Wind(){
-        chill = 0;
-        direction = 0;
-        speed = 0;
-    }
-
-    public Wind(int chill, int direction, int speed) {
-        this.chill = chill;
-        this.direction = direction;
-        this.speed = speed;
+    public Wind(WindBuilder windBuilder) {
+        this.chill = windBuilder.chill;
+        this.direction = windBuilder.direction;
+        this.speed = windBuilder.speed;
     }
 
     public int getChill() {
@@ -53,5 +49,31 @@ public class Wind {
                 ", direction=" + direction +
                 ", speed=" + speed +
                 '}';
+    }
+
+    public static class WindBuilder{
+
+        int chill;
+        int direction;
+        int speed;
+
+        public WindBuilder withChill (int chill){
+            this.chill = chill;
+            return this;
+        }
+
+        public WindBuilder withDirection (int direction){
+            this.direction = direction;
+            return this;
+        }
+
+        public WindBuilder withSpeed (int speed){
+            this.speed = speed;
+            return this;
+        }
+
+        public Wind build(){
+            return new Wind(this);
+        }
     }
 }

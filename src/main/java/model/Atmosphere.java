@@ -11,14 +11,11 @@ public class Atmosphere {
     barometricPressure rising;
     float visibility;
 
-    public Atmosphere() {
-    }
-
-    public Atmosphere(int humidity, float pressure, barometricPressure rising, float visibility) {
-        this.humidity = humidity;
-        this.pressure = pressure;
-        this.rising = rising;
-        this.visibility = visibility;
+    private Atmosphere(AtmosphereBuilder atmosphereBuilder) {
+        this.humidity = atmosphereBuilder.humidity;
+        this.pressure = atmosphereBuilder.pressure;
+        this.rising = atmosphereBuilder.rising;
+        this.visibility = atmosphereBuilder.visibility;
     }
 
     public int getHumidity() {
@@ -62,4 +59,38 @@ public class Atmosphere {
                 ", visibility=" + visibility +
                 '}';
     }
+
+    public static class AtmosphereBuilder {
+
+        int humidity;
+        float pressure;
+        barometricPressure rising;
+        float visibility;
+
+        public AtmosphereBuilder withHumidity(int humidity){
+            this.humidity = humidity;
+            return this;
+        }
+
+        public AtmosphereBuilder withPressure(float pressure){
+            this.pressure = pressure;
+            return this;
+        }
+
+        public AtmosphereBuilder withRising(barometricPressure rising){
+            this.rising = rising;
+            return this;
+        }
+
+        public AtmosphereBuilder withVisibility(float visibility){
+            this.visibility = visibility;
+            return this;
+        }
+
+        public Atmosphere build (){
+            return new Atmosphere(this);
+        }
+
+    }
+
 }
