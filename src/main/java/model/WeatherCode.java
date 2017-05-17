@@ -1,16 +1,17 @@
 package model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by Mati on 01/05/2017.
  */
 public class WeatherCode {
 
-    int code;
-    String text;
+    private int code;
+    private String weather;
 
-    private WeatherCode(Builder weatherCodeBuilder) {
-        this.code = code;
-        this.text = text;
+    public WeatherCode () {
     }
 
     public int getCode() {
@@ -21,42 +22,20 @@ public class WeatherCode {
         this.code = code;
     }
 
-    public String getText() {
-        return text;
+    public String getWeather() {
+        return weather;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setWeather(String weather) {
+        this.weather = weather;
     }
 
     @Override
     public String toString() {
         return "model.WeatherCode{" +
                 "code=" + code +
-                ", text='" + text + '\'' +
+                ", weather='" + weather + '\'' +
                 '}';
     }
 
-    public static class Builder {
-
-        int code;
-        String text;
-
-        public Builder() {
-        }
-
-        public Builder withCode(int code){
-            this.code = code;
-            return this;
-        }
-
-        public Builder withString(String text){
-            this.text = text;
-            return this;
-        }
-
-        public WeatherCode build(){
-            return new WeatherCode(this);
-        }
-    }
 }

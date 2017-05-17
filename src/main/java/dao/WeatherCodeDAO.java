@@ -1,5 +1,6 @@
 package dao;
 
+import builder.WeatherCodeBuilder;
 import controller.DBConnector;
 import model.WeatherCode;
 
@@ -13,27 +14,11 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
-public class WeatherCodeDAO implements ClimateDAO<WeatherCode> {
-    List<WeatherCode> weatherCodes;
-    Connection con = DBConnector.getInstance().getCon();
+public class WeatherCodeDAO {
+    private List<WeatherCode> weatherCodes;
+    private Connection con = DBConnector.getInstance().getCon();
 
-    @Override
-    public int insert(WeatherCode weatherCode) {
-        return -1;
-    }
 
-    @Override
-    public void update(WeatherCode weatherCode, int id) {
-    }
-
-    @Override
-    public void deleteByID(int id) {
-    }
-
-    @Override
-    public WeatherCode selectByID(int i) {
-        return null;
-    }
 
     public List<WeatherCode> selectAll() {
         weatherCodes = new LinkedList<>();
@@ -42,9 +27,9 @@ public class WeatherCodeDAO implements ClimateDAO<WeatherCode> {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery(sql);
             while (rs.next()) {
-                WeatherCode wc = new WeatherCode.Builder()
+                WeatherCode wc = WeatherCodeBuilder.builder()
                         .withCode(rs.getInt(1))
-                        .withString(rs.getString(2))
+                        .withWeather(rs.getString(2))
                         .build();
                 weatherCodes.add(wc);
             }

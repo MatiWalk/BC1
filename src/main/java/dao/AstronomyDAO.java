@@ -2,6 +2,7 @@ package dao;
 
 import controller.DBConnector;
 import model.Astronomy;
+import builder.AstronomyBuilder;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -12,9 +13,9 @@ import java.util.List;
  */
 public class AstronomyDAO implements ClimateDAO<Astronomy> {
 
-    List<Astronomy> astronomies;
-    Astronomy astronomy;
-    Connection con = DBConnector.getInstance().getCon();
+    private List<Astronomy> astronomies;
+    private Astronomy astronomy;
+    private Connection con = DBConnector.getInstance().getCon();
 
     @Override
     public int insert(Astronomy astronomy) {
@@ -76,7 +77,7 @@ public class AstronomyDAO implements ClimateDAO<Astronomy> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery(select);
             while (rs.next()) {
-                astronomy = new Astronomy.Builder()
+                astronomy = AstronomyBuilder.builder()
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
                         .build();
@@ -98,7 +99,7 @@ public class AstronomyDAO implements ClimateDAO<Astronomy> {
             PreparedStatement ps = con.prepareStatement(select);
             ResultSet rs = ps.executeQuery(select);
             while (rs.next()) {
-                astronomy = new Astronomy.Builder()
+                astronomy = AstronomyBuilder.builder()
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
                         .build();

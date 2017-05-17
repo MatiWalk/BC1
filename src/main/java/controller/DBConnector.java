@@ -140,7 +140,7 @@ public class DBConnector {
             while (rs.next()) {
                 WeatherCode wc = new WeatherCode();
                 wc.setCode(rs.getInt(1));
-                wc.setText(rs.getString(2));
+                wc.setWeather(rs.getString(2));
                 we.add(wc);
             }
             rs.close();
@@ -161,7 +161,7 @@ public class DBConnector {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
                 weatherCode.setCode(rs.getInt(1));
-                weatherCode.setText(rs.getString(2));
+                weatherCode.setWeather(rs.getString(2));
             }
             rs.close();
         } catch (SQLException ex) {

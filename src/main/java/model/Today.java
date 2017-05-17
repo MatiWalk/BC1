@@ -1,5 +1,7 @@
 package model;
 
+import builder.TodayBuilder;
+
 /**
  * Created by Mati on 01/05/2017.
  */
@@ -11,13 +13,7 @@ public class Today extends Forecast{
     private Atmosphere atmosphere;
     private Wind wind;
 
-    private Today(Builder builder) {
-        super(builder);
-        this.currentWeather = builder.currentWeather;
-        this.currentTemperature = builder.currentTemperature;
-        this.astronomy = builder.astronomy;
-        this.atmosphere = builder.atmosphere;
-        this.wind = builder.wind;
+    public Today() {
     }
 
 
@@ -77,46 +73,4 @@ public class Today extends Forecast{
                 '}';
     }
 
-    public static class Builder extends Forecast.Builder<Builder> {
-
-        private WeatherCode currentWeather;
-        private int currentTemperature;
-        private Astronomy astronomy;
-        private Atmosphere atmosphere;
-        private Wind wind;
-
-        public Builder() {
-        }
-
-        public Builder withCurrentWeather(WeatherCode currentWeather){
-            this.currentWeather = currentWeather;
-            return this;
-        }
-
-        public Builder withCurrentTemperature(int currentTemperature){
-            this.currentTemperature = currentTemperature;
-            return this;
-        }
-
-        public Builder withCurrentWeather(Astronomy astronomy){
-            this.astronomy = astronomy;
-            return this;
-        }
-
-        public Builder withCurrentWeather(Atmosphere atmosphere){
-            this.atmosphere = atmosphere;
-            return this;
-        }
-
-        public Builder withCurrentWeather(Wind wind){
-            this.wind = wind;
-            return this;
-        }
-
-        public Today build(){
-            return new Today(this);
-        }
-
-
-    }
 }

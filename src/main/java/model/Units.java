@@ -6,14 +6,13 @@ import model.unit.*;
  */
 public class Units {
 
-    Distance distanceUnit;
-    Pressure pressureUnit;
-    Speed speedUnit;
-    Temperature temperatureUnit;
+    private Distance distanceUnit;
+    private Pressure pressureUnit;
+    private Speed speedUnit;
+    private Temperature temperatureUnit;
 
 
-    private Units(Builder unitsBuilder){
-        this.setTemperatureUnit(unitsBuilder.temperature);
+    public Units(){
     }
 
     public Distance getDistanceUnit() {
@@ -67,21 +66,5 @@ public class Units {
                 ", speedUnit=" + speedUnit +
                 ", temperatureUnit=" + temperatureUnit +
                 '}';
-    }
-
-    public static class Builder {
-        Temperature temperature;
-
-        public Builder() {
-        }
-
-        public Builder withTemperatureUnit(Temperature temperature){
-            this.temperature = temperature;
-            return this;
-        }
-
-        public Units build (){
-            return new Units(this);
-        }
     }
 }

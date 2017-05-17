@@ -7,12 +7,10 @@ import java.time.LocalTime;
  */
 public class Astronomy {
 
-    LocalTime sunRise;
-    LocalTime sunSet;
+    private LocalTime sunRise;
+    private LocalTime sunSet;
 
-    private Astronomy(Builder astronomyBuilder) {
-        sunRise = astronomyBuilder.sunRise;
-        sunSet = astronomyBuilder.sunSet;
+    public Astronomy() {
     }
 
     public LocalTime getSunRise() {
@@ -40,30 +38,7 @@ public class Astronomy {
     }
 
 
-    public static class Builder {
 
-        LocalTime sunSet;
-        LocalTime sunRise;
-
-        public Builder() {
-        }
-
-
-        public Builder withSunrise(LocalTime sunRise){
-            sunRise = sunRise;
-            return this;
-        }
-
-        public Builder withSunset(LocalTime sunSet){
-            sunSet = sunSet;
-            return this;
-        }
-
-        public Astronomy build(){
-            return new Astronomy(this);
-        }
-
-    }
 }
 
 

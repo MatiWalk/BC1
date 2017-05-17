@@ -1,10 +1,13 @@
 package dao;
 
+import builder.ForecastBuilder;
+import builder.WeatherCodeBuilder;
 import controller.DBConnector;
 import model.Forecast;
 import model.WeatherCode;
 
 import java.sql.*;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,9 +15,9 @@ import java.util.List;
  */
 public class ForecastDAO implements ClimateDAO<Forecast> {
 
-    List<Forecast> forecasts;
-    Forecast forecast;
-    Connection con = DBConnector.getInstance().getCon();
+    private List<Forecast> forecasts;
+    private Forecast forecast;
+    private Connection con = DBConnector.getInstance().getCon();
 
     @Override
     public int insert(Forecast forecast) {
@@ -77,25 +80,52 @@ public class ForecastDAO implements ClimateDAO<Forecast> {
     @Override
     public Forecast selectByID(int id) {
 
-        String select = "select * from forecast join weathercode on idforecast_weather where idforecast = ?";
+        String select = "select * from forecast join weather_code on idforecastweather where idforecast = ?";
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery(select);
             while (rs.next()) {
-                forecast = new Forecast.Builder<>()
-                    .withForecastWeather(new WeatherCode.Builder().withCode());
+                forecast = ForecastBuilder.builder()
+                    .withForecastWeather(
+                            WeatherCodeBuilder.builder()
+                            .withCode(rs.getInt(2))
+                            .withWeather(rs.getString(3))
+                            .build())
+                    .withDate(rs.getDate(5).toLocalDate())
+                    .withHighTemperature(rs.getInt(3))
+                    .withLowTemperature(rs.getInt(4))
+                    .build();
             }
             rs.close();
         } catch (SQLException ex) {
             System.out.println("Error retrieving Forecast:");
             ex.printStackTrace();
         }
-        return Forecast;
+        return forecast;
     }
 
     @Override
     public List<Forecast> selectAll() {
-        return null;
+        forecasts = new LinkedList<>();
+        String select = "select * from forecast";
+        try {
+            PreparedStatement ps = con.prepareStatement(select);
+            ResultSet rs = ps.executeQuery(select);
+            while (rs.next()) {
+                forecast = ForecastBuilder.builder()
+                        .withForecastWeather(WeatherCode.weatherCodes.get(rs.getInt(2)))
+                        .withDate(rs.getDate(5).toLocalDate())
+                        .withHighTemperature(rs.getInt(3))
+                        .withLowTemperature(rs.getInt(4))
+                        .build();
+                forecasts.add(forecast);
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving Forecasts:");
+            ex.printStackTrace();
+        }
+        return forecasts;
     }
 }

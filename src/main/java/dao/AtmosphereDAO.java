@@ -1,5 +1,6 @@
 package dao;
 
+import builder.AtmosphereBuilder;
 import controller.DBConnector;
 import model.Atmosphere;
 import model.barometricPressure;
@@ -13,9 +14,9 @@ import java.util.List;
  */
 public class AtmosphereDAO implements ClimateDAO<Atmosphere> {
 
-    List<Atmosphere> atmospheres;
-    Atmosphere atmosphere;
-    Connection con = DBConnector.getInstance().getCon();
+    private List<Atmosphere> atmospheres;
+    private Atmosphere atmosphere;
+    private Connection con = DBConnector.getInstance().getCon();
 
     @Override
     public int insert(Atmosphere atmosphere) {
@@ -81,7 +82,7 @@ public class AtmosphereDAO implements ClimateDAO<Atmosphere> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery(select);
             while (rs.next()) {
-                atmosphere = new Atmosphere.Builder()
+                atmosphere = AtmosphereBuilder.builder()
                     .withHumidity(rs.getInt(2))
                     .withPressure(rs.getFloat(3))
                     .withRising(barometricPressure.values()[rs.getInt(4)])
@@ -104,7 +105,7 @@ public class AtmosphereDAO implements ClimateDAO<Atmosphere> {
             PreparedStatement ps = con.prepareStatement(select);
             ResultSet rs = ps.executeQuery(select);
             while (rs.next()) {
-                atmosphere = new Atmosphere.Builder()
+                atmosphere = AtmosphereBuilder.builder()
                         .withHumidity(rs.getInt(2))
                         .withPressure(rs.getFloat(3))
                         .withRising(barometricPressure.values()[rs.getInt(4)])

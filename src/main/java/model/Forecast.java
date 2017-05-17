@@ -12,11 +12,7 @@ public class Forecast {
     protected int highTemperature;
     protected int lowTemperature;
 
-    protected Forecast(Builder forecastBuilder) {
-        this.forecastWeather = forecastBuilder.forecastWeather;
-        this.date = forecastBuilder.date;
-        this.highTemperature = forecastBuilder.highTemperature;
-        this.lowTemperature = forecastBuilder.lowTemperature;
+    public Forecast() {
     }
 
     public WeatherCode getForecastWeather() {
@@ -59,41 +55,5 @@ public class Forecast {
                 ", highTemperature=" + highTemperature +
                 ", lowTemperature=" + lowTemperature +
                 '}';
-    }
-
-    public static class Builder <T extends Builder<T>> {
-
-        WeatherCode forecastWeather;
-        LocalDate date;
-        int highTemperature;
-        int lowTemperature;
-
-        public Builder() {
-        }
-
-        public Builder withForecastWeather(WeatherCode forecastWeather){
-            this.forecastWeather = forecastWeather;
-            return this;
-        }
-
-        public Builder withDate(LocalDate date){
-            this.date = date;
-            return this;
-        }
-
-        public Builder withHighTemperature(int highTemperature){
-            this.highTemperature = highTemperature;
-            return this;
-        }
-
-        public Builder withLowTemperature(int lowTemperature){
-            this.lowTemperature = lowTemperature;
-            return this;
-        }
-
-        public Forecast build(){
-            return new Forecast(this);
-        }
-
     }
 }

@@ -6,16 +6,12 @@ package model;
  */
 public class Atmosphere {
 
-    int humidity;
-    float pressure;
-    barometricPressure rising;
-    float visibility;
+    private int humidity;
+    private float pressure;
+    private barometricPressure rising;
+    private float visibility;
 
-    private Atmosphere(Builder atmosphereBuilder) {
-        this.humidity = atmosphereBuilder.humidity;
-        this.pressure = atmosphereBuilder.pressure;
-        this.rising = atmosphereBuilder.rising;
-        this.visibility = atmosphereBuilder.visibility;
+    public Atmosphere() {
     }
 
     public int getHumidity() {
@@ -59,41 +55,4 @@ public class Atmosphere {
                 ", visibility=" + visibility +
                 '}';
     }
-
-    public static class Builder {
-
-        int humidity;
-        float pressure;
-        barometricPressure rising;
-        float visibility;
-
-        public Builder() {
-        }
-
-        public Builder withHumidity(int humidity){
-            this.humidity = humidity;
-            return this;
-        }
-
-        public Builder withPressure(float pressure){
-            this.pressure = pressure;
-            return this;
-        }
-
-        public Builder withRising(barometricPressure rising){
-            this.rising = rising;
-            return this;
-        }
-
-        public Builder withVisibility(float visibility){
-            this.visibility = visibility;
-            return this;
-        }
-
-        public Atmosphere build (){
-            return new Atmosphere(this);
-        }
-
-    }
-
 }

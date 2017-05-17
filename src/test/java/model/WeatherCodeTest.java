@@ -14,23 +14,23 @@ public class WeatherCodeTest {
     public void emptyConstructorTests(){
         wc = new WeatherCode();
         assertEquals("empty constructor, code error", 0, wc.getCode());
-        assertEquals("empty constructor, text error", null, wc.getText());
+        assertEquals("empty constructor, weather error", null, wc.getWeather());
     }
 
     @Test
     public void parameterConstructorTests(){
         wc = new WeatherCode(2, "cloudy");
         assertEquals("Full constructor, code error", 2, wc.getCode());
-        assertEquals("Full constructor, text error", "cloudy", wc.getText());
+        assertEquals("Full constructor, weather error", "cloudy", wc.getWeather());
     }
 
     @Test
     public void setterTest(){
         wc = new WeatherCode();
         wc.setCode(8);
-        wc.setText("Sunny");
+        wc.setWeather("Sunny");
         assertEquals("Testing setters, code error", 8, wc.getCode());
-        assertEquals("Testing setters, text error", "Sunny", wc.getText());
+        assertEquals("Testing setters, weather error", "Sunny", wc.getWeather());
     }
 
 }

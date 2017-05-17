@@ -6,14 +6,11 @@ package model;
  */
 public class Wind {
 
-    int chill;
-    int direction;
-    int speed;
+    private int chill;
+    private int direction;
+    private int speed;
 
-    public Wind(Builder windBuilder) {
-        this.chill = windBuilder.chill;
-        this.direction = windBuilder.direction;
-        this.speed = windBuilder.speed;
+    public Wind() {
     }
 
     public int getChill() {
@@ -47,34 +44,5 @@ public class Wind {
                 ", direction=" + direction +
                 ", speed=" + speed +
                 '}';
-    }
-
-    public static class Builder {
-
-        int chill;
-        int direction;
-        int speed;
-
-        public Builder() {
-        }
-
-        public Builder withChill (int chill){
-            this.chill = chill;
-            return this;
-        }
-
-        public Builder withDirection (int direction){
-            this.direction = direction;
-            return this;
-        }
-
-        public Builder withSpeed (int speed){
-            this.speed = speed;
-            return this;
-        }
-
-        public Wind build(){
-            return new Wind(this);
-        }
     }
 }

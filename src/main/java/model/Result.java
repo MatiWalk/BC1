@@ -8,20 +8,14 @@ import java.util.*;
  */
 public class Result {
 
-    String title;
-    Location location;
-    Today today;
-    List<Forecast> forecasts = new LinkedList<>();
-    LocalDateTime puDate;
-    Units units;
+    private String title;
+    private Location location;
+    private Today today;
+    private List<Forecast> forecasts = new LinkedList<>();
+    private LocalDateTime puDate;
+    private Units units;
 
-    private Result(Builder resultBuilder) {
-        this.title = resultBuilder.title;
-        this.location = resultBuilder.location;
-        this.today = resultBuilder.today;
-        this.forecasts = resultBuilder.forecasts;
-        this.puDate = resultBuilder.pubDate;
-        this.units = resultBuilder.units;
+    public Result() {
     }
 
     public String getTitle() {
@@ -82,52 +76,5 @@ public class Result {
                 ", puDate=" + puDate +
                 ", units=" + units +
                 '}';
-    }
-
-    public static class Builder {
-
-        private String title;
-        private Location location;
-        private Today today;
-        private List<Forecast> forecasts;
-        private LocalDateTime pubDate;
-        private Units units;
-
-        public Builder() {
-        }
-
-        public Builder withTitle(String title){
-            this.title = title;
-            return this;
-        }
-
-        public Builder withLocation(Location location){
-            this.location = location;
-            return this;
-        }
-
-        public Builder withToday(Today today){
-            this.today = today;
-            return this;
-        }
-
-        public Builder withForecasts(List<Forecast> forecasts){
-            this.forecasts = forecasts;
-            return this;
-        }
-
-        public Builder withPubDate(LocalDateTime pubDate){
-            this.pubDate = pubDate;
-            return this;
-        }
-
-        public Builder withUnits(Units units){
-            this.units = units;
-            return this;
-        }
-
-        public Result build(){
-            return new Result(this);
-        }
     }
 }
