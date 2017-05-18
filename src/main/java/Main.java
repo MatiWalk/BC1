@@ -1,25 +1,29 @@
 
 import controller.DBConnector;
 import model.*;
-import model.unit.Temperature;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
 
     static Scanner sc;
-    static DBConnector dbm;
     static LinkedList<WeatherCode> we;
 
-    public static void main(String[] args) {
 
+
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+
+        test t = new test();
+        System.out.println(t.dbConnector);
+        t.dbConnector = (DBConnector) context.getBean("dbConnector");
+        System.out.println(t.dbConnector);
+        /*
         sc = new Scanner(System.in);
         dbm = DBConnector.getInstance();
-        we = dbm.loadWeatherCodes();
         int o;
         boolean exit = true;
 
@@ -224,6 +228,6 @@ public class Main {
                     exit = !exit;
                     break;
             }
-        }
+        }*/
     }
 }

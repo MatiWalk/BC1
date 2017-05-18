@@ -8,7 +8,7 @@ import java.time.LocalDate;
 /**
  * Created by Sistemas on 17/5/2017.
  */
-public class ForecastBuilder {
+public class ForecastBuilder{
 
     WeatherCode forecastWeather;
     LocalDate date;
@@ -17,6 +17,7 @@ public class ForecastBuilder {
 
     public ForecastBuilder() {
     }
+
 
     public static ForecastBuilder builder(){
         return new ForecastBuilder();

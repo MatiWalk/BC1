@@ -20,6 +20,7 @@ public class TodayDAO implements ClimateDAO<Today> {
     private ClimateDAO<Astronomy> astronomyClimateDAO = new AstronomyDAO();
     private ClimateDAO<Atmosphere> atmosphereClimateDAO = new AtmosphereDAO();
     private ClimateDAO<Wind> windClimateDAO = new WindDAO();
+    private WeatherCodeDAO weatherCodeClimateDAO = new WeatherCodeDAO();
 
 
     @Override
@@ -99,12 +100,8 @@ public class TodayDAO implements ClimateDAO<Today> {
     }
 
     @Override
-    public Today selectByID(int id) {
-        String select = "select * from today t " +
-                "join weather_code wc on wc.idweather_code = t.idforecastweather " +
-                "join astronomy ast on ast.idastronomy = t.idastronomy " +
-                "join atmosphere atm on atm.idatmosphere = t.idatmosphere " +
-                "join wind w on w.idwind = t.idwind where idforecast = ?";
+    public Today selectByID(int id) {/*
+        String select = "select * from today t where idtoday = ?";
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
@@ -112,13 +109,19 @@ public class TodayDAO implements ClimateDAO<Today> {
             while (rs.next()) {
 
                 today = TodayBuilder.builder()
-                        .withCurrentWeather(WeatherCode.weatherCodes.get())
+                        .withForecastWeather()
+                        .withDate()
+                        .withHighTemperature()
+                        .withLowTemperature()
+                        .
+                        .withCurrentTemperature(rs.getInt(2))
+                        .withAstronomy()
             }
             rs.close();
         } catch (SQLException ex) {
             System.out.println("Error retrieving Forecast:");
             ex.printStackTrace();
-        }
+        }*/
         return today;
     }
 

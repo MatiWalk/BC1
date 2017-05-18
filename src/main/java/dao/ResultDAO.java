@@ -19,9 +19,10 @@ public class ResultDAO implements ClimateDAO<Result> {
     }
 
     @Override
-    public void deleteByID(Result result) {
+    public void deleteByID(int id) {
 
     }
+
 
     @Override
     public Result selectByID(int i) {

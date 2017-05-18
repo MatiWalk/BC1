@@ -18,7 +18,26 @@ public class WeatherCodeDAO {
     private List<WeatherCode> weatherCodes;
     private Connection con = DBConnector.getInstance().getCon();
 
-
+    public WeatherCode selectByID(int id) {
+        WeatherCode wc = new WeatherCode();
+        String select = "select * from weather_code where idweather_code = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(select);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery(select);
+            while (rs.next()) {
+                wc = WeatherCodeBuilder.builder()
+                        .withCode(rs.getInt(1))
+                        .withWeather(rs.getString(2))
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println("Error retrieving Weather Code:");
+            ex.printStackTrace();
+        }
+        return wc;
+    }
 
     public List<WeatherCode> selectAll() {
         weatherCodes = new LinkedList<>();

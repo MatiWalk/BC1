@@ -106,7 +106,7 @@ public class ForecastDAO implements ClimateDAO<Forecast> {
     }
 
     @Override
-    public List<Forecast> selectAll() {
+    public List<Forecast> selectAll() {/*
         forecasts = new LinkedList<>();
         String select = "select * from forecast";
         try {
@@ -125,7 +125,7 @@ public class ForecastDAO implements ClimateDAO<Forecast> {
         } catch (SQLException ex) {
             System.out.println("Error retrieving Forecasts:");
             ex.printStackTrace();
-        }
+        }*/
         return forecasts;
     }
 }
