@@ -1,17 +1,20 @@
 package com.globant.bootcamp.connection;
 
+import org.springframework.stereotype.Component;
+
 import java.sql.*;
 
 /**
  * Created by Mati on 11/05/2017.
  */
+@Component
 public class DBConnector {
 
     private Connection con;
     private static DBConnector instance;
     private static String driver = "com.mysql.cj.jdbc.Driver";
     private static String username = "root";
-    private static String password = "admin";
+    private static String password = "giulietta";
     private static String url = "jdbc:mysql://localhost:3306/weather?useSSL=false";
 
     private DBConnector() {
