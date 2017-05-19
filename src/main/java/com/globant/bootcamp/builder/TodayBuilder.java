@@ -56,6 +56,7 @@ public class TodayBuilder{
 
     public Today build(){
         Today today = new Today();
+        today.setDate(date);
         today.setCurrentWeather(currentWeather);
         today.setCurrentTemperature(currentTemperature);
         today.setAstronomy(astronomy);

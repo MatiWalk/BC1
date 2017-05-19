@@ -3,7 +3,6 @@ import com.globant.bootcamp.model.unit.Distance;
 import com.globant.bootcamp.model.unit.Pressure;
 import com.globant.bootcamp.model.unit.Speed;
 import com.globant.bootcamp.model.unit.Temperature;
-import org.globant.bootcamp.model.unit.*;
 
 /**
  * Created by Mati on 27/04/2017.

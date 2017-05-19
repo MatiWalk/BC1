@@ -8,11 +8,11 @@ import java.sql.*;
 public class DBConnector {
 
     private Connection con;
-    private DBConnector instance;
-    private String driver = "com.mysql.cj.jdbc.Driver";
-    private String username = "root";
-    private String password = "admin";
-    private String url = "jdbc:mysql://localhost:3306/weather?useSSL=false";
+    private static DBConnector instance;
+    private static String driver = "com.mysql.cj.jdbc.Driver";
+    private static String username = "root";
+    private static String password = "admin";
+    private static String url = "jdbc:mysql://localhost:3306/weather?useSSL=false";
 
     private DBConnector() {
         try {
@@ -28,11 +28,11 @@ public class DBConnector {
 
 
     public static DBConnector getInstance(){
-        /*if(instance == null) {
+        if(instance == null) {
             instance = new DBConnector();
         }
-        return instance;*/
-        return null;
+        return instance;
+        //return null;
     }
 
     //used for testing

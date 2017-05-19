@@ -128,6 +128,7 @@ public class Main {
         System.out.println("Hardcoded result is:");
         System.out.println(result.toString());
         int i = resultClimateCRUD.insert(result);
+        System.out.println(i);
         System.out.println("Last Insert query:");
         System.out.println(resultClimateCRUD.selectByID(i));
     }

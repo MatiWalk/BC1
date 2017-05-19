@@ -19,12 +19,12 @@ public class AstronomyBuilder {
     }
 
     public AstronomyBuilder withSunrise(LocalTime sunRise){
-        sunRise = sunRise;
+        this.sunRise = sunRise;
         return this;
     }
 
     public AstronomyBuilder withSunset(LocalTime sunSet){
-        sunSet = sunSet;
+        this.sunSet = sunSet;
         return this;
     }
 

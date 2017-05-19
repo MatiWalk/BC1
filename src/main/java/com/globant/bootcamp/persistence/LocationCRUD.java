@@ -78,11 +78,11 @@ public class LocationCRUD implements ClimateCRUD<Location> {
     @Override
     public Location selectByID(int id) {
 
-        String select = "select * from forecast join weathercode on idforecast_weather where idforecast = ?";
+        String select = "select * from location where idlocation = ?";
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 location = LocationBuilder.builder()
                     .withCountry(rs.getString(2))
@@ -102,10 +102,10 @@ public class LocationCRUD implements ClimateCRUD<Location> {
     public List<Location> selectAll() {
 
         locations = new LinkedList<>();
-        String select = "select * from astronomy";
+        String select = "select * from location";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 location = LocationBuilder.builder()
                         .withCountry(rs.getString(2))

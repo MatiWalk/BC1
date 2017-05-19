@@ -21,7 +21,7 @@ public class AtmosphereCRUD implements ClimateCRUD<Atmosphere> {
     @Override
     public int insert(Atmosphere atmosphere) {
         int key = -1;
-        String insert = " insert into atmopsphere (humidity, pressure, rising, visibility) values (?, ?, ?, ?)";
+        String insert = " insert into atmosphere (humidity, pressure, rising, visibility) values (?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setInt(1, atmosphere.getHumidity());
@@ -80,7 +80,7 @@ public class AtmosphereCRUD implements ClimateCRUD<Atmosphere> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 atmosphere = AtmosphereBuilder.builder()
                     .withHumidity(rs.getInt(2))
@@ -103,7 +103,7 @@ public class AtmosphereCRUD implements ClimateCRUD<Atmosphere> {
         String select = "select * from atmosphere";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 atmosphere = AtmosphereBuilder.builder()
                         .withHumidity(rs.getInt(2))

@@ -97,7 +97,7 @@ public class TodayCRUD implements ClimateCRUD<Today> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
                 today = TodayBuilder.builder()
@@ -123,7 +123,7 @@ public class TodayCRUD implements ClimateCRUD<Today> {
         String select = "select * from forecast";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 today = TodayBuilder.builder()
                         .withDate(rs.getTimestamp(2).toLocalDateTime())
@@ -150,7 +150,7 @@ public class TodayCRUD implements ClimateCRUD<Today> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 fk[0] = rs.getInt(1);
                 fk[1] = rs.getInt(2);

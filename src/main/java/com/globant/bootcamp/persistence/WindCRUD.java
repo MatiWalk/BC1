@@ -76,7 +76,7 @@ public class WindCRUD implements ClimateCRUD<Wind> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 wind = WindBuilder.builder()
                         .withChill(rs.getInt(2))
@@ -99,7 +99,7 @@ public class WindCRUD implements ClimateCRUD<Wind> {
         String select = "select * from astronomy";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 wind = WindBuilder.builder()
                         .withChill(rs.getInt(2))

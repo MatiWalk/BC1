@@ -75,7 +75,7 @@ public class AstronomyCRUD implements ClimateCRUD<Astronomy> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 astronomy = AstronomyBuilder.builder()
                         .withSunrise(rs.getTime(2).toLocalTime())
@@ -97,7 +97,7 @@ public class AstronomyCRUD implements ClimateCRUD<Astronomy> {
         String select = "select * from astronomy";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 astronomy = AstronomyBuilder.builder()
                         .withSunrise(rs.getTime(2).toLocalTime())

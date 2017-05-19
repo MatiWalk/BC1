@@ -20,11 +20,11 @@ public class WeatherCodeR implements ClimateR {
 
     public WeatherCode selectByID(int id) {
         WeatherCode wc = new WeatherCode();
-        String select = "select * from weather_code where idweather_code = ?";
+        String select = "select * from weathercode where idweathercode = ?";
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 wc = WeatherCodeBuilder.builder()
                         .withCode(rs.getInt(1))
@@ -41,10 +41,10 @@ public class WeatherCodeR implements ClimateR {
 
     public List<WeatherCode> selectAll() {
         weatherCodes = new LinkedList<>();
-        String sql = "select * from weather_code";
+        String sql = "select * from weathercode";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery(sql);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 WeatherCode wc = WeatherCodeBuilder.builder()
                         .withCode(rs.getInt(1))

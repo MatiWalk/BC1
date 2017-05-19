@@ -29,7 +29,7 @@ public class ResultCRUD implements ClimateCRUD<Result> {
     @Override
     public int insert(Result result) {
         int key = -1;
-        String insert = " insert into result (title, idlocation, idtoday, pubdate, unit) values (?, ?, ?, ?, ?)";
+        String insert = " insert into result (title, idlocation, idtoday, pubdate, units) values (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, result.getTitle());
@@ -102,7 +102,7 @@ public class ResultCRUD implements ClimateCRUD<Result> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 List<Forecast> forecasts = new LinkedList<>();
                 int[] fk = childkeys(id);
@@ -110,7 +110,6 @@ public class ResultCRUD implements ClimateCRUD<Result> {
                     Forecast f = forecastClimateCRUD.selectByID(fk[i]);
                     forecasts.add(f);
                 }
-
                 result = ResultBuilder.builder()
                         .withTitle(rs.getString(2))
                         .withLocation(locationClimateCRUD.selectByID(rs.getInt(3)))
@@ -118,7 +117,7 @@ public class ResultCRUD implements ClimateCRUD<Result> {
                         .withForecasts(forecasts)
                         .withPubDate(rs.getTimestamp(5).toLocalDateTime())
                         .withUnits(UnitsBuilder.builder()
-                                .withTemperatureUnit(Temperature.values()[rs.getByte(5)])
+                                .withTemperatureUnit(Temperature.values()[rs.getByte(6)])
                                 .build())
                         .build();
 
@@ -137,7 +136,7 @@ public class ResultCRUD implements ClimateCRUD<Result> {
         String select = "select * from forecast";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 List<Forecast> forecasts = new LinkedList<>();
                 int[] fk = childkeys(rs.getInt(1));
@@ -169,23 +168,25 @@ public class ResultCRUD implements ClimateCRUD<Result> {
 
         int amount = 0;
         int[] fk = null;
-        String count = "select count (?) from forecast ";
+        String count = "SELECT count(*) FROM forecast where idresult = ? ";
         String select = "select idforecast from forecast f join result r on r.idresult = f.idresult where idtoday = ?";
         try {
             PreparedStatement ps = con.prepareStatement(count);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(count);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 amount = rs.getInt(1);
             }
+            fk = new int[amount];
+
 
             ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ps.executeQuery(select);
+            rs = ps.executeQuery();
+            int i = 0;
             while (rs.next()) {
-                for (int i = 0; i<fk.length; i++){
-                    fk[i] = rs.getInt(1);
-                }
+                fk[i] = rs.getInt(1);
+                i++;
             }
             rs.close();
         } catch (SQLException ex) {

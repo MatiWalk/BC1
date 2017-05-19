@@ -87,14 +87,14 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
         try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
-                    .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(2)))
-                    .withDate(rs.getDate(3).toLocalDate())
-                    .withHighTemperature(rs.getInt(4))
-                    .withLowTemperature(rs.getInt(5))
-                    .build();
+                        .withDate(rs.getDate(2).toLocalDate())
+                        .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(3)))
+                        .withHighTemperature(rs.getInt(4))
+                        .withLowTemperature(rs.getInt(5))
+                        .build();
             }
             rs.close();
         } catch (SQLException ex) {
@@ -110,11 +110,11 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
         String select = "select * from forecast";
         try {
             PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery(select);
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
-                        .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(2)))
-                        .withDate(rs.getDate(3).toLocalDate())
+                        .withDate(rs.getDate(2).toLocalDate())
+                        .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(3)))
                         .withHighTemperature(rs.getInt(4))
                         .withLowTemperature(rs.getInt(5))
                         .build();
@@ -129,7 +129,7 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
     }
 
     private void setParentkey(){
-        String query = "select idresult from result order by id desc limit 1";
+        String query = "select idresult from result order by idresult desc limit 1";
         try {
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
