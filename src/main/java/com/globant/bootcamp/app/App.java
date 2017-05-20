@@ -1,13 +1,13 @@
-package com.globant.bootcamp;
+package com.globant.bootcamp.app;
 
 import com.globant.bootcamp.builder.*;
-import com.globant.bootcamp.model.WeatherCode;
-import com.globant.bootcamp.model.*;
+import com.globant.bootcamp.model.Forecast;
+import com.globant.bootcamp.model.Result;
+import com.globant.bootcamp.model.Today;
+import com.globant.bootcamp.model.barometricPressure;
 import com.globant.bootcamp.model.unit.Temperature;
 import com.globant.bootcamp.persistence.ClimateCRUD;
 import com.globant.bootcamp.persistence.ResultCRUD;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,22 +15,26 @@ import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Main {
+/**
+ * Created by Mati on 20/05/2017.
+ */
+public class App {
 
-    static Scanner sc;
+    ClimateCRUD<Result> resultClimateCRUD;
+    Scanner sc;
 
-    static ClimateCRUD<Result> resultClimateCRUD = new ResultCRUD();
+    public App(ClimateCRUD<Result> resultClimateCRUD) {
+        this.resultClimateCRUD = resultClimateCRUD;
+    }
 
-
-
-    public static void main(String[] args) {
-        //ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+    public void run(){
         sc = new Scanner(System.in);
         int o;
         boolean exit = true;
 
         while(exit) {
-            System.out.println("Welcome to Java Bootcamp 2017 - Weather API - Cosnole ver. 0.8" +
+            System.out.println(
+                    "Welcome to Java Bootcamp 2017 - Weather API - Cosnole ver. 0.8" +
                     "\n What would you like to do? " +
                     "\n 1- Load hardcoded data " +
                     "\n Disabled- Manually load data" +
@@ -57,32 +61,29 @@ public class Main {
             }
 
         }
-
-
-
     }
 
-    private static void inputHardCode(){
+    private void inputHardCode(){
         System.out.println("Inserting predifined objects");
 
         LinkedList<Forecast> fc = new LinkedList<>();
         Today td1 = TodayBuilder.builder()
                 .withDate(LocalDateTime.of(2017, 04, 21, 23, 23))
                 .withCurrentWeather(WeatherCodeBuilder.builder()
-                                .withCode(30)
-                                .withWeather("Sunny")
-                                .build())
+                        .withCode(30)
+                        .withWeather("Sunny")
+                        .build())
                 .withCurrentTemperature(28)
                 .withAstronomy(AstronomyBuilder.builder()
-                            .withSunrise(LocalTime.of(10, 10))
-                            .withSunset(LocalTime.of(20, 20))
-                            .build())
+                        .withSunrise(LocalTime.of(10, 10))
+                        .withSunset(LocalTime.of(20, 20))
+                        .build())
                 .withAtmosphere(AtmosphereBuilder.builder()
-                                .withHumidity(65)
-                                .withPressure(965.0f)
-                                .withRising(barometricPressure.RISING)
-                                .withVisibility(0.9f)
-                                .build())
+                        .withHumidity(65)
+                        .withPressure(965.0f)
+                        .withRising(barometricPressure.RISING)
+                        .withVisibility(0.9f)
+                        .build())
                 .withWind(WindBuilder.builder()
                         .withChill(65)
                         .withDirection(203)
@@ -90,14 +91,14 @@ public class Main {
                         .build())
                 .build();
         Forecast f1 = ForecastBuilder.builder()
-                    .withDate(LocalDate.of(2017, 04, 22))
-                    .withForecastWeather(WeatherCodeBuilder.builder()
-                            .withCode(30)
-                            .withWeather("Sunny")
-                            .build())
-                    .withHighTemperature(21)
-                    .withLowTemperature(12)
-                    .build();
+                .withDate(LocalDate.of(2017, 04, 22))
+                .withForecastWeather(WeatherCodeBuilder.builder()
+                        .withCode(30)
+                        .withWeather("Sunny")
+                        .build())
+                .withHighTemperature(21)
+                .withLowTemperature(12)
+                .build();
         Forecast f2 = ForecastBuilder.builder()
                 .withDate(LocalDate.of(2017, 04, 23))
                 .withForecastWeather(WeatherCodeBuilder.builder()
@@ -113,10 +114,10 @@ public class Main {
         Result result= ResultBuilder.builder()
                 .withTitle("Yahoo! Weather - Cordoba, CBA, AR")
                 .withLocation(LocationBuilder.builder()
-                                .withCountry("Argentina")
-                                .withZone("CBA")
-                                .withCity("Cordoba")
-                                .build())
+                        .withCountry("Argentina")
+                        .withZone("CBA")
+                        .withCity("Cordoba")
+                        .build())
                 .withToday(td1)
                 .withForecasts(fc)
                 .withPubDate(LocalDateTime.now())
@@ -133,11 +134,11 @@ public class Main {
         System.out.println(resultClimateCRUD.selectByID(i));
     }
 
-    private static void inputManually(){
+    private void inputManually(){
         int o;
 
-
 /*
+
 
         boolean exit = true;
         while (exit) {

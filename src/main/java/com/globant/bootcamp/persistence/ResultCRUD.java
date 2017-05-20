@@ -8,6 +8,7 @@ import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.model.Result;
 import com.globant.bootcamp.model.Today;
 import com.globant.bootcamp.model.unit.Temperature;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -16,15 +17,30 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class ResultCRUD implements ClimateCRUD<Result> {
 
-    private Connection con = DBConnector.getInstance().getCon();
-    ClimateCRUD<Location> locationClimateCRUD = new LocationCRUD();
-    ClimateCRUD<Today> todayClimateCRUD = new TodayCRUD();
-    ClimateCRUD<Forecast> forecastClimateCRUD = new ForecastCRUD();
-    Result result;
-    List<Result> results;
+    private Connection con;
+    private ClimateCRUD<Location> locationClimateCRUD /*= new LocationCRUD()*/;
+    private ClimateCRUD<Today> todayClimateCRUD /*= new TodayCRUD()*/;
+    private ClimateCRUD<Forecast> forecastClimateCRUD /*= new ForecastCRUD()*/;
+    private Result result;
+    private List<Result> results;
 
+    public ResultCRUD(Connection con, ClimateCRUD<Location> locationClimateCRUD, ClimateCRUD<Today> todayClimateCRUD, ClimateCRUD<Forecast> forecastClimateCRUD) {
+        this.con = con;
+        this.locationClimateCRUD = locationClimateCRUD;
+        this.todayClimateCRUD = todayClimateCRUD;
+        this.forecastClimateCRUD = forecastClimateCRUD;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
+    public Connection getCon() {
+        return con;
+    }
 
     @Override
     public int insert(Result result) {

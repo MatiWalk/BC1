@@ -3,6 +3,7 @@ package com.globant.bootcamp.persistence;
 import com.globant.bootcamp.builder.TodayBuilder;
 import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.*;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -11,16 +12,24 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class TodayCRUD implements ClimateCRUD<Today> {
 
     private List<Today> todays;
     private Today today;
-    private Connection con = DBConnector.getInstance().getCon();
-    private ClimateR<WeatherCode> weatherCodeClimateR = new WeatherCodeR();
-    private ClimateCRUD<Astronomy> astronomyClimateCRUD = new AstronomyCRUD();
-    private ClimateCRUD<Atmosphere> atmosphereClimateCRUD = new AtmosphereCRUD();
-    private ClimateCRUD<Wind> windClimateCRUD = new WindCRUD();
+    private Connection con;
+    private ClimateR<WeatherCode> weatherCodeClimateR;
+    private ClimateCRUD<Astronomy> astronomyClimateCRUD;
+    private ClimateCRUD<Atmosphere> atmosphereClimateCRUD;
+    private ClimateCRUD<Wind> windClimateCRUD;
 
+    public TodayCRUD(Connection con, ClimateR<WeatherCode> weatherCodeClimateR, ClimateCRUD<Astronomy> astronomyClimateCRUD, ClimateCRUD<Atmosphere> atmosphereClimateCRUD, ClimateCRUD<Wind> windClimateCRUD) {
+        this.con = con;
+        this.weatherCodeClimateR = weatherCodeClimateR;
+        this.astronomyClimateCRUD = astronomyClimateCRUD;
+        this.atmosphereClimateCRUD = atmosphereClimateCRUD;
+        this.windClimateCRUD = windClimateCRUD;
+    }
 
     @Override
     public int insert(Today today) {

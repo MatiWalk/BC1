@@ -7,8 +7,6 @@
            http://www.springframework.org/schema/beans/spring-beans.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:annotation-config />
-    <context:component-scan base-package="com.globant.bootcamp.connection"/>
 
     <bean class="com.globant.bootcamp.connection.DBConnector" id="dbConnector">
         <property name="driver" value="com.mysql.cj.jdbc.Driver" />

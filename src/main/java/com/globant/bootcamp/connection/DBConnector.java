@@ -12,18 +12,33 @@ public class DBConnector {
 
     private Connection con;
     private static DBConnector instance;
-    private static String driver = "com.mysql.cj.jdbc.Driver";
-    private static String username = "root";
-    private static String password = "giulietta";
-    private static String url = "jdbc:mysql://localhost:3306/weather?useSSL=false";
+    private String driver/* = "com.mysql.cj.jdbc.Driver"*/;
+    private String username /*= "root"*/;
+    private String password/* = "admin"*/;
+    private String url /*= "jdbc:mysql://localhost:3306/weather?useSSL=false"*/;
 
-    private DBConnector() {
+    public DBConnector() {
+
         try {
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url, username, password);
         } catch (Exception e) {
 
-            System.out.println("Error trying to open org.globant.bootcamp.connection" + e.toString());
+            System.out.println("Error trying to open connection" );
+            e.printStackTrace();
+
+        }
+    }
+
+    public DBConnector(String driver, String username, String password, String url) {
+
+        try {
+            Class.forName(driver).newInstance();
+            con = DriverManager.getConnection(url, username, password);
+        } catch (Exception e) {
+
+            System.out.println("Error trying to open connection" );
+            e.printStackTrace();
 
         }
     }
@@ -51,35 +66,4 @@ public class DBConnector {
     }
 
 
-    public String getDriver() {
-        return driver;
-    }
-
-    public void setDriver(String driver) {
-        this.driver = driver;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

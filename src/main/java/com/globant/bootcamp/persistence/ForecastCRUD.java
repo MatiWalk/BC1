@@ -1,8 +1,9 @@
 package com.globant.bootcamp.persistence;
 
 import com.globant.bootcamp.builder.ForecastBuilder;
-import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Forecast;
+import com.globant.bootcamp.model.WeatherCode;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -11,13 +12,19 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class ForecastCRUD implements ClimateCRUD<Forecast> {
 
     private List<Forecast> forecasts;
     private Forecast forecast;
     private int parentkey;
-    private WeatherCodeR weatherCodeDAO = new WeatherCodeR();
-    private Connection con = DBConnector.getInstance().getCon();
+    private ClimateR<WeatherCode> weatherCodeClimateR;
+    private Connection con;
+
+    public ForecastCRUD(WeatherCodeR weatherCodeClimateR, Connection con) {
+        this.weatherCodeClimateR = weatherCodeClimateR;
+        this.con = con;
+    }
 
     @Override
     public int insert(Forecast forecast) {
@@ -91,7 +98,7 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withDate(rs.getDate(2).toLocalDate())
-                        .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(3)))
+                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withHighTemperature(rs.getInt(4))
                         .withLowTemperature(rs.getInt(5))
                         .build();
@@ -114,7 +121,7 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withDate(rs.getDate(2).toLocalDate())
-                        .withForecastWeather(weatherCodeDAO.selectByID(rs.getInt(3)))
+                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withHighTemperature(rs.getInt(4))
                         .withLowTemperature(rs.getInt(5))
                         .build();

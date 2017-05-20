@@ -3,6 +3,7 @@ package com.globant.bootcamp.persistence;
 import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.WeatherCode;
 import com.globant.bootcamp.builder.WeatherCodeBuilder;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,9 +15,14 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class WeatherCodeR implements ClimateR {
     private List<WeatherCode> weatherCodes;
-    private Connection con = DBConnector.getInstance().getCon();
+    private Connection con;
+
+    public WeatherCodeR(Connection con) {
+        this.con = con;
+    }
 
     public WeatherCode selectByID(int id) {
         WeatherCode wc = new WeatherCode();

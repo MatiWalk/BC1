@@ -3,6 +3,7 @@ package com.globant.bootcamp.persistence;
 import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Astronomy;
 import com.globant.bootcamp.builder.AstronomyBuilder;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -11,17 +12,22 @@ import java.util.List;
 /**
  * Created by Mati on 16/05/2017.
  */
-public class AstronomyCRUD implements ClimateCRUD<Astronomy> {
+
+@Component
+public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCRUD<Astronomy> {
 
     private List<Astronomy> astronomies;
     private Astronomy astronomy;
-    private Connection con = DBConnector.getInstance().getCon();
+
+    public AstronomyCRUD(Connection con) {
+        super(con);
+    }
 
     @Override
     public int insert(Astronomy astronomy) {
         int key = -1;
         String insert = " insert into astronomy (sunrise, sunset) values (?, ?)";
-        try {
+        /*try {
             PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setTime(1, Time.valueOf(astronomy.getSunRise()));
             ps.setTime(2,Time.valueOf(astronomy.getSunSet()));
@@ -34,15 +40,23 @@ public class AstronomyCRUD implements ClimateCRUD<Astronomy> {
         } catch (SQLException ex) {
             System.out.println("Error inserting Astronomy:");
             ex.printStackTrace();
-        }
+        }*/
 
+
+        try {
+            key=executeResult(insert, astronomy.getSunRise(), astronomy.getSunSet());
+        } catch (SQLException ex) {
+            System.out.println("Error inserting Astronomy:");
+            ex.printStackTrace();
+        }
+        System.out.println(key);
         return key;
     }
 
     @Override
     public void update(Astronomy astronomy, int id) {
         String update = " UPDATE astronomy set sunrise = ?, sunset = ? where idastronomy = ?";
-        try {
+        /*try {
             PreparedStatement ps = con.prepareStatement(update);
             ps.setTime(1, Time.valueOf(astronomy.getSunRise()));
             ps.setTime(2,Time.valueOf(astronomy.getSunSet()));
@@ -52,6 +66,12 @@ public class AstronomyCRUD implements ClimateCRUD<Astronomy> {
         } catch (SQLException ex) {
             System.out.println("Error updating Astronomy:");
             ex.printStackTrace();
+        }*/
+        try{
+        executeUpdate(update, astronomy.getSunRise(), astronomy.getSunSet(), id);
+        } catch (SQLException ex) {
+        System.out.println("Error updating Astronomy:");
+        ex.printStackTrace();
         }
     }
 

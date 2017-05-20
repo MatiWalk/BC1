@@ -4,6 +4,7 @@ import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Atmosphere;
 import com.globant.bootcamp.builder.AtmosphereBuilder;
 import com.globant.bootcamp.model.barometricPressure;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -12,11 +13,16 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class AtmosphereCRUD implements ClimateCRUD<Atmosphere> {
 
     private List<Atmosphere> atmospheres;
     private Atmosphere atmosphere;
-    private Connection con = DBConnector.getInstance().getCon();
+    private Connection con;
+
+    public AtmosphereCRUD(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public int insert(Atmosphere atmosphere) {

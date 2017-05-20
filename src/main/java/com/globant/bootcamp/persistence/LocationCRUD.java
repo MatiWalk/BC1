@@ -3,6 +3,7 @@ package com.globant.bootcamp.persistence;
 import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.builder.LocationBuilder;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,12 +15,16 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class LocationCRUD implements ClimateCRUD<Location> {
 
     private List<Location> locations;
     private Location location;
-    private Connection con = DBConnector.getInstance().getCon();
+    private Connection con;
 
+    public LocationCRUD(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public int insert(Location location) {

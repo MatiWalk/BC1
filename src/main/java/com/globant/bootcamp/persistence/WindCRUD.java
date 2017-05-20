@@ -3,6 +3,7 @@ package com.globant.bootcamp.persistence;
 import com.globant.bootcamp.builder.WindBuilder;
 import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Wind;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -11,10 +12,15 @@ import java.util.List;
 /**
  * Created by Sistemas on 16/5/2017.
  */
+@Component
 public class WindCRUD implements ClimateCRUD<Wind> {
 
 
-    private Connection con = DBConnector.getInstance().getCon();
+    private Connection con;
+
+    public WindCRUD(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public int insert(Wind wind) {

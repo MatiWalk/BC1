@@ -28,6 +28,7 @@ public class WeatherCodeBuilder {
 
     public WeatherCode build(){
         WeatherCode weatherCode = new WeatherCode();
+        weatherCode.setCode(code);
         weatherCode.setWeather(weather);
         return weatherCode;
      }
