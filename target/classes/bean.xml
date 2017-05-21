@@ -15,11 +15,13 @@
         <constructor-arg name="url" value="jdbc:mysql://localhost:3306/weather?useSSL=false" />
     </bean>
 
+    <bean class="com.globant.bootcamp.persistence.QueryExecuter" abstract="true" id="queryExecuter"/>
+
     <bean class="com.globant.bootcamp.persistence.LocationCRUD" id="locationCRUD">
         <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
     </bean>
 
-    <bean class="com.globant.bootcamp.persistence.AstronomyCRUD" id="astronomyCRUD">
+    <bean class="com.globant.bootcamp.persistence.AstronomyCRUD" id="astronomyCRUD" parent="queryExecuter">
         <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
     </bean>
 

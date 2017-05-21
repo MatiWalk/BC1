@@ -16,21 +16,18 @@ import java.util.List;
  * Created by Sistemas on 16/5/2017.
  */
 @Component
-public class WeatherCodeR implements ClimateR {
+public class WeatherCodeR extends QueryExecuter implements ClimateR {
     private List<WeatherCode> weatherCodes;
-    private Connection con;
 
     public WeatherCodeR(Connection con) {
-        this.con = con;
+        super(con);
     }
 
     public WeatherCode selectByID(int id) {
         WeatherCode wc = new WeatherCode();
         String select = "select * from weathercode where idweathercode = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 wc = WeatherCodeBuilder.builder()
                         .withCode(rs.getInt(1))
@@ -38,19 +35,19 @@ public class WeatherCodeR implements ClimateR {
                         .build();
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Weather Code:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting one WeatherCode:");
+            e.printStackTrace();
         }
         return wc;
     }
 
     public List<WeatherCode> selectAll() {
         weatherCodes = new LinkedList<>();
-        String sql = "select * from weathercode";
+        String select = "select * from weathercode";
+
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 WeatherCode wc = WeatherCodeBuilder.builder()
                         .withCode(rs.getInt(1))
@@ -59,9 +56,9 @@ public class WeatherCodeR implements ClimateR {
                 weatherCodes.add(wc);
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error loading weather codes:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Weather Code:");
+            e.printStackTrace();
         }
         return weatherCodes;
     }

@@ -16,14 +16,14 @@ import java.util.List;
  * Created by Sistemas on 16/5/2017.
  */
 @Component
-public class LocationCRUD implements ClimateCRUD<Location> {
+public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location> {
 
     private List<Location> locations;
     private Location location;
     private Connection con;
 
     public LocationCRUD(Connection con) {
-        this.con = con;
+        super(con);
     }
 
     @Override
@@ -31,16 +31,7 @@ public class LocationCRUD implements ClimateCRUD<Location> {
         int key = -1;
         String insert = " insert into Location (country, zone, city) values (?, ?, ?)";
         try {
-            PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setString(1, location.getCountry());
-            ps.setString(2, location.getZone());
-            ps.setString(3, location.getCity());
-            ps.executeUpdate();
-            ResultSet generatedKeys = ps.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                key = generatedKeys.getInt(1);
-            }
-
+            key=executeResult(insert, location.getCountry(), location.getZone(), location.getCity());
         } catch (SQLException ex) {
             System.out.println("Error inserting Location:");
             ex.printStackTrace();
@@ -52,14 +43,8 @@ public class LocationCRUD implements ClimateCRUD<Location> {
     @Override
     public void update(Location location, int id) {
         String update = " UPDATE location set Country = ?, Zone = ?, City = ? where idlocation = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(update);
-            ps.setString(1, location.getCountry());
-            ps.setString(2, location.getZone());
-            ps.setString(3, location.getCity());
-            ps.setInt(4, id);
-            ps.executeUpdate();
-
+        try{
+            executeUpdate(update, location.getCountry(), location.getZone(), location.getCity(), id);
         } catch (SQLException ex) {
             System.out.println("Error updating Location:");
             ex.printStackTrace();
@@ -70,13 +55,10 @@ public class LocationCRUD implements ClimateCRUD<Location> {
     public void deleteByID(int id) {
         String delete = " delete location where idlocation = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(delete);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-        } catch (SQLException ex) {
+            executeDelete(delete, id);
+        } catch (SQLException e) {
             System.out.println("Error deleting Location:");
-            ex.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -85,20 +67,18 @@ public class LocationCRUD implements ClimateCRUD<Location> {
 
         String select = "select * from location where idlocation = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 location = LocationBuilder.builder()
-                    .withCountry(rs.getString(2))
-                    .withZone(rs.getString(3))
-                    .withCity(rs.getString(4))
-                    .build();
+                        .withCountry(rs.getString(2))
+                        .withZone(rs.getString(3))
+                        .withCity(rs.getString(4))
+                        .build();
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Location:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting one Location:");
+            e.printStackTrace();
         }
         return location;
     }
@@ -109,8 +89,7 @@ public class LocationCRUD implements ClimateCRUD<Location> {
         locations = new LinkedList<>();
         String select = "select * from location";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 location = LocationBuilder.builder()
                         .withCountry(rs.getString(2))
@@ -120,9 +99,9 @@ public class LocationCRUD implements ClimateCRUD<Location> {
                 locations.add(location);
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Locations:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Location:");
+            e.printStackTrace();
         }
         return locations;
     }

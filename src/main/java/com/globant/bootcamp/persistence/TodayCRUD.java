@@ -13,18 +13,17 @@ import java.util.List;
  * Created by Sistemas on 16/5/2017.
  */
 @Component
-public class TodayCRUD implements ClimateCRUD<Today> {
+public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
 
     private List<Today> todays;
     private Today today;
-    private Connection con;
     private ClimateR<WeatherCode> weatherCodeClimateR;
     private ClimateCRUD<Astronomy> astronomyClimateCRUD;
     private ClimateCRUD<Atmosphere> atmosphereClimateCRUD;
     private ClimateCRUD<Wind> windClimateCRUD;
 
     public TodayCRUD(Connection con, ClimateR<WeatherCode> weatherCodeClimateR, ClimateCRUD<Astronomy> astronomyClimateCRUD, ClimateCRUD<Atmosphere> atmosphereClimateCRUD, ClimateCRUD<Wind> windClimateCRUD) {
-        this.con = con;
+        super(con);
         this.weatherCodeClimateR = weatherCodeClimateR;
         this.astronomyClimateCRUD = astronomyClimateCRUD;
         this.atmosphereClimateCRUD = atmosphereClimateCRUD;
@@ -37,19 +36,9 @@ public class TodayCRUD implements ClimateCRUD<Today> {
         String insert = "insert into today (date, idcurrentweather, " +
                 "currenttemperature, idastronomy, idatmosphere, idwind) values (?, ?, ?, ?, ?, ?)";
         try {
-            PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setTimestamp(1, Timestamp.valueOf(today.getDate()));
-            ps.setInt(2, today.getCurrentWeather().getCode());
-            ps.setInt(3, today.getCurrentTemperature());
-            ps.setInt(4, astronomyClimateCRUD.insert(today.getAstronomy()));
-            ps.setInt(5, atmosphereClimateCRUD.insert(today.getAtmosphere()));
-            ps.setInt(6, windClimateCRUD.insert(today.getWind()));
-            ps.executeUpdate();
-            ResultSet generatedKeys = ps.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                key = generatedKeys.getInt(1);
-            }
-
+            key=executeResult(insert, today.getDate(), today.getCurrentWeather().getCode(), today.getCurrentTemperature(),
+                    astronomyClimateCRUD.insert(today.getAstronomy()), atmosphereClimateCRUD.insert(today.getAtmosphere()),
+                    windClimateCRUD.insert(today.getWind()));
         } catch (SQLException ex) {
             System.out.println("Error inserting Today:");
             ex.printStackTrace();
@@ -66,37 +55,26 @@ public class TodayCRUD implements ClimateCRUD<Today> {
         atmosphereClimateCRUD.update(today.getAtmosphere(), fk[1]);
         windClimateCRUD.update(today.getWind(), fk[2]);
 
-        String update = " UPDATE today set date = ?, idcurrentweather = ?, currenttemperature = ?, " +
-                "idastronomy = ?, idatmosphere = ?, idwind = ? where idtoday = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(update);
-            ps.setTimestamp(1, Timestamp.valueOf(today.getDate()));
-            ps.setInt(2, today.getCurrentWeather().getCode());
-            ps.setInt(3, today.getCurrentTemperature());
-            ps.setInt(4, astronomyClimateCRUD.insert(today.getAstronomy()));
-            ps.setInt(5, atmosphereClimateCRUD.insert(today.getAtmosphere()));
-            ps.setInt(6, windClimateCRUD.insert(today.getWind()));
-            ps.setInt(7, id);
+        String update = " UPDATE today set date = ?, idcurrentweather = ?, currenttemperature = ? " +
+                " where idtoday = ?";
 
-            ps.executeUpdate();
-
+        try{
+            executeUpdate(update, today.getDate(), today.getCurrentWeather().getCode(),
+                    today.getCurrentTemperature(), id);
         } catch (SQLException ex) {
-            System.out.println("Error updating Forecast:");
+            System.out.println("Error updating Today:");
             ex.printStackTrace();
         }
     }
 
     @Override
     public void deleteByID(int id) {
-        String delete = " delete today where idforecast = ?";
+        String delete = " delete today where idtoday = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(delete);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-        } catch (SQLException ex) {
+            executeDelete(delete, id);
+        } catch (SQLException e) {
             System.out.println("Error deleting Today:");
-            ex.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -104,11 +82,8 @@ public class TodayCRUD implements ClimateCRUD<Today> {
     public Today selectByID(int id) {
         String select = "select * from today t where idtoday = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
-
                 today = TodayBuilder.builder()
                         .withDate(rs.getTimestamp(2).toLocalDateTime())
                         .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
@@ -119,9 +94,9 @@ public class TodayCRUD implements ClimateCRUD<Today> {
                         .build();
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Forecast:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting one Today:");
+            e.printStackTrace();
         }
         return today;
     }
@@ -129,10 +104,9 @@ public class TodayCRUD implements ClimateCRUD<Today> {
     @Override
     public List<Today> selectAll() {
         todays = new LinkedList<>();
-        String select = "select * from forecast";
+        String select = "select * from today";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 today = TodayBuilder.builder()
                         .withDate(rs.getTimestamp(2).toLocalDateTime())
@@ -145,9 +119,9 @@ public class TodayCRUD implements ClimateCRUD<Today> {
                 todays.add(today);
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Forecasts:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Today:");
+            e.printStackTrace();
         }
         return todays;
     }

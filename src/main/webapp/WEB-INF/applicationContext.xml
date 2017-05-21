@@ -9,9 +9,53 @@
            http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean class="com.globant.bootcamp.connection.DBConnector" id="dbConnector">
-        <property name="driver" value="com.mysql.cj.jdbc.Driver" />
-        <property name="username" value="root" />
-        <property name="password" value="admin" />
-        <property name="url" value="jdbc:mysql://localhost:3306/weather?useSSL=false" />
+        <constructor-arg name="driver" value="com.mysql.cj.jdbc.Driver" />
+        <constructor-arg name="username" value="root" />
+        <constructor-arg name="password" value="admin" />
+        <constructor-arg name="url" value="jdbc:mysql://localhost:3306/weather?useSSL=false" />
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.LocationCRUD" id="locationCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.AstronomyCRUD" id="astronomyCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.AtmosphereCRUD" id="atmosphereCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.WeatherCodeR" id="weatherCodeR">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.WindCRUD" id="windCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.TodayCRUD" id="todayCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+        <constructor-arg name="astronomyClimateCRUD" ref="astronomyCRUD"/>
+        <constructor-arg name="atmosphereClimateCRUD" ref="atmosphereCRUD"/>
+        <constructor-arg name="weatherCodeClimateR" ref="weatherCodeR"/>
+        <constructor-arg name="windClimateCRUD" ref="windCRUD"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.ForecastCRUD" id="forecastCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+        <constructor-arg name="weatherCodeClimateR" ref="weatherCodeR"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.ResultCRUD" id="resultCRUD">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+        <constructor-arg name="locationClimateCRUD" ref="locationCRUD"/>
+        <constructor-arg name="todayClimateCRUD" ref="todayCRUD"/>
+        <constructor-arg name="forecastClimateCRUD" ref="forecastCRUD"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.app.App" id="app">
+        <constructor-arg name="resultClimateCRUD" ref="resultCRUD"/>
     </bean>
 </beans>

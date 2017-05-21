@@ -14,6 +14,7 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persiste
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\WeatherCodeBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\unit\Speed.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\unit\Temperature.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\app\App.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\LocationCRUD.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\ForecastBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\ClimateCRUD.java
@@ -23,7 +24,8 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\un
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\WindBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\LocationBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\ResultBuilder.java
-C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\Main.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\app\Main.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\queryExecuter.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\WeatherCode.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\Location.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\UnitsBuilder.java

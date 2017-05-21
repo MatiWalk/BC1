@@ -1,6 +1,5 @@
 package com.globant.bootcamp.persistence;
 
-import com.globant.bootcamp.connection.DBConnector;
 import com.globant.bootcamp.model.Astronomy;
 import com.globant.bootcamp.builder.AstronomyBuilder;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 
 @Component
-public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCRUD<Astronomy> {
+public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronomy> {
 
     private List<Astronomy> astronomies;
     private Astronomy astronomy;
@@ -49,7 +48,6 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
             System.out.println("Error inserting Astronomy:");
             ex.printStackTrace();
         }
-        System.out.println(key);
         return key;
     }
 
@@ -78,7 +76,7 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
     @Override
     public void deleteByID(int id) {
         String delete = " delete astronomy where idastronomy= ?";
-        try {
+        /*try {
             PreparedStatement ps = con.prepareStatement(delete);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -86,13 +84,20 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
         } catch (SQLException ex) {
             System.out.println("Error deleting Astronomy:");
             ex.printStackTrace();
+        }*/
+
+        try {
+            executeDelete(delete, id);
+        } catch (SQLException e) {
+            System.out.println("Error deleting Astronomy:");
+            e.printStackTrace();
         }
     }
 
     @Override
     public Astronomy selectByID(int id) {
         String select = "select * from astronomy where idastronomy = ?";
-        try {
+        /*try {
             PreparedStatement ps = con.prepareStatement(select);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -106,7 +111,21 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
         } catch (SQLException ex) {
             System.out.println("Error retrieving Astronomy:");
             ex.printStackTrace();
+        }*/
+        try {
+            ResultSet rs = executeSelectByID(select, id);
+            while (rs.next()) {
+                astronomy = AstronomyBuilder.builder()
+                        .withSunrise(rs.getTime(2).toLocalTime())
+                        .withSunset(rs.getTime(3).toLocalTime())
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting one Astronomy:");
+            e.printStackTrace();
         }
+
         return astronomy;
     }
 
@@ -115,7 +134,7 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
 
         astronomies = new LinkedList<>();
         String select = "select * from astronomy";
-        try {
+        /*try {
             PreparedStatement ps = con.prepareStatement(select);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -129,7 +148,22 @@ public class AstronomyCRUD extends queryExecuter<Astronomy> implements ClimateCR
         } catch (SQLException ex) {
             System.out.println("Error retrieving Astronomies:");
             ex.printStackTrace();
+        }*/
+        try {
+            ResultSet rs = executeSelectAll(select);
+            while (rs.next()) {
+                astronomy = AstronomyBuilder.builder()
+                        .withSunrise(rs.getTime(2).toLocalTime())
+                        .withSunset(rs.getTime(3).toLocalTime())
+                        .build();
+                astronomies.add(astronomy);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Astronomy:");
+            e.printStackTrace();
         }
+
         return astronomies;
     }
 }

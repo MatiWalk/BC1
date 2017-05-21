@@ -13,17 +13,16 @@ import java.util.List;
  * Created by Sistemas on 16/5/2017.
  */
 @Component
-public class ForecastCRUD implements ClimateCRUD<Forecast> {
+public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast> {
 
     private List<Forecast> forecasts;
     private Forecast forecast;
     private int parentkey;
     private ClimateR<WeatherCode> weatherCodeClimateR;
-    private Connection con;
 
     public ForecastCRUD(WeatherCodeR weatherCodeClimateR, Connection con) {
+        super(con);
         this.weatherCodeClimateR = weatherCodeClimateR;
-        this.con = con;
     }
 
     @Override
@@ -32,18 +31,8 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
         setParentkey();
         String insert = " insert into forecast (idresult, idforecastweather, date, hightemperature, lowtemperature) values (?, ?, ?, ?, ?)";
         try {
-            PreparedStatement ps = con.prepareStatement(insert, PreparedStatement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, parentkey);
-            ps.setInt(2, forecast.getForecastWeather().getCode());
-            ps.setDate(3, Date.valueOf(forecast.getDate()));
-            ps.setInt(4, forecast.getHighTemperature());
-            ps.setInt(5, forecast.getLowTemperature());
-            ps.executeUpdate();
-            ResultSet generatedKeys = ps.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                key = generatedKeys.getInt(1);
-            }
-
+            key=executeResult(insert, parentkey, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
+                    forecast.getLowTemperature());
         } catch (SQLException ex) {
             System.out.println("Error inserting Forecast:");
             ex.printStackTrace();
@@ -56,16 +45,9 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
     public void update(Forecast forecast, int id) {
         String update = " UPDATE forecast set idresult = ?, idforecastweather = ?, date = ?, hightemperature = ?, " +
                 "lowtemperature = ? where idforecast = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(update);
-            ps.setInt(1, parentkey);
-            ps.setInt(2, forecast.getForecastWeather().getCode());
-            ps.setDate(3, Date.valueOf(forecast.getDate()));
-            ps.setInt(4, forecast.getHighTemperature());
-            ps.setInt(5, forecast.getLowTemperature());
-            ps.setInt(6, id);
-            ps.executeUpdate();
-
+        try{
+            executeUpdate(update, parentkey, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
+                    forecast.getLowTemperature(), id);
         } catch (SQLException ex) {
             System.out.println("Error updating Forecast:");
             ex.printStackTrace();
@@ -76,13 +58,10 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
     public void deleteByID(int id) {
         String delete = " delete forecast where idforecast = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(delete);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-        } catch (SQLException ex) {
+            executeDelete(delete, id);
+        } catch (SQLException e) {
             System.out.println("Error deleting Forecast:");
-            ex.printStackTrace();
+            e.printStackTrace();
         }
 
     }
@@ -92,9 +71,7 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
 
         String select = "select * from forecast where idforecast = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withDate(rs.getDate(2).toLocalDate())
@@ -104,9 +81,9 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
                         .build();
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Forecast:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting one Forecast:");
+            e.printStackTrace();
         }
         return forecast;
     }
@@ -116,8 +93,7 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
         forecasts = new LinkedList<>();
         String select = "select * from forecast";
         try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ResultSet rs = ps.executeQuery();
+            ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withDate(rs.getDate(2).toLocalDate())
@@ -128,9 +104,9 @@ public class ForecastCRUD implements ClimateCRUD<Forecast> {
                 forecasts.add(forecast);
             }
             rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error retrieving Forecasts:");
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Forecast:");
+            e.printStackTrace();
         }
         return forecasts;
     }
