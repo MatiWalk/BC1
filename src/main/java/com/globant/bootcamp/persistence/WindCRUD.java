@@ -37,10 +37,10 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
     }
 
     @Override
-    public void update(Wind wind, int id) {
+    public void update(Wind wind) {
         String update = " UPDATE wind set chill = ?, direction = ?, speed = ? where idwind = ?";
         try{
-            executeUpdate(update, wind.getChill(), wind.getDirection(), wind.getSpeed(), id);
+            executeUpdate(update, wind.getChill(), wind.getDirection(), wind.getSpeed(), wind.getId());
         } catch (SQLException ex) {
             System.out.println("Error updating Wind:");
             ex.printStackTrace();
@@ -66,6 +66,7 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 wind = WindBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withChill(rs.getInt(2))
                         .withDirection(rs.getInt(3))
                         .withSpeed(rs.getInt(4))
@@ -88,6 +89,7 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 wind = WindBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withChill(rs.getInt(2))
                         .withDirection(rs.getInt(3))
                         .withSpeed(rs.getInt(4))

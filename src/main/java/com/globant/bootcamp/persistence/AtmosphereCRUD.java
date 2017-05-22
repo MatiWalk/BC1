@@ -38,11 +38,11 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
     }
 
     @Override
-    public void update(Atmosphere atmosphere, int id) {
+    public void update(Atmosphere atmosphere) {
         String update = " UPDATE atmosphere set humidity = ?, pressure = ?, rising = ?, visibility = ? where idatmosphere = ?";
         try{
             executeUpdate(update, atmosphere.getHumidity(), atmosphere.getPressure(), atmosphere.getRising(),
-                    atmosphere.getVisibility(), id);
+                    atmosphere.getVisibility(), atmosphere.getId());
         } catch (SQLException ex) {
             System.out.println("Error updating Atmosphere:");
             ex.printStackTrace();
@@ -67,6 +67,7 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 atmosphere = AtmosphereBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withHumidity(rs.getInt(2))
                         .withPressure(rs.getFloat(3))
                         .withRising(barometricPressure.values()[rs.getInt(4)])
@@ -90,6 +91,7 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 atmosphere = AtmosphereBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withHumidity(rs.getInt(2))
                         .withPressure(rs.getFloat(3))
                         .withRising(barometricPressure.values()[rs.getInt(4)])

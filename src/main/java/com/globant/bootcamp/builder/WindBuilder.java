@@ -7,6 +7,7 @@ import com.globant.bootcamp.model.Wind;
  */
 public class WindBuilder {
 
+    int id;
     int chill;
     int direction;
     int speed;
@@ -16,6 +17,11 @@ public class WindBuilder {
 
     public static WindBuilder builder(){
         return new WindBuilder();
+    }
+
+    public WindBuilder withID(int id){
+        this.id = id;
+        return this;
     }
 
     public WindBuilder withChill (int chill){
@@ -34,10 +40,11 @@ public class WindBuilder {
     }
 
     public Wind build(){
-        Wind w = new Wind();
-        w.setChill(chill);
-        w.setDirection(direction);
-        w.setSpeed(speed);
-        return w;
+        Wind wind = new Wind();
+        wind.setId(id);
+        wind.setChill(chill);
+        wind.setDirection(direction);
+        wind.setSpeed(speed);
+        return wind;
     }
 }

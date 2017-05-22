@@ -6,11 +6,20 @@ package com.globant.bootcamp.model;
  */
 public class Wind {
 
+    int id;
     private int chill;
     private int direction;
     private int speed;
 
     public Wind() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getChill() {
@@ -39,8 +48,9 @@ public class Wind {
 
     @Override
     public String toString() {
-        return "Wind{" +
-                "chill=" + chill +
+        return "com.globant.bootcamp.model.Wind{" +
+                "id=" + id +
+                ", chill=" + chill +
                 ", direction=" + direction +
                 ", speed=" + speed +
                 '}';

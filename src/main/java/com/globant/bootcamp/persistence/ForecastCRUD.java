@@ -42,12 +42,12 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
     }
 
     @Override
-    public void update(Forecast forecast, int id) {
-        String update = " UPDATE forecast set idresult = ?, idforecastweather = ?, date = ?, hightemperature = ?, " +
+    public void update(Forecast forecast) {
+        String update = " UPDATE forecast set idforecastweather = ?, date = ?, hightemperature = ?, " +
                 "lowtemperature = ? where idforecast = ?";
         try{
-            executeUpdate(update, parentkey, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
-                    forecast.getLowTemperature(), id);
+            executeUpdate(update, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
+                    forecast.getLowTemperature(), forecast.getId());
         } catch (SQLException ex) {
             System.out.println("Error updating Forecast:");
             ex.printStackTrace();
@@ -74,6 +74,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withDate(rs.getDate(2).toLocalDate())
                         .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withHighTemperature(rs.getInt(4))
@@ -96,6 +97,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withDate(rs.getDate(2).toLocalDate())
                         .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withHighTemperature(rs.getInt(4))

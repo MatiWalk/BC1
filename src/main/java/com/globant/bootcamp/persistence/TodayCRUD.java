@@ -48,19 +48,22 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     }
 
     @Override
-    public void update(Today today, int id) {
+    public void update(Today today) {
 
-        int[] fk = getForeignKeys(id);
+        /*int[] fk = getForeignKeys(today.getId());
         astronomyClimateCRUD.update(today.getAstronomy(), fk[0]);
         atmosphereClimateCRUD.update(today.getAtmosphere(), fk[1]);
-        windClimateCRUD.update(today.getWind(), fk[2]);
+        windClimateCRUD.update(today.getWind(), fk[2]);*/
+        astronomyClimateCRUD.update(today.getAstronomy());
+        atmosphereClimateCRUD.update(today.getAtmosphere());
+        windClimateCRUD.update(today.getWind());
 
         String update = " UPDATE today set date = ?, idcurrentweather = ?, currenttemperature = ? " +
                 " where idtoday = ?";
 
         try{
             executeUpdate(update, today.getDate(), today.getCurrentWeather().getCode(),
-                    today.getCurrentTemperature(), id);
+                    today.getCurrentTemperature(), today.getId());
         } catch (SQLException ex) {
             System.out.println("Error updating Today:");
             ex.printStackTrace();
@@ -85,6 +88,7 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 today = TodayBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withDate(rs.getTimestamp(2).toLocalDateTime())
                         .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withCurrentTemperature(rs.getInt(4))
@@ -109,6 +113,7 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 today = TodayBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withDate(rs.getTimestamp(2).toLocalDateTime())
                         .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
                         .withCurrentTemperature(rs.getInt(4))

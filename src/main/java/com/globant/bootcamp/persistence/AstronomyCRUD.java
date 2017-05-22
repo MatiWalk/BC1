@@ -52,7 +52,7 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
     }
 
     @Override
-    public void update(Astronomy astronomy, int id) {
+    public void update(Astronomy astronomy) {
         String update = " UPDATE astronomy set sunrise = ?, sunset = ? where idastronomy = ?";
         /*try {
             PreparedStatement ps = con.prepareStatement(update);
@@ -66,7 +66,7 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
             ex.printStackTrace();
         }*/
         try{
-        executeUpdate(update, astronomy.getSunRise(), astronomy.getSunSet(), id);
+        executeUpdate(update, astronomy.getSunRise(), astronomy.getSunSet(), astronomy.getId());
         } catch (SQLException ex) {
         System.out.println("Error updating Astronomy:");
         ex.printStackTrace();
@@ -116,6 +116,7 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 astronomy = AstronomyBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
                         .build();
@@ -153,6 +154,7 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 astronomy = AstronomyBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
                         .build();

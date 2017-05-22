@@ -10,6 +10,7 @@ import java.time.LocalDate;
  */
 public class ForecastBuilder{
 
+    int id;
     WeatherCode forecastWeather;
     LocalDate date;
     int highTemperature;
@@ -18,6 +19,10 @@ public class ForecastBuilder{
     public ForecastBuilder() {
     }
 
+    public ForecastBuilder withID(int id){
+        this.id = id;
+        return this;
+    }
 
     public static ForecastBuilder builder(){
         return new ForecastBuilder();
@@ -45,6 +50,7 @@ public class ForecastBuilder{
 
     public Forecast build(){
         Forecast forecast = new Forecast();
+        forecast.setId(id);
         forecast.setForecastWeather(forecastWeather);
         forecast.setDate(date);
         forecast.setHighTemperature(highTemperature);

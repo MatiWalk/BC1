@@ -8,12 +8,18 @@ import com.globant.bootcamp.model.barometricPressure;
  */
 public class AtmosphereBuilder {
 
+    int id;
     int humidity;
     float pressure;
     barometricPressure rising;
     float visibility;
 
     public AtmosphereBuilder() {
+    }
+
+    public AtmosphereBuilder withID(int id){
+        this.id = id;
+        return this;
     }
 
     public static AtmosphereBuilder builder(){
@@ -42,6 +48,7 @@ public class AtmosphereBuilder {
 
     public Atmosphere build (){
         Atmosphere atmosphere = new Atmosphere();
+        atmosphere.setId(id);
         atmosphere.setHumidity(humidity);
         atmosphere.setPressure(pressure);
         atmosphere.setRising(rising);

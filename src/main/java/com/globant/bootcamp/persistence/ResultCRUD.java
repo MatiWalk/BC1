@@ -61,18 +61,22 @@ public class ResultCRUD extends QueryExecuter implements ClimateCRUD<Result> {
     }
 
     @Override
-    public void update(Result result, int id) {
+    public void update(Result result) {
         String update = " UPDATE result set title = ?, pubdate = ?, units = ?  where idresult = ?";
-        int[] fkeys = getForeignKeys(id);
-        todayClimateCRUD.update(result.getToday(), fkeys[0]);
-        locationClimateCRUD.update(result.getLocation(), fkeys[1]);
-
+        //int[] fkeys = getForeignKeys(result.getId());
+        //todayClimateCRUD.update(result.getToday(), fkeys[0]);
+        //locationClimateCRUD.update(result.getLocation(), fkeys[1]);
+        todayClimateCRUD.update(result.getToday());
+        locationClimateCRUD.update(result.getLocation());
         try{
             executeUpdate(update, result.getTitle(), result.getPuDate(),
-                    (byte)result.getUnits().getTemperatureUnit().ordinal(), id);
-            int[] fk = childkeys(id);
+                    (byte)result.getUnits().getTemperatureUnit().ordinal(), result.getId());
+            /*int[] fk = childkeys(id);
             for (int i = 0; i<fk.length; i++){
                 forecastClimateCRUD.update(result.getForecasts().get(i), fk[i]);
+            }*/
+            for (Forecast f:result.getForecasts()){
+                forecastClimateCRUD.update(f);
             }
         } catch (SQLException ex) {
             System.out.println("Error updating Result:");
@@ -107,6 +111,7 @@ public class ResultCRUD extends QueryExecuter implements ClimateCRUD<Result> {
                     forecasts.add(f);
                 }
                 result = ResultBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withTitle(rs.getString(2))
                         .withLocation(locationClimateCRUD.selectByID(rs.getInt(3)))
                         .withToday(todayClimateCRUD.selectByID(rs.getInt(4)))
@@ -143,6 +148,7 @@ public class ResultCRUD extends QueryExecuter implements ClimateCRUD<Result> {
                 }
 
                 result = ResultBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withTitle(rs.getString(2))
                         .withLocation(locationClimateCRUD.selectByID(rs.getInt(3)))
                         .withToday(todayClimateCRUD.selectByID(rs.getInt(4)))

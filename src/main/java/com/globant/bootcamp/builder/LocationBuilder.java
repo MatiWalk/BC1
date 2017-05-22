@@ -7,11 +7,17 @@ import com.globant.bootcamp.model.Location;
  */
 public class LocationBuilder {
 
+    int id;
     private String country;
     private String zone;
     private String city;
 
     public LocationBuilder() {
+    }
+
+    public LocationBuilder withID(int id){
+        this.id = id;
+        return this;
     }
 
     public static LocationBuilder builder(){
@@ -35,6 +41,7 @@ public class LocationBuilder {
 
     public Location build(){
         Location location = new Location();
+        location.setId(id);
         location.setCountry(country);
         location.setZone(zone);
         location.setCity(city);

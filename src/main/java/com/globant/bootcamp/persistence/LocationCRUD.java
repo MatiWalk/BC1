@@ -41,10 +41,10 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
     }
 
     @Override
-    public void update(Location location, int id) {
+    public void update(Location location) {
         String update = " UPDATE location set Country = ?, Zone = ?, City = ? where idlocation = ?";
         try{
-            executeUpdate(update, location.getCountry(), location.getZone(), location.getCity(), id);
+            executeUpdate(update, location.getCountry(), location.getZone(), location.getCity(), location.getId());
         } catch (SQLException ex) {
             System.out.println("Error updating Location:");
             ex.printStackTrace();
@@ -70,6 +70,7 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 location = LocationBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
                         .withCity(rs.getString(4))
@@ -92,6 +93,7 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 location = LocationBuilder.builder()
+                        .withID(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
                         .withCity(rs.getString(4))

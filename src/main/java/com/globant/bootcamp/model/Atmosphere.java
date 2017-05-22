@@ -6,12 +6,21 @@ package com.globant.bootcamp.model;
  */
 public class Atmosphere {
 
+    int id;
     private int humidity;
     private float pressure;
     private barometricPressure rising;
     private float visibility;
 
     public Atmosphere() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getHumidity() {
@@ -48,8 +57,9 @@ public class Atmosphere {
 
     @Override
     public String toString() {
-        return "Atmosphere{" +
-                "humidity=" + humidity +
+        return "com.globant.bootcamp.model.Atmosphere{" +
+                "id=" + id +
+                ", humidity=" + humidity +
                 ", pressure=" + pressure +
                 ", rising=" + rising +
                 ", visibility=" + visibility +

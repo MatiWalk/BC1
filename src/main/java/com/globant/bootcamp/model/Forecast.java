@@ -7,12 +7,21 @@ import java.time.LocalDate;
  */
 public class Forecast {
 
+    int id;
     protected WeatherCode forecastWeather;
     protected LocalDate date;
     protected int highTemperature;
     protected int lowTemperature;
 
     public Forecast() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public WeatherCode getForecastWeather() {
@@ -49,8 +58,9 @@ public class Forecast {
 
     @Override
     public String toString() {
-        return "Forecast{" +
-                "forecastWeather=" + forecastWeather +
+        return "com.globant.bootcamp.model.Forecast{" +
+                "id=" + id +
+                ", forecastWeather=" + forecastWeather +
                 ", date=" + date +
                 ", highTemperature=" + highTemperature +
                 ", lowTemperature=" + lowTemperature +

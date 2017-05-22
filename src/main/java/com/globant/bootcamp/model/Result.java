@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class Result {
 
+    int id;
     private String title;
     private Location location;
     private Today today;
@@ -16,6 +17,14 @@ public class Result {
     private Units units;
 
     public Result() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -68,8 +77,9 @@ public class Result {
 
     @Override
     public String toString() {
-        return "Result{" +
-                "title='" + title + '\'' +
+        return "com.globant.bootcamp.model.Result{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", location=" + location +
                 ", today=" + today +
                 ", forecasts=" + forecasts +

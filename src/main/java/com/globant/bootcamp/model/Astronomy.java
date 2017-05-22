@@ -7,10 +7,19 @@ import java.time.LocalTime;
  */
 public class Astronomy {
 
+    int id;
     private LocalTime sunRise;
     private LocalTime sunSet;
 
     public Astronomy() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalTime getSunRise() {
@@ -31,14 +40,12 @@ public class Astronomy {
 
     @Override
     public String toString() {
-        return "Astronomy{" +
-                "sunRise=" + sunRise +
+        return "com.globant.bootcamp.model.Astronomy{" +
+                "id=" + id +
+                ", sunRise=" + sunRise +
                 ", sunSet=" + sunSet +
                 '}';
     }
-
-
-
 }
 
 

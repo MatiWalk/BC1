@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
  */
 public class Today{
 
+    int id;
     private LocalDateTime date;
     private WeatherCode currentWeather;
     private int currentTemperature;
@@ -19,6 +20,13 @@ public class Today{
     public Today() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public LocalDateTime getDate() {
         return date;
@@ -70,8 +78,10 @@ public class Today{
 
     @Override
     public String toString() {
-        return "Today{" +
-                "currentWeather=" + currentWeather +
+        return "com.globant.bootcamp.model.Today{" +
+                "id=" + id +
+                ", date=" + date +
+                ", currentWeather=" + currentWeather +
                 ", currentTemperature=" + currentTemperature +
                 ", astronomy=" + astronomy +
                 ", atmosphere=" + atmosphere +

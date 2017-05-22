@@ -9,6 +9,7 @@ import java.util.List;
  * Created by Sistemas on 17/5/2017.
  */
 public class ResultBuilder {
+    int id;
     private String title;
     private Location location;
     private Today today;
@@ -21,6 +22,11 @@ public class ResultBuilder {
 
     public static ResultBuilder builder(){
         return new ResultBuilder();
+    }
+
+    public ResultBuilder withID(int id){
+        this.id = id;
+        return this;
     }
 
     public ResultBuilder withTitle(String title){
@@ -55,6 +61,7 @@ public class ResultBuilder {
 
     public Result build(){
         Result result = new Result();
+        result.setId(id);
         result.setTitle(title);
         result.setLocation(location);
         result.setToday(today);

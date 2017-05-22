@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
  */
 public class TodayBuilder{
 
+    int id;
     private LocalDateTime date;
     private WeatherCode currentWeather;
     private int currentTemperature;
@@ -22,6 +23,11 @@ public class TodayBuilder{
 
     public static TodayBuilder builder(){
         return new TodayBuilder();
+    }
+
+    public TodayBuilder withID(int id){
+        this.id = id;
+        return this;
     }
 
     public TodayBuilder withDate(LocalDateTime date){
@@ -56,6 +62,7 @@ public class TodayBuilder{
 
     public Today build(){
         Today today = new Today();
+        today.setId(id);
         today.setDate(date);
         today.setCurrentWeather(currentWeather);
         today.setCurrentTemperature(currentTemperature);

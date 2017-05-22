@@ -5,11 +5,20 @@ package com.globant.bootcamp.model;
  */
 public class Location {
 
+    int id;
     private String country;
     private String zone;
     private String city;
 
     public Location() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCountry() {
@@ -38,9 +47,10 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
-                "country='" + country + '\'' +
-                ", Zone='" + zone + '\'' +
+        return "com.globant.bootcamp.model.Location{" +
+                "id=" + id +
+                ", country='" + country + '\'' +
+                ", zone='" + zone + '\'' +
                 ", city='" + city + '\'' +
                 '}';
     }
