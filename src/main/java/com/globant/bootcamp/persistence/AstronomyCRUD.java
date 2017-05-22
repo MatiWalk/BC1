@@ -167,8 +167,8 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
         return astronomies;
     }
 
-    @Override
+    /*@Override
     public Astronomy selectByObject(Astronomy astronomy) {
         String select = "select * from astronomy where sunset = ? and sunrise = ?";
-    }
+    }*/
 }

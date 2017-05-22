@@ -1,1 +1,4 @@
+com\globant\bootcamp\persistence\QueryExecuter.class
+com\globant\bootcamp\persistence\ClimateR.class
+com\globant\bootcamp\persistence\AstronomyCRUD.class
 com\globant\bootcamp\controller\LocationController.class
