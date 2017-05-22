@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
+import java.util.List;
 
 /**
  * Created by Mati on 21/05/2017.
@@ -24,8 +25,8 @@ public class LocationController {
     private ClimateCRUD<Location> locationClimateCRUD;
 
     @RequestMapping
-    public ResponseEntity<Location> getLocationTest(@RequestParam int id){
-        return new ResponseEntity<Location>(locationClimateCRUD.selectByID(id), HttpStatus.OK);
+    public ResponseEntity<List<Location>> getLocationTest(){
+        return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
     }
 
     //deberia haber un gettodos y get 1 solo por nombre?"

@@ -2,6 +2,7 @@ package com.globant.bootcamp.persistence;
 
 import java.sql.*;
 import com.globant.bootcamp.model.barometricPressure;
+import com.mysql.cj.api.mysqla.result.Resultset;
 
 /**
  * Created by Mati on 20/05/2017.
@@ -58,6 +59,11 @@ abstract class QueryExecuter {
             }
         }
         return ps;
+    }
+
+    protected ResultSet executeSelectBySomething(String sql, Object... values) throws SQLException {
+        PreparedStatement ps = setValues(sql, values);
+        return ps.executeQuery();
     }
 
 
