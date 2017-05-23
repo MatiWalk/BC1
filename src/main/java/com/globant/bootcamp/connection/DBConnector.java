@@ -11,7 +11,6 @@ import java.sql.*;
 public class DBConnector {
 
     private Connection con;
-    private static DBConnector instance;
     private String driver/* = "com.mysql.cj.jdbc.Driver"*/;
     private String username /*= "root"*/;
     private String password/* = "admin"*/;
@@ -19,19 +18,19 @@ public class DBConnector {
 
     public DBConnector() {
 
-        try {
-            Class.forName(driver).newInstance();
-            con = DriverManager.getConnection(url, username, password);
-        } catch (Exception e) {
-
-            System.out.println("Error trying to open connection" );
-            e.printStackTrace();
-
-        }
+        openConnection();
     }
 
     public DBConnector(String driver, String username, String password, String url) {
+        this.driver = driver;
+        this.username = username;
+        this.password = password;
+        this.url = url;
+        openConnection();
 
+    }
+
+    private void openConnection(){
         try {
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url, username, password);
@@ -41,24 +40,6 @@ public class DBConnector {
             e.printStackTrace();
 
         }
-    }
-
-
-
-    public static DBConnector getInstance(){
-        if(instance == null) {
-            instance = new DBConnector();
-        }
-        return instance;
-        //return null;
-    }
-
-    //used for testing
-    public void setTestStrings(String dr, String un, String pw, String u){
-        driver = dr;
-        username = un;
-        password = pw;
-        url = u;
     }
 
     public Connection getCon() {

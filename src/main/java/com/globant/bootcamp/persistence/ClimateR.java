@@ -8,5 +8,5 @@ import java.util.List;
 public interface ClimateR<T> {
     T selectByID(int id);
     List<T> selectAll();
-    /*T selectByObject(T t);*/
+    //T selectByObject(T t);
 }

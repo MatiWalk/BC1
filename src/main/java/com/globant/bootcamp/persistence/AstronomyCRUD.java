@@ -171,6 +171,28 @@ public class AstronomyCRUD extends QueryExecuter implements ClimateCRUD<Astronom
 
     /*@Override
     public Astronomy selectByObject(Astronomy astronomy) {
-        String select = "select * from astronomy where sunset = ? and sunrise = ?";
+        String select = "select * from astronomy where";
+        if (astronomy.getSunRise() != null){
+            select += "sunrise = ?";
+        }
+        if (astronomy.getSunSet() != null){
+            select += "sunrise = ?";
+        }
+
+        try {
+            ResultSet rs = executeSelectAll(select);
+            while (rs.next()) {
+                astronomy = AstronomyBuilder.builder()
+                        .withID(rs.getInt(1))
+                        .withSunrise(rs.getTime(2).toLocalTime())
+                        .withSunset(rs.getTime(3).toLocalTime())
+                        .build();
+                astronomies.add(astronomy);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting all Astronomy:");
+            e.printStackTrace();
+        }
     }*/
 }

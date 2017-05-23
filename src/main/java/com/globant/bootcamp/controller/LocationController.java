@@ -25,14 +25,18 @@ public class LocationController {
     private ClimateCRUD<Location> locationClimateCRUD;
 
     @RequestMapping
-    public ResponseEntity<List<Location>> getLocationTest(){
+    public ResponseEntity<List<Location>> getLocation(){
         return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
     }
 
-    //deberia haber un gettodos y get 1 solo por nombre?"
-
-    @RequestMapping(value="/add", method = RequestMethod.POST)
-    public int postLocationTest(@RequestBody Location location){
+    @RequestMapping(value="/add", method = RequestMethod.POST,  headers = {"content-type=application/json"})
+    public int postLocation(@RequestBody Location location){
         return locationClimateCRUD.insert(location);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT,  headers = {"content-type=application/json"})
+    public Location putLocation(@RequestBody Location location){
+        locationClimateCRUD.update(location);
+        return locationClimateCRUD.selectByID(location.getId()) ;
     }
 }
