@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [23/May/2017:08:59:43 -0300] "GET /WeatherTool/location HTTP/1.1" 200 3443 http-bio-8080-exec-1 159
+0:0:0:0:0:0:0:1 - - [23/May/2017:09:00:03 -0300] "POST /WeatherTool/location/add HTTP/1.1" 200 12 http-bio-8080-exec-3 146
+0:0:0:0:0:0:0:1 - - [23/May/2017:09:00:45 -0300] "PUT /WeatherTool/location/ HTTP/1.1" 400 968 http-bio-8080-exec-5 11
+0:0:0:0:0:0:0:1 - - [23/May/2017:09:00:57 -0300] "PUT /WeatherTool/location/ HTTP/1.1" 400 968 http-bio-8080-exec-6 2
+0:0:0:0:0:0:0:1 - - [23/May/2017:09:01:26 -0300] "PUT /WeatherTool/location/ HTTP/1.1" 200 70 http-bio-8080-exec-7 174
+0:0:0:0:0:0:0:1 - - [23/May/2017:09:01:30 -0300] "GET /WeatherTool/location HTTP/1.1" 200 3503 http-bio-8080-exec-9 7

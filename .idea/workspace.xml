@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47a1a462-af00-4b31-bb46-fd07214e8947" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" afterPath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/connection/DBConnector.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/connection/DBConnector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/AstronomyCRUD.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/AstronomyCRUD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/ClimateR.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/ClimateR.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-05-22" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-05-22" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-05-23" afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2017-05-23" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,10 +46,12 @@
       <file leaf-file-name="LocationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="39" column="65" lean-forward="false" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
+            <state relative-caret-position="389">
+              <caret line="44" column="92" lean-forward="true" selection-start-line="44" selection-start-column="92" selection-end-line="44" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1353#1354#0" expanded="true" />
+                <element signature="e#1411#1412#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1129,7 +1125,7 @@
       <workItem from="1495194038671" duration="9418000" />
       <workItem from="1495215028860" duration="52308000" />
       <workItem from="1495458684830" duration="9174000" />
-      <workItem from="1495495794897" duration="4182000" />
+      <workItem from="1495495794897" duration="5105000" />
     </task>
     <servers />
   </component>
@@ -1166,11 +1162,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="281437000" />
+    <option name="totallyTimeSpent" value="282360000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="886" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="886" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1191,7 +1186,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32536522" sideWeight="0.49485862" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32536522" sideWeight="0.49485862" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20758355" sideWeight="0.48818898" order="0" side_tool="false" content_ui="combo" />
@@ -1629,10 +1624,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="39" column="65" lean-forward="false" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
+        <state relative-caret-position="389">
+          <caret line="44" column="92" lean-forward="true" selection-start-line="44" selection-start-column="92" selection-end-line="44" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1353#1354#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -25,7 +25,7 @@ public class LocationController {
     private ClimateCRUD<Location> locationClimateCRUD;
 
     @RequestMapping
-    public ResponseEntity<List<Location>> getLocation(){
+    public ResponseEntity<List<Location>> getLocations(){
         return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
     }
 
@@ -34,9 +34,18 @@ public class LocationController {
         return locationClimateCRUD.insert(location);
     }
 
-    @RequestMapping(method = RequestMethod.PUT,  headers = {"content-type=application/json"})
-    public Location putLocation(@RequestBody Location location){
-        locationClimateCRUD.update(location);
-        return locationClimateCRUD.selectByID(location.getId()) ;
+
+    //get one, update one
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
+    public Location getLocation(@PathVariable("id") int id){
+        return locationClimateCRUD.selectByID(id) ;
     }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
+    public Location putLocation(@PathVariable("id") int id, @RequestBody Location location){
+        locationClimateCRUD.update(location);
+        return locationClimateCRUD.selectByID(id) ;
+    }
+
+
 }
