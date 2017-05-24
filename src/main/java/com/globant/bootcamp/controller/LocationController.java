@@ -1,16 +1,15 @@
 package com.globant.bootcamp.controller;
 
-import com.globant.bootcamp.builder.LocationBuilder;
+import com.globant.bootcamp.client.YahooWeatherClient;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.persistence.ClimateCRUD;
-import com.globant.bootcamp.persistence.LocationCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Connection;
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,13 +19,19 @@ import java.util.List;
 @RequestMapping("location")
 public class LocationController {
 
+    @Resource
+    YahooWeatherClient yahooWeatherClient;
+
+
     @Autowired
     @Qualifier("locationCRUD")
     private ClimateCRUD<Location> locationClimateCRUD;
 
     @RequestMapping
     public ResponseEntity<List<Location>> getLocations(){
+        System.out.println(yahooWeatherClient.test("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"nome, ak\")", "json"));
         return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
+
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST,  headers = {"content-type=application/json"})
@@ -37,8 +42,8 @@ public class LocationController {
 
     //get one, update one
     @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public Location getLocation(@PathVariable("id") int id){
-        return locationClimateCRUD.selectByID(id) ;
+    public ResponseEntity<Location> getLocation(@PathVariable("id") int id){
+        return new ResponseEntity<>(locationClimateCRUD.selectByID(id), HttpStatus.OK) ;
     }
 
     @RequestMapping(value="/{id}", method = RequestMethod.PUT,  headers = {"content-type=application/json"})

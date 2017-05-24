@@ -1,6 +1,5 @@
 package com.globant.bootcamp.builder;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.globant.bootcamp.model.Astronomy;
 
 import java.time.LocalTime;
