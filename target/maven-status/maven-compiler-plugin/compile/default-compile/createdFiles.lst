@@ -3,3 +3,4 @@ com\globant\bootcamp\persistence\ClimateR.class
 com\globant\bootcamp\persistence\AstronomyCRUD.class
 com\globant\bootcamp\controller\LocationController.class
 com\globant\bootcamp\client\YahooWeatherClient.class
+com\globant\bootcamp\client\ClientHandler.class

@@ -106,4 +106,27 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
         }
         return atmospheres;
     }
+
+    public Atmosphere selectByObject(Atmosphere atmosphere) {
+        String select = "select * from atmosphere where humidity = ? and pressure = ? and rising = ? and visibility = ?";
+
+        try {
+            ResultSet rs = executeSelectBySomething(select, atmosphere.getHumidity(), atmosphere.getPressure(),
+                    atmosphere.getRising(), atmosphere.getVisibility());
+            while (rs.next()) {
+                this.atmosphere = AtmosphereBuilder.builder()
+                        .withID(rs.getInt(1))
+                        .withHumidity(rs.getInt(2))
+                        .withPressure(rs.getFloat(3))
+                        .withRising(barometricPressure.values()[rs.getInt(4)])
+                        .withVisibility(rs.getFloat(5))
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting by Atmosphere:");
+            e.printStackTrace();
+        }
+        return this.atmosphere;
+    }
 }

@@ -14,5 +14,5 @@ import javax.ws.rs.QueryParam;
 public interface YahooWeatherClient {
     @GET
     @Path("/yql")
-    String test(@QueryParam("q")String query, @QueryParam("format")String format);
+    String getConditions(@QueryParam("q")String query, @QueryParam("format")String format);
 }

@@ -2,15 +2,16 @@ package com.globant.bootcamp.model;
 
 //import TodayBuilder;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Created by Mati on 01/05/2017.
  */
 public class Today{
 
-    int id;
-    private LocalDateTime date;
+    private int id;
+    private int woeid;
+    private LocalDate date;
     private WeatherCode currentWeather;
     private int currentTemperature;
     private Astronomy astronomy;
@@ -28,11 +29,19 @@ public class Today{
         this.id = id;
     }
 
-    public LocalDateTime getDate() {
+    public int getWoeid() {
+        return woeid;
+    }
+
+    public void setWoeid(int woeid) {
+        this.woeid = woeid;
+    }
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -80,6 +89,7 @@ public class Today{
     public String toString() {
         return "com.globant.bootcamp.model.Today{" +
                 "id=" + id +
+                ", woeid=" + woeid +
                 ", date=" + date +
                 ", currentWeather=" + currentWeather +
                 ", currentTemperature=" + currentTemperature +

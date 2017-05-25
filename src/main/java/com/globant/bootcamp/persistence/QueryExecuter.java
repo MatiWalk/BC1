@@ -7,7 +7,7 @@ import com.mysql.cj.api.mysqla.result.Resultset;
 /**
  * Created by Mati on 20/05/2017.
  */
-abstract class QueryExecuter {
+abstract class QueryExecuter<T> {
 
     protected Connection con;
 
@@ -65,6 +65,5 @@ abstract class QueryExecuter {
         PreparedStatement ps = setValues(sql, values);
         return ps.executeQuery();
     }
-
 
 }

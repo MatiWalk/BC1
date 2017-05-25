@@ -6,7 +6,7 @@ package com.globant.bootcamp.model;
  */
 public class Wind {
 
-    int id;
+    private int id;
     private int chill;
     private int direction;
     private int speed;

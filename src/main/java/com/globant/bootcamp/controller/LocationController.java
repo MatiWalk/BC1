@@ -1,6 +1,7 @@
 package com.globant.bootcamp.controller;
 
-import com.globant.bootcamp.client.YahooWeatherClient;
+import com.globant.bootcamp.builder.LocationBuilder;
+import com.globant.bootcamp.client.ClientHandler;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.persistence.ClimateCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,17 +19,14 @@ import java.util.List;
 @RequestMapping("location")
 public class LocationController {
 
-    @Resource
-    YahooWeatherClient yahooWeatherClient;
-
 
     @Autowired
     @Qualifier("locationCRUD")
     private ClimateCRUD<Location> locationClimateCRUD;
 
+
     @RequestMapping
     public ResponseEntity<List<Location>> getLocations(){
-        System.out.println(yahooWeatherClient.test("select * from weather.forecast where woeid in (select woeid from geo.places(1) where text=\"nome, ak\")", "json"));
         return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
 
     }
@@ -41,15 +38,16 @@ public class LocationController {
 
 
     //get one, update one
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Location> getLocation(@PathVariable("id") int id){
-        return new ResponseEntity<>(locationClimateCRUD.selectByID(id), HttpStatus.OK) ;
+    @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
+    public ResponseEntity<Location> getLocation(@PathVariable("country") String country,@PathVariable("zone") String zone,@PathVariable("city") String city){
+
+        return new ResponseEntity<Location>(locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build()), HttpStatus.OK) ;
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
-    public Location putLocation(@PathVariable("id") int id, @RequestBody Location location){
+    @RequestMapping(value="/{woeid}", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
+    public Location putLocation(@PathVariable("woeid") int woeid, @RequestBody Location location){
         locationClimateCRUD.update(location);
-        return locationClimateCRUD.selectByID(id) ;
+        return locationClimateCRUD.selectByID(woeid) ;
     }
 
 

@@ -7,10 +7,10 @@ import com.globant.bootcamp.model.Wind;
  */
 public class WindBuilder {
 
-    int id;
-    int chill;
-    int direction;
-    int speed;
+    private int id;
+    private int chill;
+    private int direction;
+    private int speed;
 
     public WindBuilder() {
     }

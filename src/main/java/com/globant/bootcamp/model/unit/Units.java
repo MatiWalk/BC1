@@ -1,4 +1,4 @@
-package com.globant.bootcamp.model;
+package com.globant.bootcamp.model.unit;
 import com.globant.bootcamp.model.unit.Distance;
 import com.globant.bootcamp.model.unit.Pressure;
 import com.globant.bootcamp.model.unit.Speed;
@@ -9,6 +9,7 @@ import com.globant.bootcamp.model.unit.Temperature;
  */
 public class Units {
 
+    private boolean isCelsiusStandard;
     private Distance distanceUnit;
     private Pressure pressureUnit;
     private Speed speedUnit;
@@ -16,45 +17,38 @@ public class Units {
 
 
     public Units(){
+        isCelsiusStandard = true;
     }
 
     public Distance getDistanceUnit() {
         return distanceUnit;
     }
 
-    private void setDistanceUnit(Distance distanceUnit) {
-        this.distanceUnit = distanceUnit;
-    }
-
     public Pressure getPressureUnit() {
         return pressureUnit;
-    }
-
-    private void setPressureUnit(Pressure pressureUnit) {
-        this.pressureUnit = pressureUnit;
     }
 
     public Speed getSpeedUnit() {
         return speedUnit;
     }
 
-    private void setSpeedUnit(Speed speedUnit) {
-        this.speedUnit = speedUnit;
-    }
-
     public Temperature getTemperatureUnit() {
         return temperatureUnit;
     }
 
-    public void setTemperatureUnit(Temperature temperatureUnit) {
+    public boolean isCelsiusStandard() {
+        return isCelsiusStandard;
+    }
 
-        this.temperatureUnit = temperatureUnit;
-        if (this.temperatureUnit.equals(Temperature.F)){
-            distanceUnit = Distance.MI;
-            pressureUnit = Pressure.IN;
-            speedUnit = Speed.MPH;
-        }
-        if (this.temperatureUnit.equals(Temperature.C)){
+    public void setCelsiusStandard(boolean celsiusStandard) {
+        isCelsiusStandard = celsiusStandard;
+        if (isCelsiusStandard){
+            temperatureUnit = Temperature.C;
+            distanceUnit = Distance.KM;
+            pressureUnit = Pressure.MB;
+            speedUnit = Speed.KPH;
+        }else{
+            temperatureUnit = Temperature.C;
             distanceUnit = Distance.KM;
             pressureUnit = Pressure.MB;
             speedUnit = Speed.KPH;

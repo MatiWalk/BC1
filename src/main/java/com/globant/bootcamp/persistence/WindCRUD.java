@@ -17,6 +17,8 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
 
 
     private Connection con;
+    Wind wind;
+    List<Wind> winds;
 
     public WindCRUD(Connection con) {
         super(con);
@@ -60,7 +62,6 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
 
     @Override
     public Wind selectByID(int id) {
-        Wind wind = null;
         String select = "select * from wind where idwind = ?";
         try {
             ResultSet rs = executeSelectByID(select, id);
@@ -82,8 +83,8 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
 
     @Override
     public List<Wind> selectAll() {
-        Wind wind = null;
-        List<Wind> winds = new LinkedList<>();
+
+        winds = new LinkedList<>();
         String select = "select * from wind";
         try {
             ResultSet rs = executeSelectAll(select);
@@ -102,5 +103,27 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
             e.printStackTrace();
         }
         return winds;
+    }
+
+    public Wind selectByObject(Wind wind) {
+        String select = "select * from wind where chill = ? and direction = ? and speed = ?";
+
+        try {
+            ResultSet rs = executeSelectBySomething(select, wind.getChill(), wind.getDirection(),
+                    wind.getSpeed());
+            while (rs.next()) {
+                this.wind = WindBuilder.builder()
+                        .withID(rs.getInt(1))
+                        .withChill(rs.getInt(2))
+                        .withDirection(rs.getInt(3))
+                        .withSpeed(rs.getInt(4))
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting by Wind:");
+            e.printStackTrace();
+        }
+        return this.wind;
     }
 }

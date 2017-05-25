@@ -33,10 +33,10 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     @Override
     public int insert(Today today) {
         int key = -1;
-        String insert = "insert into today (date, idcurrentweather, " +
-                "currenttemperature, idastronomy, idatmosphere, idwind) values (?, ?, ?, ?, ?, ?)";
+        String insert = "insert into today (woeid, date, idcurrentweather, " +
+                "currenttemperature, idastronomy, idatmosphere, idwind) values (?, ?, ?, ?, ?, ?, ?)";
         try {
-            key=executeResult(insert, today.getDate(), today.getCurrentWeather().getCode(), today.getCurrentTemperature(),
+            key=executeResult(insert, today.getWoeid(), today.getDate(), today.getCurrentWeather().getCode(), today.getCurrentTemperature(),
                     astronomyClimateCRUD.insert(today.getAstronomy()), atmosphereClimateCRUD.insert(today.getAtmosphere()),
                     windClimateCRUD.insert(today.getWind()));
         } catch (SQLException ex) {
@@ -89,12 +89,13 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             while (rs.next()) {
                 today = TodayBuilder.builder()
                         .withID(rs.getInt(1))
-                        .withDate(rs.getTimestamp(2).toLocalDateTime())
-                        .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
-                        .withCurrentTemperature(rs.getInt(4))
-                        .withAstronomy(astronomyClimateCRUD.selectByID(rs.getInt(5)))
-                        .withAtmosphere(atmosphereClimateCRUD.selectByID(rs.getInt(6)))
-                        .withWind(windClimateCRUD.selectByID(rs.getInt(7)))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withCurrentTemperature(rs.getInt(5))
+                        .withAstronomy(astronomyClimateCRUD.selectByID(rs.getInt(6)))
+                        .withAtmosphere(atmosphereClimateCRUD.selectByID(rs.getInt(7)))
+                        .withWind(windClimateCRUD.selectByID(rs.getInt(8)))
                         .build();
             }
             rs.close();
@@ -114,24 +115,52 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             while (rs.next()) {
                 today = TodayBuilder.builder()
                         .withID(rs.getInt(1))
-                        .withDate(rs.getTimestamp(2).toLocalDateTime())
-                        .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
-                        .withCurrentTemperature(rs.getInt(4))
-                        .withAstronomy(astronomyClimateCRUD.selectByID(rs.getInt(5)))
-                        .withAtmosphere(atmosphereClimateCRUD.selectByID(rs.getInt(6)))
-                        .withWind(windClimateCRUD.selectByID(rs.getInt(7)))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withCurrentTemperature(rs.getInt(5))
+                        .withAstronomy(astronomyClimateCRUD.selectByID(rs.getInt(6)))
+                        .withAtmosphere(atmosphereClimateCRUD.selectByID(rs.getInt(7)))
+                        .withWind(windClimateCRUD.selectByID(rs.getInt(8)))
                         .build();
                 todays.add(today);
             }
             rs.close();
         } catch (SQLException e) {
-            System.out.println("Error selecting all Today:");
+            System.out.println("Error selecting all Todays:");
             e.printStackTrace();
         }
         return todays;
     }
 
+    @Override
+    public Today selectByObject(Today today) {
+        String select = "select * from today t where woeid = ? and date = ?";
+        try {
+            ResultSet rs = executeSelectByID(select, today.getWoeid(), today.getDate());
+            while (rs.next()) {
+                today = TodayBuilder.builder()
+                        .withID(rs.getInt(1))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withCurrentWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withCurrentTemperature(rs.getInt(5))
+                        .withAstronomy(astronomyClimateCRUD.selectByID(rs.getInt(6)))
+                        .withAtmosphere(atmosphereClimateCRUD.selectByID(rs.getInt(7)))
+                        .withWind(windClimateCRUD.selectByID(rs.getInt(8)))
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting by Today:");
+            e.printStackTrace();
+        }
+        return today;
+    }
 
+
+
+    /*
     private int[] getForeignKeys(int id){
         int[] fk = new int[3];
         String select = "select idastronomy, idatmosphere, idwind from today where idtoday = ?";
@@ -150,5 +179,5 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             ex.printStackTrace();
         }
         return fk;
-    }
+    }*/
 }

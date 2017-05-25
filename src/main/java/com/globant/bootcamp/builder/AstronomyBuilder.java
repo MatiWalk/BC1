@@ -9,9 +9,9 @@ import java.time.LocalTime;
  */
 public class AstronomyBuilder {
 
-    int id;
-    LocalTime sunRise;
-    LocalTime sunSet;
+    private int id;
+    private LocalTime sunRise;
+    private LocalTime sunSet;
 
     public AstronomyBuilder() {
     }

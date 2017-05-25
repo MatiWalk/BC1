@@ -17,7 +17,6 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
 
     private List<Forecast> forecasts;
     private Forecast forecast;
-    private int parentkey;
     private ClimateR<WeatherCode> weatherCodeClimateR;
 
     public ForecastCRUD(WeatherCodeR weatherCodeClimateR, Connection con) {
@@ -28,10 +27,9 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
     @Override
     public int insert(Forecast forecast) {
         int key = -1;
-        setParentkey();
-        String insert = " insert into forecast (idresult, idforecastweather, date, hightemperature, lowtemperature) values (?, ?, ?, ?, ?)";
+        String insert = " insert into forecast  woeid, idforecastweather, date, hightemperature, lowtemperature) values (?, ?, ?, ?, ?)";
         try {
-            key=executeResult(insert, parentkey, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
+            key=executeResult(insert, forecast.getWoeid(), forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
                     forecast.getLowTemperature());
         } catch (SQLException ex) {
             System.out.println("Error inserting Forecast:");
@@ -43,11 +41,11 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
 
     @Override
     public void update(Forecast forecast) {
-        String update = " UPDATE forecast set idforecastweather = ?, date = ?, hightemperature = ?, " +
-                "lowtemperature = ? where idforecast = ?";
+        String update = " UPDATE forecast set idforecastweather = ?, hightemperature = ?, " +
+                "lowtemperature = ? where date = ? and woeid = ?";
         try{
-            executeUpdate(update, forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
-                    forecast.getLowTemperature(), forecast.getId());
+            executeUpdate(update, forecast.getForecastWeather(), forecast.getHighTemperature(), forecast.getLowTemperature(),
+                    forecast.getDate(), forecast.getWoeid());
         } catch (SQLException ex) {
             System.out.println("Error updating Forecast:");
             ex.printStackTrace();
@@ -75,10 +73,11 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withID(rs.getInt(1))
-                        .withDate(rs.getDate(2).toLocalDate())
-                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
-                        .withHighTemperature(rs.getInt(4))
-                        .withLowTemperature(rs.getInt(5))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withHighTemperature(rs.getInt(5))
+                        .withLowTemperature(rs.getInt(6))
                         .build();
             }
             rs.close();
@@ -98,10 +97,11 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
             while (rs.next()) {
                 forecast = ForecastBuilder.builder()
                         .withID(rs.getInt(1))
-                        .withDate(rs.getDate(2).toLocalDate())
-                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(3)))
-                        .withHighTemperature(rs.getInt(4))
-                        .withLowTemperature(rs.getInt(5))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withHighTemperature(rs.getInt(5))
+                        .withLowTemperature(rs.getInt(6))
                         .build();
                 forecasts.add(forecast);
             }
@@ -113,17 +113,28 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
         return forecasts;
     }
 
-    private void setParentkey(){
-        String query = "select idresult from result order by idresult desc limit 1";
+    @Override
+    public Forecast selectByObject(Forecast forecast) {
+        String select = "select * from forecast where woeid = ? and date = ?";
         try {
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                parentkey = rs.getInt(1);
+            ResultSet rs = executeSelectByID(select, forecast.getWoeid(), forecast.getDate());
+            while (rs.next()) {
+                this.forecast = ForecastBuilder.builder()
+                        .withID(rs.getInt(1))
+                        .withWOEID(rs.getInt(2))
+                        .withDate(rs.getDate(3).toLocalDate())
+                        .withForecastWeather(weatherCodeClimateR.selectByID(rs.getInt(4)))
+                        .withHighTemperature(rs.getInt(5))
+                        .withLowTemperature(rs.getInt(6))
+                        .build();
             }
-
+            rs.close();
         } catch (SQLException e) {
+            System.out.println("Error selecting by Forecast:");
             e.printStackTrace();
         }
+        return this.forecast;
     }
+
+
 }

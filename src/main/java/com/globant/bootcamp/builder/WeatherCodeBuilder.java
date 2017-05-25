@@ -6,8 +6,8 @@ import com.globant.bootcamp.model.WeatherCode;
  * Created by Sistemas on 17/5/2017.
  */
 public class WeatherCodeBuilder {
-    int code;
-    String weather;
+    private int code;
+    private String weather;
 
     public WeatherCodeBuilder() {
     }

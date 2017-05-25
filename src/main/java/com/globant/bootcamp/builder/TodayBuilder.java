@@ -3,15 +3,16 @@ package com.globant.bootcamp.builder;
 
 import com.globant.bootcamp.model.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * Created by Sistemas on 17/5/2017.
  */
 public class TodayBuilder{
 
-    int id;
-    private LocalDateTime date;
+    private int id;
+    private int woeid;
+    private LocalDate date;
     private WeatherCode currentWeather;
     private int currentTemperature;
     private Astronomy astronomy;
@@ -30,7 +31,12 @@ public class TodayBuilder{
         return this;
     }
 
-    public TodayBuilder withDate(LocalDateTime date){
+    public TodayBuilder withWOEID(int woeid){
+        this.woeid = woeid;
+        return this;
+    }
+
+    public TodayBuilder withDate(LocalDate date){
         this.date = date;
         return this;
     }
@@ -63,6 +69,7 @@ public class TodayBuilder{
     public Today build(){
         Today today = new Today();
         today.setId(id);
+        today.setWoeid(woeid);
         today.setDate(date);
         today.setCurrentWeather(currentWeather);
         today.setCurrentTemperature(currentTemperature);

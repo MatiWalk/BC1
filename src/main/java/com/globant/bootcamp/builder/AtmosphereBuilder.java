@@ -8,11 +8,11 @@ import com.globant.bootcamp.model.barometricPressure;
  */
 public class AtmosphereBuilder {
 
-    int id;
-    int humidity;
-    float pressure;
-    barometricPressure rising;
-    float visibility;
+    private int id;
+    private int humidity;
+    private float pressure;
+    private barometricPressure rising;
+    private float visibility;
 
     public AtmosphereBuilder() {
     }

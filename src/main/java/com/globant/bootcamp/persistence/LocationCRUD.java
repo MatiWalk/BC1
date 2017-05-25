@@ -1,8 +1,10 @@
 package com.globant.bootcamp.persistence;
 
 import com.globant.bootcamp.connection.DBConnector;
+import com.globant.bootcamp.model.Forecast;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.builder.LocationBuilder;
+import com.globant.bootcamp.model.Today;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -20,18 +22,22 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     private List<Location> locations;
     private Location location;
-    private Connection con;
+    private ClimateCRUD<Today> todayClimateCRUD;
+    private ClimateCRUD<Forecast> forecastClimateCRUD;
 
-    public LocationCRUD(Connection con) {
+    public LocationCRUD(Connection con, ClimateCRUD<Today> todayClimateCRUD, ClimateCRUD<Forecast> forecastClimateCRUD) {
         super(con);
+        this.todayClimateCRUD = todayClimateCRUD;
+        this.forecastClimateCRUD = forecastClimateCRUD;
     }
 
     @Override
     public int insert(Location location) {
         int key = -1;
-        String insert = " insert into Location (country, zone, city) values (?, ?, ?)";
+
+        String insert = " insert into Location (woeid, country, zone, city, lastupdate) values (?, ?, ?, ?, ?)";
         try {
-            key=executeResult(insert, location.getCountry(), location.getZone(), location.getCity());
+            key=executeResult(insert, location.getWoeid(), location.getCountry(), location.getZone(), location.getCity(), location.getLastUpdate());
         } catch (SQLException ex) {
             System.out.println("Error inserting Location:");
             ex.printStackTrace();
@@ -42,9 +48,11 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     @Override
     public void update(Location location) {
-        String update = " UPDATE location set Country = ?, Zone = ?, City = ? where idlocation = ?";
+        String update = " UPDATE location set lastupdate = ? where Country = ? and Zone = ? and City = ?";
+
         try{
-            executeUpdate(update, location.getCountry(), location.getZone(), location.getCity(), location.getId());
+            executeUpdate(update, location.getLastUpdate(), location.getCountry(), location.getZone(),
+                location.getCity());
         } catch (SQLException ex) {
             System.out.println("Error updating Location:");
             ex.printStackTrace();
@@ -53,7 +61,7 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     @Override
     public void deleteByID(int id) {
-        String delete = " delete location where idlocation = ?";
+        String delete = "delete location where woeid = ?";
         try {
             executeDelete(delete, id);
         } catch (SQLException e) {
@@ -65,15 +73,16 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
     @Override
     public Location selectByID(int id) {
 
-        String select = "select * from location where idlocation = ?";
+        String select = "select * from location where woeid = ?";
         try {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
                 location = LocationBuilder.builder()
-                        .withID(rs.getInt(1))
+                        .withWoeid(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
                         .withCity(rs.getString(4))
+                        .withLastUpdate(rs.getTimestamp(5).toLocalDateTime())
                         .build();
             }
             rs.close();
@@ -93,18 +102,41 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
                 location = LocationBuilder.builder()
-                        .withID(rs.getInt(1))
+                        .withWoeid(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
                         .withCity(rs.getString(4))
+                        .withLastUpdate(rs.getTimestamp(5).toLocalDateTime())
                         .build();
                 locations.add(location);
             }
             rs.close();
         } catch (SQLException e) {
-            System.out.println("Error selecting all Location:");
+            System.out.println("Error selecting all Locations:");
             e.printStackTrace();
         }
         return locations;
+    }
+
+    @Override
+    public Location selectByObject(Location location) {
+        String select = "select * from location where country = ? and zone = ? and city = ?";
+        try {
+            ResultSet rs = executeSelectByID(select, location.getCountry(), location.getZone(), location.getCity());
+            while (rs.next()) {
+                this.location = LocationBuilder.builder()
+                        .withWoeid(rs.getInt(1))
+                        .withCountry(rs.getString(2))
+                        .withZone(rs.getString(3))
+                        .withCity(rs.getString(4))
+                        .withLastUpdate(rs.getTimestamp(5).toLocalDateTime())
+                        .build();
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println("Error selecting by Location:");
+            e.printStackTrace();
+        }
+        return this.location;
     }
 }
