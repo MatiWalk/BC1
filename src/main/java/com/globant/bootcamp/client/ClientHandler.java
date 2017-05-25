@@ -3,10 +3,7 @@ package com.globant.bootcamp.client;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.globant.bootcamp.builder.*;
-import com.globant.bootcamp.model.Atmosphere;
-import com.globant.bootcamp.model.Location;
-import com.globant.bootcamp.model.Today;
-import com.globant.bootcamp.model.barometricPressure;
+import com.globant.bootcamp.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -27,16 +26,9 @@ public class ClientHandler {
 
     @Resource
     private YahooWeatherClient yahooWeatherClient;
-
-
     private ObjectMapper mapper;
 
-    public void setMapper(ObjectMapper mapper) {
-        this.mapper = mapper;
-    }
-
-    public Location getData(){
-        Location l = null;
+    public Location getData(Location l){
         mapper = new ObjectMapper();
         try {
 
@@ -48,39 +40,59 @@ public class ClientHandler {
             JsonNode atmosphereJson = resultJson.get("atmosphere");
             JsonNode windJson = resultJson.get("wind");
             JsonNode todayJson = resultJson.get("item").get("condition");
+            JsonNode forecastsJson = resultJson.get("item").get("forecast");
 
+            List<Forecast> forecasts = new LinkedList<>();
+            for (int i = 0; i < 5; i++){
+                JsonNode singleForecastJson = forecastsJson.get(i);
+                Forecast forecast = ForecastBuilder.builder()
+                        .withDate(LocalDate.parse(singleForecastJson.get("date").asText(), DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.US)))
+                        .withForecastWeather(WeatherCodeBuilder.builder()
+                                .withCode(singleForecastJson.get("code").asInt())
+                                .build())
+                        .withHighTemperature(singleForecastJson.get("high").asInt())
+                        .withLowTemperature(singleForecastJson.get("low").asInt())
+                        .build();
+                forecasts.add(forecast);
+            }
 
-
-
-            Today today = TodayBuilder.builder()
-                    .withDate(LocalDate.parse(todayJson.get("date").asText(), DateTimeFormatter.ofPattern("EEE, dd MMM yyyy hh:mm a z", Locale.US)))
-                    .withCurrentWeather(WeatherCodeBuilder.builder()
-                            .withCode(todayJson.get("code").asInt())
+            l = LocationBuilder.builder()
+                    .withCountry(locationJson.get("country").asText())
+                    .withZone(locationJson.get("region").asText())
+                    .withCity(locationJson.get("city").asText())
+                    .withToday(TodayBuilder.builder()
+                            .withDate(LocalDate.parse(todayJson.get("date").asText(), DateTimeFormatter.ofPattern("EEE, dd MMM yyyy hh:mm a z", Locale.US)))
+                            .withCurrentWeather(WeatherCodeBuilder.builder()
+                                    .withCode(todayJson.get("code").asInt())
+                                    .build())
+                            .withCurrentTemperature(todayJson.get("temp").asInt())
+                            .withAstronomy(AstronomyBuilder.builder()
+                                    .withSunrise(LocalTime.parse(astronomyJson.get("sunrise").asText().toUpperCase(), DateTimeFormatter.ofPattern("K:mm a") ))
+                                    .withSunset(LocalTime.parse(astronomyJson.get("sunset").asText().toUpperCase(), DateTimeFormatter.ofPattern("K:mm a")))
+                                    .build())
+                            .withAtmosphere(AtmosphereBuilder.builder()
+                                    .withHumidity(atmosphereJson.get("humidity").asInt())
+                                    .withPressure(((float) atmosphereJson.get("pressure").asDouble()))
+                                    .withRising(barometricPressure.values()[atmosphereJson.get("rising").asInt()])
+                                    .withVisibility((float) atmosphereJson.get("visibility").asDouble())
+                                    .build())
+                            .withWind(WindBuilder.builder()
+                                    .withChill(windJson.get("chill").asInt())
+                                    .withDirection(windJson.get("direction").asInt())
+                                    .withSpeed(windJson.get("speed").asInt())
+                                    .build())
                             .build())
-                    .withCurrentTemperature(todayJson.get("temp").asInt())
-                    .withAstronomy(AstronomyBuilder.builder()
-                            .withSunrise(LocalTime.parse(astronomyJson.get("sunrise").asText().toUpperCase(), DateTimeFormatter.ofPattern("K:mm a") ))
-                            .withSunset(LocalTime.parse(astronomyJson.get("sunset").asText().toUpperCase(), DateTimeFormatter.ofPattern("K:mm a")))
-                            .build())
-                    .withAtmosphere(AtmosphereBuilder.builder()
-                            .withHumidity(atmosphereJson.get("humidity").asInt())
-                            .withPressure(((float) atmosphereJson.get("pressure").asDouble()))
-                            .withRising(barometricPressure.values()[atmosphereJson.get("rising").asInt()])
-                            .withVisibility((float) atmosphereJson.get("visibility").asDouble())
-                            .build())
-                    .withWind(WindBuilder.builder()
-                            .withChill(windJson.get("chill").asInt())
-                            .withDirection(windJson.get("direction").asInt())
-                            .withSpeed(windJson.get("speed").asInt())
-                            .build())
+                    .withForecasts(forecasts)
+                    .withLastUpdate(LocalDateTime.parse(resultJson.get("item").get("pubDate").asText(), DateTimeFormatter.ofPattern("EEE, dd MMM yyyy hh:mm a z", Locale.US)))
                     .build();
-            System.out.println(today.toString());
-            l = LocationBuilder.builder().withToday(today).build();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        if (l == null){
+
+        }
         return l;
     }
 
