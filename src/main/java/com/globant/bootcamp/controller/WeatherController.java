@@ -43,7 +43,7 @@ public class WeatherController {
 
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
     public ResponseEntity<Location> postLocation(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city, @RequestParam("forecast") int amountForecast){
-
+        System.out.println(clientHandler.getData().toString());
         Location l = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build());
         l.setToday(todayClimateCRUD.selectByObject(TodayBuilder.builder().withWOEID(l.getWoeid()).withDate(LocalDate.now()).build()));
         List<Forecast> forecasts = new LinkedList<>();

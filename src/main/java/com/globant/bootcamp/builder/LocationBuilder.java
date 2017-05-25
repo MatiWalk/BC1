@@ -68,6 +68,8 @@ public class LocationBuilder {
         location.setCountry(country);
         location.setZone(zone);
         location.setCity(city);
+        location.setToday(today);
+        location.setForecasts(forecasts);
         location.setLastUpdate(lastUpdate);
         return location;
     }
