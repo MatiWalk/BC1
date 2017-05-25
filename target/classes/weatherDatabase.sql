@@ -46,7 +46,7 @@ CREATE TABLE `today` (
   `idtoday` int(11) NOT NULL AUTO_INCREMENT,
   `woeid` int(11) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `idcurrectweather` int(11) DEFAULT NULL,
+  `idcurrentweather` int(11) DEFAULT NULL,
   `currenttemperature` int(11) DEFAULT NULL,
   `idastronomy` int(11) DEFAULT NULL,
   `idatmosphere` int(11) DEFAULT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE `today` (
   CONSTRAINT `today-astronomy` FOREIGN KEY (`idastronomy`) REFERENCES `astronomy` (`idastronomy`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `today-atmosphere` FOREIGN KEY (`idatmosphere`) REFERENCES `atmosphere` (`idatmosphere`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `today-location` FOREIGN KEY (`woeid`) REFERENCES `location` (`woeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `today-weathercode` FOREIGN KEY (`idcurrectweather`) REFERENCES `weathercode` (`idweathercode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `today-weathercode` FOREIGN KEY (`idcurrentweather`) REFERENCES `weathercode` (`idweathercode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `today-wind` FOREIGN KEY (`idwind`) REFERENCES `wind` (`idwind`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

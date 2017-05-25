@@ -27,7 +27,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
     @Override
     public int insert(Forecast forecast) {
         int key = -1;
-        String insert = " insert into forecast  woeid, idforecastweather, date, hightemperature, lowtemperature) values (?, ?, ?, ?, ?)";
+        String insert = " insert into forecast (woeid, idforecastweather, date, hightemperature, lowtemperature) values (?, ?, ?, ?, ?)";
         try {
             key=executeResult(insert, forecast.getWoeid(), forecast.getForecastWeather().getCode(), forecast.getDate(), forecast.getHighTemperature(),
                     forecast.getLowTemperature());
@@ -44,7 +44,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
         String update = " UPDATE forecast set idforecastweather = ?, hightemperature = ?, " +
                 "lowtemperature = ? where date = ? and woeid = ?";
         try{
-            executeUpdate(update, forecast.getForecastWeather(), forecast.getHighTemperature(), forecast.getLowTemperature(),
+            executeUpdate(update, forecast.getForecastWeather().getCode(), forecast.getHighTemperature(), forecast.getLowTemperature(),
                     forecast.getDate(), forecast.getWoeid());
         } catch (SQLException ex) {
             System.out.println("Error updating Forecast:");
