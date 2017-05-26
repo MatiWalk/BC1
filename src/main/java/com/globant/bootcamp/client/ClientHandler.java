@@ -33,14 +33,16 @@ public class ClientHandler {
     private ClimateCRUD<Today> todayClimateCRUD;
     @Autowired
     private ClimateCRUD<Forecast> forecastClimateCRUD;
+
     private ObjectMapper mapper;
 
-    public Location getData(Location l){
+    public Location getData(String country, String zone, String city, int amountForecast){
         mapper = new ObjectMapper();
-        boolean noConnetion = false;
+        Location l = null;
+        boolean noConnection = false;
         try {
             //gets woeid from yahoo
-            String selectLocation = "select woeid from geo.places(1) where text=\" "+l.getCity()+", " + l.getZone() + ", " + l.getCountry() + "\"";
+            String selectLocation = "select woeid from geo.places(1) where text=\" "+city+", " + zone + ", " + country + "\"";
 
             JsonNode locationWoeid = mapper.readTree(yahooWeatherClient.getConditions(selectLocation, "json"));
             int woeid = locationWoeid.get("query").get("results").get("place").get("woeid").asInt();
@@ -57,13 +59,14 @@ public class ClientHandler {
             JsonNode forecastsJson = resultJson.get("item").get("forecast");
 
             List<Forecast> forecasts = new LinkedList<>();
-            for (int i = 0; i < 5; i++){
+            for (int i = 0; i < amountForecast; i++){
                 JsonNode singleForecastJson = forecastsJson.get(i);
                 Forecast forecast = ForecastBuilder.builder()
                     .withWOEID(woeid)
                     .withDate(LocalDate.parse(singleForecastJson.get("date").asText(), DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.US)))
                     .withForecastWeather(WeatherCodeBuilder.builder()
                         .withCode(singleForecastJson.get("code").asInt())
+                        .withWeather(todayJson.get("text").asText())
                         .build())
                     .withHighTemperature(singleForecastJson.get("high").asInt())
                     .withLowTemperature(singleForecastJson.get("low").asInt())
@@ -73,14 +76,15 @@ public class ClientHandler {
 
             l = LocationBuilder.builder()
                 .withWoeid(woeid)
-                .withCountry(locationJson.get("country").asText())
-                .withZone(locationJson.get("region").asText())
-                .withCity(locationJson.get("city").asText())
+                .withCountry(locationJson.get("country").asText().trim())
+                .withZone(locationJson.get("region").asText().trim())
+                .withCity(locationJson.get("city").asText().trim())
                 .withToday(TodayBuilder.builder()
                     .withWOEID(woeid)
                     .withDate(LocalDate.parse(todayJson.get("date").asText(), DateTimeFormatter.ofPattern("EEE, dd MMM yyyy hh:mm a z", Locale.US)))
                     .withCurrentWeather(WeatherCodeBuilder.builder()
                         .withCode(todayJson.get("code").asInt())
+                        .withWeather(todayJson.get("text").asText())
                         .build())
                     .withCurrentTemperature(todayJson.get("temp").asInt())
                     .withAstronomy(AstronomyBuilder.builder()
@@ -130,12 +134,21 @@ public class ClientHandler {
         } catch (Exception e) {
             System.out.println("Error retrieving from client");
             e.printStackTrace();
-            noConnetion = true;
+            noConnection = true;
         }
 
-        if (noConnetion){
-            l = locationClimateCRUD.selectByObject(l);
-
+        if (noConnection){
+            l = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withCity(city).withZone(zone).build());
+            if (l==null) return null;
+            Today today = todayClimateCRUD.selectByObject(TodayBuilder.builder().withDate(LocalDate.now()).withWOEID(l.getWoeid()).build());
+            if (today==null) return null;
+            l.setToday(today);
+            List<Forecast> forecasts = new LinkedList<>();
+            for (int i = 0; i < amountForecast; i++){
+                Forecast forecast = forecastClimateCRUD.selectByObject(ForecastBuilder.builder().withDate(LocalDate.now().plusDays(i)).withWOEID(l.getWoeid()).build());
+                forecasts.add(forecast);
+            }
+            l.setForecasts(forecasts);
         }
         return l;
     }

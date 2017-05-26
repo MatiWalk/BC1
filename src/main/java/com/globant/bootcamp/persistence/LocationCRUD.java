@@ -120,7 +120,7 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     @Override
     public Location selectByObject(Location location) {
-        String select = "select * from location where country = ? and zone = ? and city = ?";
+        String select = "select * from location where lower(country) = ? and lower(zone) = ? and lower(city) = ?";
         try {
             ResultSet rs = executeSelectByID(select, location.getCountry(), location.getZone(), location.getCity());
             while (rs.next()) {

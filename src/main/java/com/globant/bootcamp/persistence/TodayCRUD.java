@@ -139,7 +139,7 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
         try {
             ResultSet rs = executeSelectByID(select, today.getWoeid(), today.getDate());
             while (rs.next()) {
-                today = TodayBuilder.builder()
+                this.today = TodayBuilder.builder()
                         .withID(rs.getInt(1))
                         .withWOEID(rs.getInt(2))
                         .withDate(rs.getDate(3).toLocalDate())
@@ -155,7 +155,7 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             System.out.println("Error selecting by Today:");
             e.printStackTrace();
         }
-        return today;
+        return this.today;
     }
 
 

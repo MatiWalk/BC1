@@ -7,7 +7,7 @@ CREATE TABLE `astronomy` (
   `sunrise` time DEFAULT NULL,
   `sunset` time DEFAULT NULL,
   PRIMARY KEY (`idastronomy`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 CREATE TABLE `atmosphere` (
   `idatmosphere` int(11) NOT NULL AUTO_INCREMENT,
@@ -16,13 +16,13 @@ CREATE TABLE `atmosphere` (
   `rising` int(11) DEFAULT NULL,
   `visibility` float DEFAULT NULL,
   PRIMARY KEY (`idatmosphere`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
 CREATE TABLE `weathercode` (
   `idweathercode` int(11) NOT NULL,
   `weather` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idweathercode`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ;
 
 CREATE TABLE `wind` (
   `idwind` int(11) NOT NULL AUTO_INCREMENT,
@@ -30,8 +30,7 @@ CREATE TABLE `wind` (
   `direction` int(11) DEFAULT NULL,
   `speed` int(11) DEFAULT NULL,
   PRIMARY KEY (`idwind`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ;
 
 CREATE TABLE `location` (
   `woeid` int(11) NOT NULL,
@@ -40,7 +39,7 @@ CREATE TABLE `location` (
   `city` varchar(45) DEFAULT NULL,
   `lastupdate` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`woeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE `today` (
   `idtoday` int(11) NOT NULL AUTO_INCREMENT,
@@ -57,8 +56,7 @@ CREATE TABLE `today` (
   CONSTRAINT `today-location` FOREIGN KEY (`woeid`) REFERENCES `location` (`woeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `today-weathercode` FOREIGN KEY (`idcurrentweather`) REFERENCES `weathercode` (`idweathercode`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `today-wind` FOREIGN KEY (`idwind`) REFERENCES `wind` (`idwind`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+) ;
 
 CREATE TABLE `forecast` (
   `idforecast` int(11) NOT NULL AUTO_INCREMENT,
@@ -70,9 +68,7 @@ CREATE TABLE `forecast` (
   PRIMARY KEY (`idforecast`),
   CONSTRAINT `forecast-location` FOREIGN KEY (`woeid`) REFERENCES `location` (`woeid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `forecast-weathercode` FOREIGN KEY (`idforecastweather`) REFERENCES `weathercode` (`idweathercode`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
+) ;
 
 
 insert into weathercode (idweathercode, weather) values 
