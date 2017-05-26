@@ -36,13 +36,21 @@ public class ClientHandler {
 
     private ObjectMapper mapper;
 
-    public Location getData(String country, String zone, String city, int amountForecast){
+    int amountForecast = 10;
+
+    public Location getData(String country, String zone, String city){
         mapper = new ObjectMapper();
-        Location l = null;
+        Location locationInput = LocationBuilder.builder()
+                .withCountry(country)
+                .withZone(zone)
+                .withCity(city)
+                .build();
+        Location locationResult = null;
         boolean noConnection = false;
         try {
             //gets woeid from yahoo
-            String selectLocation = "select woeid from geo.places(1) where text=\" "+city+", " + zone + ", " + country + "\"";
+            String selectLocation = "select woeid from geo.places(1) where text=\" "+locationInput.getCity()+
+                    ", " + locationInput.getZone() + ", " + locationInput.getCountry() + "\"";
 
             JsonNode locationWoeid = mapper.readTree(yahooWeatherClient.getConditions(selectLocation, "json"));
             int woeid = locationWoeid.get("query").get("results").get("place").get("woeid").asInt();
@@ -74,7 +82,7 @@ public class ClientHandler {
                 forecasts.add(forecast);
             }
 
-            l = LocationBuilder.builder()
+            locationResult = LocationBuilder.builder()
                 .withWoeid(woeid)
                 .withCountry(locationJson.get("country").asText().trim())
                 .withZone(locationJson.get("region").asText().trim())
@@ -107,22 +115,20 @@ public class ClientHandler {
                 .withLastUpdate(LocalDateTime.parse(resultJson.get("item").get("pubDate").asText(), DateTimeFormatter.ofPattern("EEE, dd MMM yyyy hh:mm a z", Locale.US)))
                 .build();
 
-            Location tempL = locationClimateCRUD.selectByID(l.getWoeid());
-            if (tempL == null){
-                locationClimateCRUD.insert(l);
+
+            if (locationClimateCRUD.selectByID(locationResult.getWoeid()) == null){
+                locationClimateCRUD.insert(locationResult);
             }
 
-            Today tempT = todayClimateCRUD.selectByObject(l.getToday());
-            if (tempT == null){
-                todayClimateCRUD.insert(l.getToday());
+            if (todayClimateCRUD.selectByObject(locationResult.getToday()) == null){
+                todayClimateCRUD.insert(locationResult.getToday());
             }else
             {
-                todayClimateCRUD.update(l.getToday());
+                todayClimateCRUD.update(locationResult.getToday());
             }
 
-            for (Forecast f: l.getForecasts()) {
-                Forecast tempF = forecastClimateCRUD.selectByObject(f);
-                if (tempF == null){
+            for (Forecast f: locationResult.getForecasts()) {
+                if (forecastClimateCRUD.selectByObject(f) == null){
                     forecastClimateCRUD.insert(f);
                 }else
                 {
@@ -130,7 +136,7 @@ public class ClientHandler {
                 }
             }
 
-        return l;
+        return locationResult;
         } catch (Exception e) {
             System.out.println("Error retrieving from client");
             e.printStackTrace();
@@ -138,19 +144,19 @@ public class ClientHandler {
         }
 
         if (noConnection){
-            l = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withCity(city).withZone(zone).build());
-            if (l==null) return null;
-            Today today = todayClimateCRUD.selectByObject(TodayBuilder.builder().withDate(LocalDate.now()).withWOEID(l.getWoeid()).build());
+            locationResult = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withCity(city).withZone(zone).build());
+            if (locationResult==null) return null;
+            Today today = todayClimateCRUD.selectByObject(TodayBuilder.builder().withDate(LocalDate.now()).withWOEID(locationResult.getWoeid()).build());
             if (today==null) return null;
-            l.setToday(today);
+            locationResult.setToday(today);
             List<Forecast> forecasts = new LinkedList<>();
             for (int i = 0; i < amountForecast; i++){
-                Forecast forecast = forecastClimateCRUD.selectByObject(ForecastBuilder.builder().withDate(LocalDate.now().plusDays(i)).withWOEID(l.getWoeid()).build());
+                Forecast forecast = forecastClimateCRUD.selectByObject(ForecastBuilder.builder().withDate(LocalDate.now().plusDays(i)).withWOEID(locationResult.getWoeid()).build());
                 forecasts.add(forecast);
             }
-            l.setForecasts(forecasts);
+            locationResult.setForecasts(forecasts);
         }
-        return l;
+        return locationResult;
     }
 
 

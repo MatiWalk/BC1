@@ -52,3 +52,17 @@
 0:0:0:0:0:0:0:1 - - [26/May/2017:00:38:26 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela?forecast=5 HTTP/1.1" 400 - http-bio-8080-exec-9 17
 0:0:0:0:0:0:0:1 - - [26/May/2017:00:38:27 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela?forecast=5 HTTP/1.1" 400 - http-bio-8080-exec-10 13
 0:0:0:0:0:0:0:1 - - [26/May/2017:00:39:15 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela?forecast=5 HTTP/1.1" 400 - http-bio-8080-exec-1 15387
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:44:25 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela?forecast=5 HTTP/1.1" 200 1176 http-bio-8080-exec-1 549
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:44:29 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela?forecast=5 HTTP/1.1" 200 1176 http-bio-8080-exec-3 27
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:44:34 -0300] "GET /WeatherTool/weather/argentina/er/colon?forecast=5 HTTP/1.1" 200 1154 http-bio-8080-exec-4 30
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:44:48 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-5 29
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:44:58 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-7 26
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:07 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-9 24
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:08 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-10 24
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:09 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-10 23
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:10 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-10 169
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:11 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-10 25
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:12 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-5 24
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:16 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1179 http-bio-8080-exec-7 25
+0:0:0:0:0:0:0:1 - - [26/May/2017:00:45:23 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1126 http-bio-8080-exec-7 1579
+0:0:0:0:0:0:0:1 - - [26/May/2017:09:35:38 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger?forecast=5 HTTP/1.1" 200 1168 http-bio-8080-exec-1 2334

@@ -42,9 +42,9 @@ public class WeatherController {
     private ClientHandler clientHandler;
 
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
-    public ResponseEntity<Location> postLocation(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city, @RequestParam("forecast") int amountForecast){
+    public ResponseEntity<Location> postLocation(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city){
 
-        Location l = clientHandler.getData(country, zone, city, amountForecast);
+        Location l = clientHandler.getData(country, zone, city);
         if (l == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(l, HttpStatus.OK);
     }
