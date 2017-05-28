@@ -1,9 +1,7 @@
 package com.globant.bootcamp.controller;
 
-import com.globant.bootcamp.builder.ForecastBuilder;
 import com.globant.bootcamp.builder.LocationBuilder;
-import com.globant.bootcamp.builder.TodayBuilder;
-import com.globant.bootcamp.client.ClientHandler;
+import com.globant.bootcamp.client.ClientProxy;
 import com.globant.bootcamp.model.Forecast;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.model.Today;
@@ -13,10 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Mati on 25/05/2017.
@@ -39,12 +33,12 @@ public class WeatherController {
     private ClimateCRUD<Forecast> forecastClimateCRUD;
 
     @Autowired
-    private ClientHandler clientHandler;
+    private ClientProxy clientProxy;
 
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
     public ResponseEntity<Location> postLocation(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city){
 
-        Location l = clientHandler.getData(country, zone, city);
+        Location l = clientProxy.getData(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build());
         if (l == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(l, HttpStatus.OK);
     }

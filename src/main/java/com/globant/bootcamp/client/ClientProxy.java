@@ -22,7 +22,7 @@ import java.util.Locale;
  * Created by Mati on 24/05/2017.
  */
 @Component
-public class ClientHandler {
+public class ClientProxy {
 
 
     @Resource
@@ -36,15 +36,12 @@ public class ClientHandler {
 
     private ObjectMapper mapper;
 
-    int amountForecast = 10;
+    private int amountForecast = 10;
 
-    public Location getData(String country, String zone, String city){
+    public Location getData(Location locationInput){
         mapper = new ObjectMapper();
-        Location locationInput = LocationBuilder.builder()
-                .withCountry(country)
-                .withZone(zone)
-                .withCity(city)
-                .build();
+
+        locationInput = FormatHelper.standarizeLocationStrings(locationInput);
         Location locationResult = null;
         boolean noConnection = false;
         try {
@@ -139,22 +136,22 @@ public class ClientHandler {
         return locationResult;
         } catch (Exception e) {
             System.out.println("Error retrieving from client");
-            e.printStackTrace();
             noConnection = true;
         }
 
         if (noConnection){
-            locationResult = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withCity(city).withZone(zone).build());
+            locationResult = locationClimateCRUD.selectByObject(locationInput);
             if (locationResult==null) return null;
             Today today = todayClimateCRUD.selectByObject(TodayBuilder.builder().withDate(LocalDate.now()).withWOEID(locationResult.getWoeid()).build());
-            if (today==null) return null;
+
             locationResult.setToday(today);
             List<Forecast> forecasts = new LinkedList<>();
             for (int i = 0; i < amountForecast; i++){
                 Forecast forecast = forecastClimateCRUD.selectByObject(ForecastBuilder.builder().withDate(LocalDate.now().plusDays(i)).withWOEID(locationResult.getWoeid()).build());
-                forecasts.add(forecast);
+                if (forecast != null)forecasts.add(forecast);
             }
             locationResult.setForecasts(forecasts);
+            if (today == null && forecasts.size() == 0) return null;
         }
         return locationResult;
     }

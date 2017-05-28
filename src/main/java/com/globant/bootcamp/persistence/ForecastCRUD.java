@@ -15,8 +15,6 @@ import java.util.List;
 @Component
 public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast> {
 
-    private List<Forecast> forecasts;
-    private Forecast forecast;
     private ClimateR<WeatherCode> weatherCodeClimateR;
 
     public ForecastCRUD(WeatherCodeR weatherCodeClimateR, Connection con) {
@@ -66,7 +64,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
 
     @Override
     public Forecast selectByID(int id) {
-
+        Forecast forecast = null;
         String select = "select * from forecast where idforecast = ?";
         try {
             ResultSet rs = executeSelectByID(select, id);
@@ -90,12 +88,12 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
 
     @Override
     public List<Forecast> selectAll() {
-        forecasts = new LinkedList<>();
+        List<Forecast> forecasts = new LinkedList<>();
         String select = "select * from forecast";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                forecast = ForecastBuilder.builder()
+                Forecast forecast = ForecastBuilder.builder()
                         .withID(rs.getInt(1))
                         .withWOEID(rs.getInt(2))
                         .withDate(rs.getDate(3).toLocalDate())
@@ -114,12 +112,13 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
     }
 
     @Override
-    public Forecast selectByObject(Forecast forecast) {
+    public Forecast selectByObject(Forecast forecastInput) {
         String select = "select * from forecast where woeid = ? and date = ?";
+        Forecast forecast = null;
         try {
-            ResultSet rs = executeSelectByID(select, forecast.getWoeid(), forecast.getDate());
+            ResultSet rs = executeSelectByID(select, forecastInput.getWoeid(), forecastInput.getDate());
             while (rs.next()) {
-                this.forecast = ForecastBuilder.builder()
+                forecast = ForecastBuilder.builder()
                         .withID(rs.getInt(1))
                         .withWOEID(rs.getInt(2))
                         .withDate(rs.getDate(3).toLocalDate())
@@ -133,7 +132,7 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
             System.out.println("Error selecting by Forecast:");
             e.printStackTrace();
         }
-        return this.forecast;
+        return forecast;
     }
 
 

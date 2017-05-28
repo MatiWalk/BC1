@@ -15,10 +15,6 @@ import java.util.List;
 @Component
 public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosphere> {
 
-    private List<Atmosphere> atmospheres;
-    private Atmosphere atmosphere;
-    private Connection con;
-
     public AtmosphereCRUD(Connection con) {
         super(con);
     }
@@ -63,6 +59,7 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
     @Override
     public Atmosphere selectByID(int id) {
         String select = "select * from atmosphere where idatmosphere = ?";
+        Atmosphere atmosphere = null;
         try {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
@@ -85,12 +82,13 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
 
     @Override
     public List<Atmosphere> selectAll() {
-        atmospheres = new LinkedList<>();
+        List<Atmosphere> atmospheres = new LinkedList<>();
+
         String select = "select * from atmosphere";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                atmosphere = AtmosphereBuilder.builder()
+                Atmosphere atmosphere = AtmosphereBuilder.builder()
                         .withID(rs.getInt(1))
                         .withHumidity(rs.getInt(2))
                         .withPressure(rs.getFloat(3))
@@ -107,14 +105,14 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
         return atmospheres;
     }
 
-    public Atmosphere selectByObject(Atmosphere atmosphere) {
+    public Atmosphere selectByObject(Atmosphere atmosphereInput) {
         String select = "select * from atmosphere where humidity = ? and pressure = ? and rising = ? and visibility = ?";
-
+        Atmosphere atmosphere = null;
         try {
-            ResultSet rs = executeSelectBySomething(select, atmosphere.getHumidity(), atmosphere.getPressure(),
-                    atmosphere.getRising(), atmosphere.getVisibility());
+            ResultSet rs = executeSelectBySomething(select, atmosphereInput.getHumidity(), atmosphereInput.getPressure(),
+                    atmosphereInput.getRising(), atmosphereInput.getVisibility());
             while (rs.next()) {
-                this.atmosphere = AtmosphereBuilder.builder()
+                atmosphere = AtmosphereBuilder.builder()
                         .withID(rs.getInt(1))
                         .withHumidity(rs.getInt(2))
                         .withPressure(rs.getFloat(3))
@@ -127,6 +125,6 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
             System.out.println("Error selecting by Atmosphere:");
             e.printStackTrace();
         }
-        return this.atmosphere;
+        return atmosphere;
     }
 }

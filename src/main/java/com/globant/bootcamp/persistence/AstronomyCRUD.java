@@ -15,9 +15,6 @@ import java.util.List;
 @Component
 public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCRUD<Astronomy> {
 
-    private List<Astronomy> astronomies;
-    private Astronomy astronomy;
-
     public AstronomyCRUD(Connection con) {
         super(con);
     }
@@ -64,6 +61,7 @@ public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCR
     @Override
     public Astronomy selectByID(int id) {
         String select = "select * from astronomy where idastronomy = ?";
+        Astronomy astronomy = null;
         try {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
@@ -84,13 +82,12 @@ public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCR
 
     @Override
     public List<Astronomy> selectAll() {
-
-        astronomies = new LinkedList<>();
+        List<Astronomy> astronomies = new LinkedList<>();
         String select = "select * from astronomy";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                astronomy = AstronomyBuilder.builder()
+                Astronomy astronomy = AstronomyBuilder.builder()
                         .withID(rs.getInt(1))
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
@@ -106,13 +103,13 @@ public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCR
         return astronomies;
     }
 
-    public Astronomy selectByObject(Astronomy astronomy) {
+    public Astronomy selectByObject(Astronomy astronomyInput) {
         String select = "select * from astronomy where sunrise = ? and sunset = ?";
-
+        Astronomy astronomy = null;
         try {
-            ResultSet rs = executeSelectBySomething(select, astronomy.getSunRise(), astronomy.getSunSet());
+            ResultSet rs = executeSelectBySomething(select, astronomyInput.getSunRise(), astronomyInput.getSunSet());
             while (rs.next()) {
-                this.astronomy = AstronomyBuilder.builder()
+                astronomy = AstronomyBuilder.builder()
                         .withID(rs.getInt(1))
                         .withSunrise(rs.getTime(2).toLocalTime())
                         .withSunset(rs.getTime(3).toLocalTime())
@@ -123,7 +120,7 @@ public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCR
             System.out.println("Error selecting by Astronomy:");
             e.printStackTrace();
         }
-        return this.astronomy;
+        return astronomy;
     }
 
 }

@@ -15,8 +15,6 @@ import java.util.List;
 @Component
 public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
 
-    private List<Today> todays;
-    private Today today;
     private ClimateR<WeatherCode> weatherCodeClimateR;
     private ClimateCRUD<Astronomy> astronomyClimateCRUD;
     private ClimateCRUD<Atmosphere> atmosphereClimateCRUD;
@@ -50,10 +48,6 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     @Override
     public void update(Today today) {
 
-        /*int[] fk = getForeignKeys(today.getId());
-        astronomyClimateCRUD.update(today.getAstronomy(), fk[0]);
-        atmosphereClimateCRUD.update(today.getAtmosphere(), fk[1]);
-        windClimateCRUD.update(today.getWind(), fk[2]);*/
         astronomyClimateCRUD.update(today.getAstronomy());
         atmosphereClimateCRUD.update(today.getAtmosphere());
         windClimateCRUD.update(today.getWind());
@@ -84,6 +78,7 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     @Override
     public Today selectByID(int id) {
         String select = "select * from today t where idtoday = ?";
+        Today today = null;
         try {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
@@ -108,12 +103,12 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
 
     @Override
     public List<Today> selectAll() {
-        todays = new LinkedList<>();
+        List<Today> todays = new LinkedList<>();
         String select = "select * from today";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                today = TodayBuilder.builder()
+                Today today = TodayBuilder.builder()
                         .withID(rs.getInt(1))
                         .withWOEID(rs.getInt(2))
                         .withDate(rs.getDate(3).toLocalDate())
@@ -134,12 +129,13 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     }
 
     @Override
-    public Today selectByObject(Today today) {
+    public Today selectByObject(Today todayInput) {
         String select = "select * from today t where woeid = ? and date = ?";
+        Today today = null;
         try {
-            ResultSet rs = executeSelectByID(select, today.getWoeid(), today.getDate());
+            ResultSet rs = executeSelectByID(select, todayInput.getWoeid(), todayInput.getDate());
             while (rs.next()) {
-                this.today = TodayBuilder.builder()
+                today = TodayBuilder.builder()
                         .withID(rs.getInt(1))
                         .withWOEID(rs.getInt(2))
                         .withDate(rs.getDate(3).toLocalDate())
@@ -155,29 +151,6 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
             System.out.println("Error selecting by Today:");
             e.printStackTrace();
         }
-        return this.today;
+        return today;
     }
-
-
-
-    /*
-    private int[] getForeignKeys(int id){
-        int[] fk = new int[3];
-        String select = "select idastronomy, idatmosphere, idwind from today where idtoday = ?";
-        try {
-            PreparedStatement ps = con.prepareStatement(select);
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                fk[0] = rs.getInt(1);
-                fk[1] = rs.getInt(2);
-                fk[2] = rs.getInt(3);
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            System.out.println("Error getting foreign keys");
-            ex.printStackTrace();
-        }
-        return fk;
-    }*/
 }

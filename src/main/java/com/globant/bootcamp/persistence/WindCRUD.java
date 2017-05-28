@@ -16,10 +16,6 @@ import java.util.List;
 public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
 
 
-    private Connection con;
-    Wind wind;
-    List<Wind> winds;
-
     public WindCRUD(Connection con) {
         super(con);
     }
@@ -63,6 +59,7 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
     @Override
     public Wind selectByID(int id) {
         String select = "select * from wind where idwind = ?";
+        Wind wind = null;
         try {
             ResultSet rs = executeSelectByID(select, id);
             while (rs.next()) {
@@ -84,12 +81,12 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
     @Override
     public List<Wind> selectAll() {
 
-        winds = new LinkedList<>();
+        List<Wind> winds = new LinkedList<>();
         String select = "select * from wind";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                wind = WindBuilder.builder()
+                Wind wind = WindBuilder.builder()
                         .withID(rs.getInt(1))
                         .withChill(rs.getInt(2))
                         .withDirection(rs.getInt(3))
@@ -105,14 +102,14 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
         return winds;
     }
 
-    public Wind selectByObject(Wind wind) {
+    public Wind selectByObject(Wind windInput) {
         String select = "select * from wind where chill = ? and direction = ? and speed = ?";
-
+        Wind wind = null;
         try {
-            ResultSet rs = executeSelectBySomething(select, wind.getChill(), wind.getDirection(),
-                    wind.getSpeed());
+            ResultSet rs = executeSelectBySomething(select, windInput.getChill(), windInput.getDirection(),
+                    windInput.getSpeed());
             while (rs.next()) {
-                this.wind = WindBuilder.builder()
+                wind = WindBuilder.builder()
                         .withID(rs.getInt(1))
                         .withChill(rs.getInt(2))
                         .withDirection(rs.getInt(3))
@@ -124,6 +121,6 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
             System.out.println("Error selecting by Wind:");
             e.printStackTrace();
         }
-        return this.wind;
+        return wind;
     }
 }

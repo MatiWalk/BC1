@@ -1,7 +1,6 @@
 package com.globant.bootcamp.controller;
 
 import com.globant.bootcamp.builder.LocationBuilder;
-import com.globant.bootcamp.client.ClientHandler;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.persistence.ClimateCRUD;
 import org.springframework.beans.factory.annotation.Autowired;

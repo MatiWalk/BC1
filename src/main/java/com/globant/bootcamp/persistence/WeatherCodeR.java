@@ -17,14 +17,14 @@ import java.util.List;
  */
 @Component
 public class WeatherCodeR extends QueryExecuter implements ClimateR<WeatherCode> {
-    private List<WeatherCode> weatherCodes;
+
 
     public WeatherCodeR(Connection con) {
         super(con);
     }
 
     public WeatherCode selectByID(int id) {
-        WeatherCode wc = new WeatherCode();
+        WeatherCode wc = null;
         String select = "select * from weathercode where idweathercode = ?";
         try {
             ResultSet rs = executeSelectByID(select, id);
@@ -43,7 +43,7 @@ public class WeatherCodeR extends QueryExecuter implements ClimateR<WeatherCode>
     }
 
     public List<WeatherCode> selectAll() {
-        weatherCodes = new LinkedList<>();
+        List<WeatherCode> weatherCodes = new LinkedList<>();
         String select = "select * from weathercode";
 
         try {

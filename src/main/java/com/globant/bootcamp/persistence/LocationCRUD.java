@@ -20,8 +20,6 @@ import java.util.List;
 @Component
 public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location> {
 
-    private List<Location> locations;
-    private Location location;
     private ClimateCRUD<Today> todayClimateCRUD;
     private ClimateCRUD<Forecast> forecastClimateCRUD;
 
@@ -72,7 +70,7 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     @Override
     public Location selectByID(int id) {
-
+        Location location = null;
         String select = "select * from location where woeid = ?";
         try {
             ResultSet rs = executeSelectByID(select, id);
@@ -95,13 +93,12 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
     @Override
     public List<Location> selectAll() {
-
-        locations = new LinkedList<>();
+        List<Location> locations = new LinkedList<>();
         String select = "select * from location";
         try {
             ResultSet rs = executeSelectAll(select);
             while (rs.next()) {
-                location = LocationBuilder.builder()
+                Location location = LocationBuilder.builder()
                         .withWoeid(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
@@ -119,12 +116,13 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
     }
 
     @Override
-    public Location selectByObject(Location location) {
-        String select = "select * from location where lower(country) = ? and lower(zone) = ? and lower(city) = ?";
+    public Location selectByObject(Location locationInput) {
+        String select = "select * from location where country = ? and zone = ? and city = ?";
+        Location location = null;
         try {
-            ResultSet rs = executeSelectByID(select, location.getCountry(), location.getZone(), location.getCity());
+            ResultSet rs = executeSelectByID(select, locationInput.getCountry(), locationInput.getZone(), locationInput.getCity());
             while (rs.next()) {
-                this.location = LocationBuilder.builder()
+                location = LocationBuilder.builder()
                         .withWoeid(rs.getInt(1))
                         .withCountry(rs.getString(2))
                         .withZone(rs.getString(3))
@@ -137,6 +135,6 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
             System.out.println("Error selecting by Location:");
             e.printStackTrace();
         }
-        return this.location;
+        return location;
     }
 }
