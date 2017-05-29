@@ -16,7 +16,11 @@
 
     <jaxrs-client:client id="yahooWeatherClient"
                          serviceClass="com.globant.bootcamp.client.YahooWeatherClient"
-                         address="https://query.yahooapis.com"/>
+                         address="https://query.yahooapis.com">
+        <jaxrs-client:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+        </jaxrs-client:providers>
+    </jaxrs-client:client>
 
 
 

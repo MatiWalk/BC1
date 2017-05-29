@@ -1,22 +1,15 @@
 package com.globant.bootcamp.client;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.globant.bootcamp.builder.*;
+import com.globant.bootcamp.jsonDTO.JsonResponse;
 import com.globant.bootcamp.model.*;
 import com.globant.bootcamp.persistence.ClimateCRUD;
+import com.globant.bootcamp.transformers.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Mati on 24/05/2017.
@@ -44,6 +37,55 @@ public class ClientProxy {
         locationInput = FormatHelper.standarizeLocationStrings(locationInput);
         Location locationResult = null;
         boolean noConnection = false;
+
+        //******testing json and transformer********//
+
+        try {
+            //gets woeid from yahoo
+            String selectLocation = "select woeid from geo.places(1) where text=\" "+locationInput.getCity()+
+                    ", " + locationInput.getZone() + ", " + locationInput.getCountry() + "\"";
+
+            int woeid = Transformer.transformJsonResponseFirstQueryToInt(yahooWeatherClient.getConditions(selectLocation, "json"));
+
+            //gets all the other data
+            String selectWeather = "select * from weather.forecast where woeid = "+ woeid;
+            JsonResponse jsonResponse = yahooWeatherClient.getConditions(selectWeather, "json");
+            jsonResponse.getQuery().getResults().getChannel().setAstronomy(FormatHelper.fixJsonAstronomyFormatError(jsonResponse.getQuery().getResults().getChannel().getAstronomy()));
+            locationResult = Transformer.transformJsonResponseToLocation(jsonResponse);
+            //////IMPORTANT/////
+            FormatHelper.addWoeidToObjects(locationResult, woeid);
+
+            if (locationClimateCRUD.selectByID(locationResult.getWoeid()) == null){
+                locationClimateCRUD.insert(locationResult);
+            }
+
+            if (todayClimateCRUD.selectByObject(locationResult.getToday()) == null){
+                todayClimateCRUD.insert(locationResult.getToday());
+            }else
+            {
+                todayClimateCRUD.update(locationResult.getToday());
+            }
+
+            for (Forecast f: locationResult.getForecasts()) {
+                if (forecastClimateCRUD.selectByObject(f) == null){
+                    forecastClimateCRUD.insert(f);
+                }else
+                {
+                    forecastClimateCRUD.update(f);
+                }
+            }
+
+        }catch (Exception e){
+            System.out.println("Error retrieving from client");
+            noConnection = true;
+        }
+
+
+        ////////////----------/////////
+
+
+
+        /*
         try {
             //gets woeid from yahoo
             String selectLocation = "select woeid from geo.places(1) where text=\" "+locationInput.getCity()+
@@ -54,8 +96,8 @@ public class ClientProxy {
 
             //gets all the other data
             String selectWeather = "select * from weather.forecast where woeid = "+ woeid;
-            JsonNode jsonResponse = mapper.readTree(yahooWeatherClient.getConditions(selectWeather, "json"));
-            JsonNode resultJson = jsonResponse.get("query").get("results").get("channel");
+            JsonNode JsonResponse = mapper.readTree(yahooWeatherClient.getConditions(selectWeather, "json"));
+            JsonNode resultJson = JsonResponse.get("query").get("results").get("channel");
             JsonNode locationJson = resultJson.get("location");
             JsonNode astronomyJson = resultJson.get("astronomy");
             JsonNode atmosphereJson = resultJson.get("atmosphere");
@@ -152,7 +194,7 @@ public class ClientProxy {
             }
             locationResult.setForecasts(forecasts);
             if (today == null && forecasts.size() == 0) return null;
-        }
+        }*/
         return locationResult;
     }
 
