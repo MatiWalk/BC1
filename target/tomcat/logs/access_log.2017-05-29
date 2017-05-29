@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [29/May/2017:00:14:09 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela HTTP/1.1" 200 1828 http-bio-8080-exec-1 3391
+0:0:0:0:0:0:0:1 - - [29/May/2017:12:35:16 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela HTTP/1.1" 200 1823 http-bio-8080-exec-1 3455
+0:0:0:0:0:0:0:1 - - [29/May/2017:20:09:11 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela HTTP/1.1" 200 1822 http-bio-8080-exec-1 3319
+0:0:0:0:0:0:0:1 - - [29/May/2017:20:10:41 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger HTTP/1.1" 200 1855 http-bio-8080-exec-4 2789
+0:0:0:0:0:0:0:1 - - [29/May/2017:20:10:48 -0300] "GET /WeatherTool/weather/argentina/cba/noetinger HTTP/1.1" 200 1912 http-bio-8080-exec-7 41
+0:0:0:0:0:0:0:1 - - [29/May/2017:20:10:53 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela HTTP/1.1" 200 1873 http-bio-8080-exec-9 34
+0:0:0:0:0:0:0:1 - - [29/May/2017:20:12:49 -0300] "GET /WeatherTool/weather/argentina/sf/rafaela HTTP/1.1" 200 1873 http-bio-8080-exec-1 528

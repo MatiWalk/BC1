@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CustomBeanRegistry">
+    <option name="map">
+      <map>
+        <entry key="&lt;jaxrs-client:client xmlns:jaxrs-client=&quot;http://cxf.apache.org/jaxrs-client&quot; xmlns=&quot;http://www.springframework.org/schema/beans&quot; id=&quot;yahooWeatherClient&quot; serviceClass=&quot;com.globant.bootcamp.client.YahooWeatherClient&quot; address=&quot;https://query.yahooapis.com&quot;&gt;&#10;  &lt;jaxrs-client:providers&gt;&#10;    &lt;bean class=&quot;org.codehaus.jackson.jaxrs.JacksonJsonProvider&quot; lazy-init=&quot;default&quot; autowire=&quot;default&quot; autowire-candidate=&quot;default&quot; /&gt;&#10;  &lt;/jaxrs-client:providers&gt;&#10;&lt;/jaxrs-client:client&gt;">
+          <value>
+            <list>
+              <CustomBeanInfo>
+                <option name="beanName" value="yahooWeatherClient.proxyFactory" />
+                <option name="beanClassName" value="org.apache.cxf.jaxrs.client.spring.JAXRSClientFactoryBeanDefinitionParser$JAXRSSpringClientFactoryBean" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="yahooWeatherClient" />
+                <option name="beanClassName" value="java.lang.Object" />
+                <option name="factoryBeanName" value="yahooWeatherClient.proxyFactory" />
+                <option name="factoryMethodName" value="create" />
+                <option name="idAttribute" value="id" />
+              </CustomBeanInfo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

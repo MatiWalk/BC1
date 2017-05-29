@@ -22,8 +22,6 @@
     </bean>
 
     <bean class="com.globant.bootcamp.persistence.LocationCRUD" id="locationCRUD" parent="queryExecuter">
-        <constructor-arg name="forecastClimateCRUD" ref="forecastCRUD"/>
-        <constructor-arg name="todayClimateCRUD" ref="todayCRUD"/>
     </bean>
 
     <bean class="com.globant.bootcamp.persistence.AstronomyCRUD" id="astronomyCRUD" parent="queryExecuter">

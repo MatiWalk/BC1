@@ -10,9 +10,11 @@ com\globant\bootcamp\controller\LocationController.class
 com\globant\bootcamp\client\FormatHelper.class
 com\globant\bootcamp\client\YahooWeatherClient.class
 com\globant\bootcamp\jsonDTO\JsonPlace.class
+com\globant\bootcamp\client\AdapterClientToParser.class
 com\globant\bootcamp\jsonDTO\JsonAtmosphere.class
 com\globant\bootcamp\jsonDTO\JsonLocation.class
 com\globant\bootcamp\jsonDTO\JsonAstronomy.class
+com\globant\bootcamp\client\YahooWeatherParser.class
 com\globant\bootcamp\jsonDTO\JsonForecast.class
 com\globant\bootcamp\jsonDTO\JsonResponse.class
 com\globant\bootcamp\jsonDTO\JsonWind.class

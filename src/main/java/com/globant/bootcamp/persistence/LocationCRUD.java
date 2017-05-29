@@ -20,13 +20,9 @@ import java.util.List;
 @Component
 public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location> {
 
-    private ClimateCRUD<Today> todayClimateCRUD;
-    private ClimateCRUD<Forecast> forecastClimateCRUD;
 
-    public LocationCRUD(Connection con, ClimateCRUD<Today> todayClimateCRUD, ClimateCRUD<Forecast> forecastClimateCRUD) {
+    public LocationCRUD(Connection con) {
         super(con);
-        this.todayClimateCRUD = todayClimateCRUD;
-        this.forecastClimateCRUD = forecastClimateCRUD;
     }
 
     @Override

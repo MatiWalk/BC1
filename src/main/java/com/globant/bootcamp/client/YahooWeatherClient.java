@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import java.net.NoRouteToHostException;
 
 /**
  * Created by Mati on 24/05/2017.
@@ -16,5 +17,5 @@ import javax.ws.rs.QueryParam;
 public interface YahooWeatherClient {
     @GET
     @Path("/yql")
-    JsonResponse getConditions(@QueryParam("q")String query, @QueryParam("format")String format);
+    JsonResponse getData(@QueryParam("q")String query, @QueryParam("format")String format) throws NoRouteToHostException;
 }

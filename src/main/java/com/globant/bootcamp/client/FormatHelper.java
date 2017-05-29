@@ -11,7 +11,7 @@ public class FormatHelper {
     
     public static Location standarizeLocationStrings(Location location){
         location.setCountry(capitalizeFirstLetter(location.getCountry()).replaceAll("-", " ").trim());
-        location.setZone(location.getZone().toUpperCase().trim());
+        location.setZone(location.getZone().toUpperCase().replaceAll("-", " ").trim());
         location.setCity(capitalizeFirstLetter(location.getCity()).replaceAll("-", " ").trim());
         return location;
     }
@@ -20,6 +20,7 @@ public class FormatHelper {
         jsonAstronomy.setSunrise(jsonAstronomy.getSunrise().toUpperCase());
         jsonAstronomy.setSunset(jsonAstronomy.getSunset().toUpperCase());
         if(jsonAstronomy.getSunrise().length() == 6) jsonAstronomy.setSunrise(jsonAstronomy.getSunrise().substring(0, 2) + "0" + jsonAstronomy.getSunrise().substring(2));
+        if(jsonAstronomy.getSunset().length() == 6) jsonAstronomy.setSunset(jsonAstronomy.getSunset().substring(0, 2) + "0" + jsonAstronomy.getSunset().substring(2));
         return jsonAstronomy;
     }
 
