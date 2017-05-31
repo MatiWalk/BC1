@@ -1,9 +1,2 @@
-model\LocationTest.class
-model\WeatherCodeTest.class
-model\DayTest.class
-model\AstronomyTest.class
-model\AtmosphereTest.class
-model\WindTest.class
-controller\DBManagerTest.class
-model\UnitsTest.class
-model\ResultTest.class
+com\globant\bootcamp\connection\DBConnectionTest.class
+com\globant\bootcamp\transformer\TransformerTest.class

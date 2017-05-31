@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="Bootcamp1:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="Bootcamp-WeatherApi-0.8.0-SNAPSHOT.war">
+    <root id="archive" name="Bootcamp-WeatherApi-1.0.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="Bootcamp1:war exploded" />
     </root>
   </artifact>

@@ -5,6 +5,7 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persiste
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\unit\Distance.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\Forecast.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\AtmosphereCRUD.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\client\AdapterClientToParser.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\unit\Temperature.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\LocationCRUD.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\ForecastBuilder.java
@@ -46,5 +47,6 @@ C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\model\un
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\WindBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\LocationBuilder.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\jsonDTO\JsonResponse.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\client\YahooWeatherParser.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\persistence\WindCRUD.java
 C:\Users\Mati\IdeaProjects\Bootcamp1\src\main\java\com\globant\bootcamp\builder\TodayBuilder.java

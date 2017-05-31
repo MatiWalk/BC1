@@ -1,11 +1,13 @@
 package com.globant.bootcamp.transformer;
 
+import com.globant.bootcamp.client.FormatHelper;
 import com.globant.bootcamp.jsonDTO.*;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.transformers.Transformer;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,22 +17,22 @@ import static org.junit.Assert.assertEquals;
  * Created by Mati on 29/05/2017.
  */
 public class TransformerTest {
-    JsonResponse jsonResponse;
-    JsonWind jsonWind;
-    JsonAtmosphere jsonAtmosphere;
-    JsonAstronomy jsonAstronomy;
-    JsonLocation jsonLocation;
-    JsonItem jsonItem;
-    JsonCondition jsonCondition;
-    JsonForecast jsonForecast;
-    JsonChannel jsonChannel;
-    JsonPlace jsonPlace;
-    JsonResults jsonResults;
-    JsonQuery jsonQuery;
+    static JsonResponse jsonResponse;
+    static JsonWind jsonWind;
+    static JsonAtmosphere jsonAtmosphere;
+    static JsonAstronomy jsonAstronomy;
+    static JsonLocation jsonLocation;
+    static JsonItem jsonItem;
+    static JsonCondition jsonCondition;
+    static JsonForecast jsonForecast;
+    static JsonChannel jsonChannel;
+    static JsonPlace jsonPlace;
+    static JsonResults jsonResults;
+    static JsonQuery jsonQuery;
 
 
     @BeforeClass
-    public void Initialize(){
+    public static void Initialize(){
         jsonWind = new JsonWind();
         jsonWind.setChill(10);
         jsonWind.setDirection(10);
@@ -41,7 +43,7 @@ public class TransformerTest {
         jsonAtmosphere.setRising(0);
         jsonAtmosphere.setVisibility(10);
         jsonAstronomy = new JsonAstronomy();
-        jsonAstronomy.setSunset("7:6 pm");
+        jsonAstronomy.setSunset("7:06 PM");
         jsonAstronomy.setSunrise("8:04 AM");
         jsonLocation = new JsonLocation();
         jsonLocation.setCity("asd");
@@ -85,10 +87,10 @@ public class TransformerTest {
     @Test
     public void testTransformJsonResponseToLocation(){
         Location l = Transformer.transformJsonResponseToLocation(jsonResponse);
-        assertEquals(jsonLocation, l.getCountry());
-        assertEquals(jsonLocation, l.getZone());
-        assertEquals(jsonLocation, l.getCity());
-        assertEquals(jsonLocation, l.getLastUpdate());
+        assertEquals(jsonLocation.getCountry(), l.getCountry());
+        assertEquals(jsonLocation.getRegion(), l.getZone());
+        assertEquals(jsonLocation.getCity(), l.getCity());
+        assertEquals(LocalDateTime.of(2017, 05, 28, 13, 46), l.getLastUpdate());
 
 
 
