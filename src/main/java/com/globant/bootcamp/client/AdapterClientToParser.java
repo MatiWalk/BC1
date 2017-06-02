@@ -32,12 +32,16 @@ public class AdapterClientToParser implements YahooWeatherParser{
 
     private int amountForecast = 10;
 
+    public AdapterClientToParser(YahooWeatherClient clientProxy) {
+        this.clientProxy = clientProxy;
+    }
+
     @Override
-    public Location getLocation(Location locationInput) {
+    public Location getData(Location locationInput) {
 
         locationInput = FormatHelper.standarizeLocationStrings(locationInput);
         Location locationResult = null;
-        boolean noConnection = false;
+        boolean isConnected = false;
 
 
         try {
@@ -55,6 +59,8 @@ public class AdapterClientToParser implements YahooWeatherParser{
 
             if (locationClimateCRUD.selectByID(locationResult.getWoeid()) == null){
                 locationClimateCRUD.insert(locationResult);
+            }else{
+                locationClimateCRUD.update(locationResult);
             }
 
             if (todayClimateCRUD.selectByObject(locationResult.getToday()) == null){
@@ -73,13 +79,11 @@ public class AdapterClientToParser implements YahooWeatherParser{
                 }
             }
 
-
+            isConnected = true;
         }catch (Exception e){
-            System.out.println("Error retrieving from client");
-            noConnection = true;
         }
 
-        if (noConnection){
+        if (!isConnected){
             locationResult = locationClimateCRUD.selectByObject(locationInput);
             if (locationResult==null) return null;
             Today today = todayClimateCRUD.selectByObject(TodayBuilder.builder().withDate(LocalDate.now()).withWOEID(locationResult.getWoeid()).build());
@@ -91,7 +95,6 @@ public class AdapterClientToParser implements YahooWeatherParser{
                 if (forecast != null)forecasts.add(forecast);
             }
             locationResult.setForecasts(forecasts);
-            if (today == null && forecasts.size() == 0) return null;
         }
         return locationResult;
 

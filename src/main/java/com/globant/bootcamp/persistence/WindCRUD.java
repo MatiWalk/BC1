@@ -35,14 +35,19 @@ public class WindCRUD extends QueryExecuter implements ClimateCRUD<Wind> {
     }
 
     @Override
-    public void update(Wind wind) {
+    public boolean update(Wind wind) {
+        boolean gotInserted = false;
         String update = " UPDATE wind set chill = ?, direction = ?, speed = ? where idwind = ?";
         try{
+
             executeUpdate(update, wind.getChill(), wind.getDirection(), wind.getSpeed(), wind.getId());
+            gotInserted = true;
         } catch (SQLException ex) {
             System.out.println("Error updating Wind:");
             ex.printStackTrace();
         }
+
+        return gotInserted;
     }
 
     @Override

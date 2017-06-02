@@ -36,14 +36,17 @@ public class AstronomyCRUD extends QueryExecuter<Astronomy> implements ClimateCR
     }
 
     @Override
-    public void update(Astronomy astronomy) {
+    public boolean update(Astronomy astronomy) {
+        boolean gotInserted = false;
         String update = " UPDATE astronomy set sunrise = ?, sunset = ? where idastronomy = ?";
         try{
         executeUpdate(update, astronomy.getSunRise(), astronomy.getSunSet(), astronomy.getId());
+        gotInserted = true;
         } catch (SQLException ex) {
         System.out.println("Error updating Astronomy:");
         ex.printStackTrace();
         }
+         return gotInserted;
     }
 
     @Override

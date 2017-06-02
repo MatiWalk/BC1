@@ -17,5 +17,5 @@ import java.net.NoRouteToHostException;
 public interface YahooWeatherClient {
     @GET
     @Path("/yql")
-    JsonResponse getData(@QueryParam("q")String query, @QueryParam("format")String format) throws NoRouteToHostException;
+    JsonResponse getData(@QueryParam("q")String query, @QueryParam("format")String format);
 }

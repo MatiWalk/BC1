@@ -46,8 +46,8 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
     }
 
     @Override
-    public void update(Today today) {
-
+    public boolean update(Today today) {
+        boolean gotInserted = false;
         astronomyClimateCRUD.update(today.getAstronomy());
         atmosphereClimateCRUD.update(today.getAtmosphere());
         windClimateCRUD.update(today.getWind());
@@ -58,10 +58,12 @@ public class TodayCRUD extends QueryExecuter implements ClimateCRUD<Today> {
         try{
             executeUpdate(update, today.getDate(), today.getCurrentWeather().getCode(),
                     today.getCurrentTemperature(), today.getId());
+            gotInserted = true;
         } catch (SQLException ex) {
             System.out.println("Error updating Today:");
             ex.printStackTrace();
         }
+        return gotInserted;
     }
 
     @Override

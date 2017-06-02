@@ -38,16 +38,19 @@ public class ForecastCRUD extends QueryExecuter implements ClimateCRUD<Forecast>
     }
 
     @Override
-    public void update(Forecast forecast) {
+    public boolean update(Forecast forecast) {
+        boolean gotInserted = false;
         String update = " UPDATE forecast set idforecastweather = ?, hightemperature = ?, " +
                 "lowtemperature = ? where date = ? and woeid = ?";
         try{
             executeUpdate(update, forecast.getForecastWeather().getCode(), forecast.getHighTemperature(), forecast.getLowTemperature(),
                     forecast.getDate(), forecast.getWoeid());
+            gotInserted = true;
         } catch (SQLException ex) {
             System.out.println("Error updating Forecast:");
             ex.printStackTrace();
         }
+        return gotInserted;
     }
 
     @Override

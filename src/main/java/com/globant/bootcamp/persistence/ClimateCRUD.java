@@ -5,6 +5,6 @@ package com.globant.bootcamp.persistence;
  */
 public interface ClimateCRUD<T> extends ClimateR<T> {
     int insert(T t);
-    void update(T t);
+    boolean update(T t);
     void deleteByID(int id);
 }

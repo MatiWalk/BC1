@@ -1,2 +1,4 @@
-C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\connection\DBConnectionTest.java
-C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\transformer\TransformerTest.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\client\ClientProxyTest.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\controller\LocationControllerTest.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\controller\WeatherControllerTest.java
+C:\Users\Mati\IdeaProjects\Bootcamp1\src\test\java\com\globant\bootcamp\client\AdapterClientToParserTest.java

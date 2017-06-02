@@ -34,15 +34,18 @@ public class AtmosphereCRUD extends QueryExecuter implements ClimateCRUD<Atmosph
     }
 
     @Override
-    public void update(Atmosphere atmosphere) {
+    public boolean update(Atmosphere atmosphere) {
+        boolean gotInserted = false;
         String update = " UPDATE atmosphere set humidity = ?, pressure = ?, rising = ?, visibility = ? where idatmosphere = ?";
         try{
             executeUpdate(update, atmosphere.getHumidity(), atmosphere.getPressure(), atmosphere.getRising(),
                     atmosphere.getVisibility(), atmosphere.getId());
+            gotInserted = true;
         } catch (SQLException ex) {
             System.out.println("Error updating Atmosphere:");
             ex.printStackTrace();
         }
+        return gotInserted;
     }
 
     @Override

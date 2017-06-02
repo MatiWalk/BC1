@@ -1,2 +1,4 @@
-com\globant\bootcamp\connection\DBConnectionTest.class
-com\globant\bootcamp\transformer\TransformerTest.class
+com\globant\bootcamp\client\AdapterClientToParserTest.class
+com\globant\bootcamp\client\ClientProxyTest.class
+com\globant\bootcamp\controller\LocationControllerTest.class
+com\globant\bootcamp\controller\WeatherControllerTest.class

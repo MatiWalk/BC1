@@ -26,9 +26,17 @@ public class ClientProxy implements YahooWeatherClient {
     @Resource
     private YahooWeatherClient yahooWeatherClient;
 
+    public ClientProxy() {
+    }
+
+    public ClientProxy(YahooWeatherClient yahooWeatherClient) {
+        this.yahooWeatherClient = yahooWeatherClient;
+    }
+
     @Override
-    public JsonResponse getData(String query, String format) throws NoRouteToHostException {
+    public JsonResponse getData(String query, String format) {
         JsonResponse jsonResponse = yahooWeatherClient.getData(query, format);
+        if (jsonResponse == null) return null;
         if (jsonResponse.getQuery().getResults().getChannel() != null) jsonResponse.getQuery().getResults().getChannel().setAstronomy(FormatHelper.fixJsonAstronomyFormatError(jsonResponse.getQuery().getResults().getChannel().getAstronomy()));
         return jsonResponse;
     }

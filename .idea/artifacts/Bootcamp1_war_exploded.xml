@@ -41,6 +41,8 @@
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: org.easymock:easymock:3.4" />
+          <element id="library" level="project" name="Maven: org.objenesis:objenesis:2.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

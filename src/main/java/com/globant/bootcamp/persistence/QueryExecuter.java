@@ -30,6 +30,7 @@ abstract class QueryExecuter<T> {
     protected void executeUpdate(String sql, Object... values) throws SQLException {
         PreparedStatement ps = setValues(sql, values);
         ps.executeUpdate();
+
     }
 
     protected void executeDelete(String sql, Object... values) throws SQLException {

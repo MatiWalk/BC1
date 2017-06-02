@@ -31,7 +31,8 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
 
         String insert = " insert into Location (woeid, country, zone, city, lastupdate) values (?, ?, ?, ?, ?)";
         try {
-            key=executeResult(insert, location.getWoeid(), location.getCountry(), location.getZone(), location.getCity(), location.getLastUpdate());
+            executeResult(insert, location.getWoeid(), location.getCountry(), location.getZone(), location.getCity(), location.getLastUpdate());
+            key = location.getWoeid();
         } catch (SQLException ex) {
             System.out.println("Error inserting Location:");
             ex.printStackTrace();
@@ -41,16 +42,19 @@ public class LocationCRUD extends QueryExecuter implements ClimateCRUD<Location>
     }
 
     @Override
-    public void update(Location location) {
-        String update = " UPDATE location set lastupdate = ? where Country = ? and Zone = ? and City = ?";
+    public boolean update(Location location) {
+        boolean gotInserted = false;
+        String update = " UPDATE location set lastupdate = ? , country = ?, zone = ?, city = ? where woeid = ?";
 
         try{
             executeUpdate(update, location.getLastUpdate(), location.getCountry(), location.getZone(),
-                location.getCity());
+                location.getCity(), location.getWoeid());
+            gotInserted = true;
         } catch (SQLException ex) {
             System.out.println("Error updating Location:");
             ex.printStackTrace();
         }
+        return gotInserted;
     }
 
     @Override

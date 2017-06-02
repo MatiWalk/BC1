@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.util.List;
 
 /**
@@ -23,30 +24,37 @@ public class LocationController {
     @Qualifier("locationCRUD")
     private ClimateCRUD<Location> locationClimateCRUD;
 
+    public LocationController(ClimateCRUD<Location> locationClimateCRUD) {
+        this.locationClimateCRUD = locationClimateCRUD;
+    }
 
-    @RequestMapping
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Location>> getLocations(){
-        return new ResponseEntity<List<Location>>(locationClimateCRUD.selectAll(), HttpStatus.OK);
+        List<Location> result = locationClimateCRUD.selectAll();
+        if (result.isEmpty()) return ResponseEntity.notFound().build();
+        else return ResponseEntity.status(HttpStatus.OK).body(result);
 
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST,  headers = {"content-type=application/json"})
-    public int postLocation(@RequestBody Location location){
-        return locationClimateCRUD.insert(location);
+    public HttpStatus postLocation(@RequestBody Location location){
+        int woeid = locationClimateCRUD.insert(location);
+        if (woeid < 0 ) return HttpStatus.INTERNAL_SERVER_ERROR;
+        else return HttpStatus.OK;
     }
 
-
-    //get one, update one
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
     public ResponseEntity<Location> getLocation(@PathVariable("country") String country,@PathVariable("zone") String zone,@PathVariable("city") String city){
-
-        return new ResponseEntity<Location>(locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build()), HttpStatus.OK) ;
+        Location location = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build());
+        if (location == null) return ResponseEntity.notFound().build();
+        return ResponseEntity.status(HttpStatus.OK).body(location);
     }
 
-    @RequestMapping(value="/{woeid}", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
-    public Location putLocation(@PathVariable("woeid") int woeid, @RequestBody Location location){
-        locationClimateCRUD.update(location);
-        return locationClimateCRUD.selectByID(woeid) ;
+    @RequestMapping(value="/update", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
+    public ResponseEntity<Location> putLocation(@RequestBody Location location){
+        boolean isUpdated = locationClimateCRUD.update(location);
+        if (isUpdated) return ResponseEntity.ok().body(locationClimateCRUD.selectByID(location.getWoeid()));
+        else return ResponseEntity.notFound().build();
     }
 
 
