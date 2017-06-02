@@ -24,10 +24,7 @@ public class LocationControllerTest {
 
 
 
-    @Before
-    public void beforePostHappy(){
-        LastControl.pullMatchers();
-    }
+
 
     @Test
     public void postLocationHappyTest(){
@@ -41,17 +38,9 @@ public class LocationControllerTest {
         assertEquals(HttpStatus.OK, expected);
         EasyMock.verify(locationClimateCRUDMock);
     }
-    @After
-    public void afterPostHappy(){
-        LastControl.pullMatchers();
-    }
 
 
 
-    @Before
-    public void beforePostSad(){
-        LastControl.pullMatchers();
-    }
 
     @Test
     public void postLocationSadTest(){
@@ -65,12 +54,6 @@ public class LocationControllerTest {
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, expected);
         EasyMock.verify(locationClimateCRUDMock);
     }
-
-    @After
-    public void afterPostSad(){
-        LastControl.pullMatchers();
-    }
-
 
 
     @Before
@@ -95,8 +78,4 @@ public class LocationControllerTest {
         EasyMock.verify(locationClimateCRUDMock);
     }
 
-    @After
-    public void afterPut(){
-        LastControl.pullMatchers();
-    }
 }

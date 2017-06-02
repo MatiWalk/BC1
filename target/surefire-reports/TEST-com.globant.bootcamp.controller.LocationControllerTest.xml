@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="com.globant.bootcamp.controller.LocationControllerTest" time="0.149" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="com.globant.bootcamp.controller.LocationControllerTest" time="0.14" errors="1" skipped="0">
   <properties>
     <property name="idea.version" value="2017.1.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
@@ -46,7 +46,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_131\jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2017.1.1 clean install"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2017.1.1 clean install -U"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="user.language.format" value="es"/>
@@ -64,7 +64,57 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.globant.bootcamp.controller.LocationControllerTest" name="putLocationTest" time="0.149"/>
-  <testcase classname="com.globant.bootcamp.controller.LocationControllerTest" name="postLocationSadTest" time="0"/>
+  <testcase classname="com.globant.bootcamp.controller.LocationControllerTest" name="putLocationTest" time="0.125">
+    <error message="1 matchers expected, 2 recorded.
+This exception usually occurs when matchers are mixed with raw values when recording a method:
+	foo(5, eq(6));	// wrong
+You need to use no matcher at all or a matcher for every single param:
+	foo(eq(5), eq(6));	// right
+	foo(5, 6);	// also right" type="java.lang.IllegalStateException">java.lang.IllegalStateException: 1 matchers expected, 2 recorded.
+This exception usually occurs when matchers are mixed with raw values when recording a method:
+	foo(5, eq(6));	// wrong
+You need to use no matcher at all or a matcher for every single param:
+	foo(eq(5), eq(6));	// right
+	foo(5, 6);	// also right
+	at org.easymock.internal.ExpectedInvocation.createMissingMatchers(ExpectedInvocation.java:51)
+	at org.easymock.internal.ExpectedInvocation.&lt;init&gt;(ExpectedInvocation.java:40)
+	at org.easymock.internal.RecordState.invoke(RecordState.java:78)
+	at org.easymock.internal.MockInvocationHandler.invoke(MockInvocationHandler.java:40)
+	at org.easymock.internal.ObjectMethodsFilter.invoke(ObjectMethodsFilter.java:94)
+	at org.easymock.internal.ClassProxyFactory$MockMethodInterceptor.intercept(ClassProxyFactory.java:97)
+	at com.globant.bootcamp.persistence.LocationCRUD$$EnhancerByCGLIB$$1200602f.update(&lt;generated&gt;)
+	at com.globant.bootcamp.controller.LocationControllerTest.putLocationTest(LocationControllerTest.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+</error>
+  </testcase>
+  <testcase classname="com.globant.bootcamp.controller.LocationControllerTest" name="postLocationSadTest" time="0.015"/>
   <testcase classname="com.globant.bootcamp.controller.LocationControllerTest" name="postLocationHappyTest" time="0"/>
 </testsuite>
