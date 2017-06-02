@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="47a1a462-af00-4b31-bb46-fd07214e8947" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" afterPath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/WeatherController.class" afterPath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/WeatherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/client/ClientProxyTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/client/ClientProxyTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/LocationControllerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/LocationControllerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/WeatherControllerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/WeatherControllerTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.AdapterClientToParserTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.AdapterClientToParserTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.ClientProxyTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.ClientProxyTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.LocationControllerTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.LocationControllerTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.WeatherControllerTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.WeatherControllerTest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.AdapterClientToParserTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.AdapterClientToParserTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.LocationControllerTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.LocationControllerTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.WeatherControllerTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.WeatherControllerTest.txt" />
-    </list>
+    <list default="true" id="47a1a462-af00-4b31-bb46-fd07214e8947" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,7 +38,7 @@
       <file leaf-file-name="LocationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
+            <state relative-caret-position="89">
               <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="62" />
               <folding />
             </state>
@@ -1170,7 +1151,7 @@
       <workItem from="1495998304845" duration="3193000" />
       <workItem from="1496002677252" duration="42333000" />
       <workItem from="1496326986823" duration="727000" />
-      <workItem from="1496338112298" duration="22216000" />
+      <workItem from="1496338112298" duration="22833000" />
     </task>
     <servers />
   </component>
@@ -1207,7 +1188,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414765000" />
+    <option name="totallyTimeSpent" value="415382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1598" height="868" extended-state="0" />
@@ -1215,7 +1196,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32270917" sideWeight="0.51285344" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12288687" sideWeight="0.48337027" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12288687" sideWeight="0.48337027" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1231,7 +1212,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32789117" sideWeight="0.48714653" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32789117" sideWeight="0.48714653" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121778354" sideWeight="0.5166297" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -1778,7 +1759,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
+        <state relative-caret-position="89">
           <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="62" />
           <folding />
         </state>
