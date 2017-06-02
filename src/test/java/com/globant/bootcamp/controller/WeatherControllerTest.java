@@ -23,7 +23,7 @@ public class WeatherControllerTest {
     private static String city = "test1";
     private static String zone = "test2";
     private static String country = "test3";
-    private YahooWeatherParser adapterClientToParser;
+    //private YahooWeatherParser adapterClientToParser;
 
 
 
@@ -34,11 +34,11 @@ public class WeatherControllerTest {
         locationExpected.setCity(city);
         locationExpected.setZone(zone);
         locationExpected.setCountry(country);
-        adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
+        YahooWeatherParser adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
         EasyMock.expect(adapterClientToParser.getData(EasyMock.anyObject())).andReturn(locationExpected);
         EasyMock.replay(adapterClientToParser);
         WeatherController weatherController = new WeatherController(adapterClientToParser);
-        Location locationResult = weatherController.getLocationWeather(country, zone, city).getBody();
+        Location locationResult = (Location) weatherController.getLocationWeather(country, zone, city).getBody();
         assertEquals(locationExpected, locationResult);
         EasyMock.verify(adapterClientToParser);
     }
@@ -46,7 +46,7 @@ public class WeatherControllerTest {
 
     @Test
     public void getLocationWeatherSadTest(){
-        adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
+        YahooWeatherParser adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
         EasyMock.expect(adapterClientToParser.getData(EasyMock.anyObject())).andReturn(null);
         EasyMock.replay(adapterClientToParser);
         WeatherController weatherController = new WeatherController(adapterClientToParser);

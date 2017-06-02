@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean class="com.globant.bootcamp.persistence.QueryExecuter" abstract="true" id="queryExecuter">
+        <constructor-arg name="con" value="#{dbConnector.getCon()}"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.connection.DBConnector" id="dbConnector">
+        <constructor-arg name="driver" value="com.mysql.cj.jdbc.Driver" />
+        <constructor-arg name="username" value="root" />
+        <constructor-arg name="password" value="admin" />
+        <constructor-arg name="url" value="jdbc:mysql://localhost:3306/weather?useSSL=false" />
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.LocationCRUD" id="locationCRUD" parent="queryExecuter">
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.AstronomyCRUD" id="astronomyCRUD" parent="queryExecuter">
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.AtmosphereCRUD" id="atmosphereCRUD" parent="queryExecuter">
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.WeatherCodeR" id="weatherCodeR" parent="queryExecuter">
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.WindCRUD" id="windCRUD" parent="queryExecuter">
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.TodayCRUD" id="todayCRUD" parent="queryExecuter">
+        <constructor-arg name="astronomyClimateCRUD" ref="astronomyCRUD"/>
+        <constructor-arg name="atmosphereClimateCRUD" ref="atmosphereCRUD"/>
+        <constructor-arg name="weatherCodeClimateR" ref="weatherCodeR"/>
+        <constructor-arg name="windClimateCRUD" ref="windCRUD"/>
+    </bean>
+
+    <bean class="com.globant.bootcamp.persistence.ForecastCRUD" id="forecastCRUD" parent="queryExecuter">
+        <constructor-arg name="weatherCodeClimateR" ref="weatherCodeR"/>
+    </bean>
+</beans>

@@ -30,7 +30,7 @@ public class ClientProxyTest {
         EasyMock.expect(yahooWeatherClientMock.getData(EasyMock.anyString(), EasyMock.anyString())).andReturn(jsonResponseExpected);
         EasyMock.replay(yahooWeatherClientMock);
         YahooWeatherClient clientProxy = new ClientProxy(yahooWeatherClientMock);
-        JsonResponse jsonResponse = clientProxy.getData(EasyMock.anyString(), EasyMock.anyString());
+        JsonResponse jsonResponse = clientProxy.getData("asd", "asd");
         assertEquals(jsonResponseExpected, jsonResponse);
         EasyMock.verify(yahooWeatherClientMock);
 

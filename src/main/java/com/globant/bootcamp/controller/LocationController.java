@@ -1,6 +1,7 @@
 package com.globant.bootcamp.controller;
 
 import com.globant.bootcamp.builder.LocationBuilder;
+import com.globant.bootcamp.client.FormatHelper;
 import com.globant.bootcamp.model.Location;
 import com.globant.bootcamp.persistence.ClimateCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,32 +30,34 @@ public class LocationController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<List<Location>> getLocations(){
+    public ResponseEntity getLocations(){
         List<Location> result = locationClimateCRUD.selectAll();
-        if (result.isEmpty()) return ResponseEntity.notFound().build();
+        if (result.isEmpty()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No location data");
         else return ResponseEntity.status(HttpStatus.OK).body(result);
 
     }
 
     @RequestMapping(value="/add", method = RequestMethod.POST,  headers = {"content-type=application/json"})
-    public HttpStatus postLocation(@RequestBody Location location){
+    public ResponseEntity postLocation(@RequestBody Location location){
         int woeid = locationClimateCRUD.insert(location);
-        if (woeid < 0 ) return HttpStatus.INTERNAL_SERVER_ERROR;
-        else return HttpStatus.OK;
+        if (woeid < 0 ) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error inserting Location");
+        else return ResponseEntity.status(HttpStatus.OK).body("Insert successful");
     }
 
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
-    public ResponseEntity<Location> getLocation(@PathVariable("country") String country,@PathVariable("zone") String zone,@PathVariable("city") String city){
-        Location location = locationClimateCRUD.selectByObject(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build());
-        if (location == null) return ResponseEntity.notFound().build();
+    public ResponseEntity getLocation(@PathVariable("country") String country,@PathVariable("zone") String zone,@PathVariable("city") String city){
+        Location locationInput = LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build();
+        FormatHelper.standarizeLocationStrings(locationInput);
+        Location location = locationClimateCRUD.selectByObject(locationInput);
+        if (location == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("That location wasn't found");
         return ResponseEntity.status(HttpStatus.OK).body(location);
     }
 
     @RequestMapping(value="/update", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
-    public ResponseEntity<Location> putLocation(@RequestBody Location location){
+    public ResponseEntity putLocation(@RequestBody Location location){
         boolean isUpdated = locationClimateCRUD.update(location);
         if (isUpdated) return ResponseEntity.ok().body(locationClimateCRUD.selectByID(location.getWoeid()));
-        else return ResponseEntity.notFound().build();
+        else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error Updating location");
     }
 
 

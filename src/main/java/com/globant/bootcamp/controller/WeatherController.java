@@ -24,10 +24,10 @@ public class WeatherController {
     }
 
     @RequestMapping(value="/{country}/{zone}/{city}", method = RequestMethod.GET)
-    public ResponseEntity<Location> getLocationWeather(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city){
+    public ResponseEntity getLocationWeather(@PathVariable("country") String country, @PathVariable("zone") String zone, @PathVariable("city") String city){
 
         Location location = adapterClientToParser.getData(LocationBuilder.builder().withCountry(country).withZone(zone).withCity(city).build());
-        if (location == null) return ResponseEntity.notFound().build();
+        if (location == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for that location");
         return ResponseEntity.ok().body(location);
     }
 

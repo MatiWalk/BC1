@@ -2,111 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47a1a462-af00-4b31-bb46-fd07214e8947" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT.war" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/applicationContext.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/bean.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/AstronomyBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/AtmosphereBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/ForecastBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/LocationBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/TodayBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/WeatherCodeBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/builder/WindBuilder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/client/AdapterClientToParser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/client/ClientProxy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/client/FormatHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/client/YahooWeatherClient.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/client/YahooWeatherParser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/connection/DBConnector.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/controller/LocationController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/controller/WeatherController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonAstronomy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonAtmosphere.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonChannel.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonCondition.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonForecast.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonItem.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonLocation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonPlace.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonQuery.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonResponse.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonResults.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonWeatherCode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/jsonDTO/JsonWind.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Astronomy.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Atmosphere.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Forecast.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Location.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Today.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/WeatherCode.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/Wind.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/barometricPressure.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/unit/Distance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/unit/Pressure.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/unit/Speed.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/unit/Temperature.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/model/unit/Units.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/AstronomyCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/AtmosphereCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/ClimateCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/ClimateR.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/ForecastCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/LocationCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/QueryExecuter.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/TodayCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/WeatherCodeR.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/persistence/WindCRUD.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/com/globant/bootcamp/transformers/Transformer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/classes/weatherDatabase.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/commons-logging-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/cxf-core-3.1.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/cxf-rt-frontend-jaxrs-3.1.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/cxf-rt-rs-client-3.1.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/cxf-rt-transports-http-3.1.11.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/easymock-3.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/evo-inflector-1.2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-annotations-2.8.7.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-core-2.8.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-databind-2.8.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-datatype-jsr310-2.8.8.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-jaxrs-1.9.13.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/javax.annotation-api-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/javax.ws.rs-api-2.0.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/jcl-over-slf4j-1.7.24.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/mysql-connector-java-6.0.6.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/objenesis-2.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/slf4j-api-1.7.24.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-aop-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-beans-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-context-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-core-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-data-commons-1.13.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-data-rest-core-2.6.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-data-rest-webmvc-2.6.3.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-expression-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-hateoas-0.23.0.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-plugin-core-1.2.0.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-tx-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-web-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-4.3.8.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/stax2-api-3.1.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/woodstox-core-asl-4.4.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/lib/xmlschema-core-2.2.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/restSpring.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/Bootcamp-WeatherApi-1.0.0-SNAPSHOT/index.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" afterPath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/LocationController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/WeatherController.class" afterPath="$PROJECT_DIR$/target/classes/com/globant/bootcamp/controller/WeatherController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/client/ClientProxyTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/client/ClientProxyTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/LocationControllerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/LocationControllerTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/WeatherControllerTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/globant/bootcamp/controller/WeatherControllerTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" afterPath="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.AdapterClientToParserTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.AdapterClientToParserTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.ClientProxyTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.client.ClientProxyTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.LocationControllerTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.LocationControllerTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.WeatherControllerTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.globant.bootcamp.controller.WeatherControllerTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.AdapterClientToParserTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.AdapterClientToParserTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.ClientProxyTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.client.ClientProxyTest.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.LocationControllerTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.LocationControllerTest.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.WeatherControllerTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.globant.bootcamp.controller.WeatherControllerTest.txt" />
     </list>
@@ -136,22 +47,59 @@
       <file leaf-file-name="WeatherControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+            <state relative-caret-position="207">
+              <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationControllerTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LocationController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="76" lean-forward="false" selection-start-line="11" selection-start-column="76" selection-end-line="11" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="29" column="100" lean-forward="false" selection-start-line="29" selection-start-column="100" selection-end-line="29" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="61" selection-end-column="5" />
-              <folding>
-                <element signature="e#2018#2019#0" expanded="true" />
-                <element signature="e#2060#2061#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="137">
+              <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="92" column="26" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -255,16 +203,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/TodayCRUD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/WindCRUD.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/persistence/LocationCRUD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/client/YahooWeatherClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/client/ClientProxy.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/AdapterClientToParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/client/AdapterClientToParser.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java" />
       </list>
     </option>
   </component>
@@ -275,13 +223,70 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenProjectNavigator">
-    <treeState />
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tomcat7" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Bootcamp-WeatherApi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1612" />
-    <option name="height" value="886" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1598" />
+    <option name="height" value="868" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -1165,7 +1170,7 @@
       <workItem from="1495998304845" duration="3193000" />
       <workItem from="1496002677252" duration="42333000" />
       <workItem from="1496326986823" duration="727000" />
-      <workItem from="1496338112298" duration="17882000" />
+      <workItem from="1496338112298" duration="22216000" />
     </task>
     <servers />
   </component>
@@ -1173,14 +1178,8 @@
     <history-entry file="LocationControllerTest - 2017.06.01 at 23h 53m 49s.xml">
       <configuration name="LocationControllerTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LocationControllerTest_postLocationHappyTest - 2017.06.01 at 23h 29m 59s.xml">
-      <configuration name="LocationControllerTest.postLocationHappyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LocationControllerTest_postLocationHappyTest - 2017.06.01 at 23h 31m 16s.xml">
-      <configuration name="LocationControllerTest.postLocationHappyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="LocationControllerTest_postLocationHappyTest - 2017.06.01 at 23h 32m 20s.xml">
-      <configuration name="LocationControllerTest.postLocationHappyTest" configurationId="JUnit" />
+    <history-entry file="LocationControllerTest - 2017.06.02 at 00h 30m 28s.xml">
+      <configuration name="LocationControllerTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="LocationControllerTest_postLocationHappyTest - 2017.06.01 at 23h 32m 44s.xml">
       <configuration name="LocationControllerTest.postLocationHappyTest" configurationId="JUnit" />
@@ -1200,18 +1199,23 @@
     <history-entry file="LocationControllerTest_putLocationTest - 2017.06.01 at 23h 53m 37s.xml">
       <configuration name="LocationControllerTest.putLocationTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="LocationControllerTest_putLocationTest - 2017.06.02 at 00h 22m 19s.xml">
+      <configuration name="LocationControllerTest.putLocationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="LocationControllerTest_putLocationTest - 2017.06.02 at 00h 28m 34s.xml">
+      <configuration name="LocationControllerTest.putLocationTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410431000" />
+    <option name="totallyTimeSpent" value="414765000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1612" height="886" extended-state="0" />
-    <editor active="true" />
+    <frame x="1" y="1" width="1598" height="868" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32270917" sideWeight="0.51285344" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.121778354" sideWeight="0.48337027" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12288687" sideWeight="0.48337027" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1227,11 +1231,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32005313" sideWeight="0.48714653" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32789117" sideWeight="0.48714653" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121778354" sideWeight="0.5166297" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934928" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18878865" sideWeight="0.48818898" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19050716" sideWeight="0.48818898" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20244215" sideWeight="0.511811" order="6" side_tool="true" content_ui="tabs" />
@@ -1297,7 +1301,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java</url>
-          <line>66</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -1504,14 +1508,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/client/FormatHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-99">
@@ -1564,14 +1560,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="18" column="77" lean-forward="false" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="92" column="26" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1630,16 +1618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/AdapterClientToParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1660,14 +1638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="11" column="129" lean-forward="false" selection-start-line="11" selection-start-column="129" selection-end-line="11" selection-end-column="129" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="62" lean-forward="false" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1750,10 +1720,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="62" lean-forward="false" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="92" column="26" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/client/ClientProxyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <caret line="32" column="67" lean-forward="false" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
           <folding />
         </state>
       </provider>
@@ -1761,27 +1747,40 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/WeatherController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
-          <caret line="29" column="70" lean-forward="false" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+          <caret line="29" column="100" lean-forward="false" selection-start-line="29" selection-start-column="100" selection-end-line="29" selection-end-column="100" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/WeatherControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        <state relative-caret-position="207">
+          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/globant/bootcamp/controller/LocationControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="e#2018#2019#0" expanded="true" />
-            <element signature="e#2060#2061#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="137">
+          <caret line="53" column="41" lean-forward="false" selection-start-line="53" selection-start-column="41" selection-end-line="53" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="76" lean-forward="false" selection-start-line="11" selection-start-column="76" selection-end-line="11" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/globant/bootcamp/controller/LocationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
