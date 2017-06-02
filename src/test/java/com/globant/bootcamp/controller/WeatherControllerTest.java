@@ -52,5 +52,7 @@ public class WeatherControllerTest {
         WeatherController weatherController = new WeatherController(adapterClientToParser);
         HttpStatus status = weatherController.getLocationWeather(country, zone, city).getStatusCode();
         assertEquals(HttpStatus.NOT_FOUND, status);
+        EasyMock.verify(adapterClientToParser);
+
     }
 }

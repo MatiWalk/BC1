@@ -28,11 +28,11 @@ public class LocationControllerTest {
 
     @Test
     public void postLocationHappyTest(){
-        ClimateCRUD<Location> locationClimateCRUDMock = EasyMock.createMock(LocationCRUD.class);
-        EasyMock.expect(locationClimateCRUDMock.insert(EasyMock.anyObject())).andReturn(woeid);
-        EasyMock.replay(locationClimateCRUDMock);
         Location location = new Location();
         location.setWoeid(woeid);
+        ClimateCRUD<Location> locationClimateCRUDMock = EasyMock.createMock(LocationCRUD.class);
+        EasyMock.expect(locationClimateCRUDMock.insert(location)).andReturn(woeid);
+        EasyMock.replay(locationClimateCRUDMock);
         LocationController locationController = new LocationController(locationClimateCRUDMock);
         HttpStatus expected = locationController.postLocation(location).getStatusCode();
         assertEquals(HttpStatus.OK, expected);
@@ -44,11 +44,11 @@ public class LocationControllerTest {
 
     @Test
     public void postLocationSadTest(){
-        ClimateCRUD<Location> locationClimateCRUDMock = EasyMock.createMock(LocationCRUD.class);
-        EasyMock.expect(locationClimateCRUDMock.insert(EasyMock.anyObject())).andReturn(-1);
-        EasyMock.replay(locationClimateCRUDMock);
         Location location = new Location();
         location.setWoeid(woeid);
+        ClimateCRUD<Location> locationClimateCRUDMock = EasyMock.createMock(LocationCRUD.class);
+        EasyMock.expect(locationClimateCRUDMock.insert(location)).andReturn(-1);
+        EasyMock.replay(locationClimateCRUDMock);
         LocationController locationController = new LocationController(locationClimateCRUDMock);
         HttpStatus expected = locationController.postLocation(location).getStatusCode();
         assertEquals(HttpStatus.NOT_FOUND, expected);
@@ -65,8 +65,8 @@ public class LocationControllerTest {
         locationExpected.setZone("das");
         locationExpected.setCity("sad");
         ClimateCRUD<Location> locationClimateCRUDMock = EasyMock.createMock(LocationCRUD.class);
-        EasyMock.expect(locationClimateCRUDMock.update(EasyMock.anyObject())).andReturn(true);
-        EasyMock.expect(locationClimateCRUDMock.selectByID(EasyMock.anyInt())).andReturn(locationExpected);
+        EasyMock.expect(locationClimateCRUDMock.update(locationExpected)).andReturn(true);
+        EasyMock.expect(locationClimateCRUDMock.selectByID(locationExpected.getWoeid())).andReturn(locationExpected);
         EasyMock.replay(locationClimateCRUDMock);
         LocationController locationController = new LocationController(locationClimateCRUDMock);
         Location locationResult = (Location) locationController.putLocation(locationExpected).getBody();

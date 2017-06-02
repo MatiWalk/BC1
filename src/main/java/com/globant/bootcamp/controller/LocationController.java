@@ -56,7 +56,8 @@ public class LocationController {
     @RequestMapping(value="/update", method = RequestMethod.PUT,  headers = {"content-type=application/json"})
     public ResponseEntity putLocation(@RequestBody Location location){
         boolean isUpdated = locationClimateCRUD.update(location);
-        if (isUpdated) return ResponseEntity.ok().body(locationClimateCRUD.selectByID(location.getWoeid()));
+        Location locationResult = locationClimateCRUD.selectByID(location.getWoeid());
+        if (isUpdated && locationResult != null) return ResponseEntity.ok().body(locationResult);
         else return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error Updating location");
     }
 

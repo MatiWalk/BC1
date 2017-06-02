@@ -15,6 +15,7 @@ public class ClientProxyTest {
 
     @Test
     public void getDataTest() throws NoRouteToHostException {
+        String query = "select * from weather.forecast where woeid = 456688";
         JsonAstronomy jsonAstronomy= new JsonAstronomy();
         jsonAstronomy.setSunrise("8:3 AM");
         jsonAstronomy.setSunset("9:43 PM");
@@ -30,7 +31,7 @@ public class ClientProxyTest {
         EasyMock.expect(yahooWeatherClientMock.getData(EasyMock.anyString(), EasyMock.anyString())).andReturn(jsonResponseExpected);
         EasyMock.replay(yahooWeatherClientMock);
         YahooWeatherClient clientProxy = new ClientProxy(yahooWeatherClientMock);
-        JsonResponse jsonResponse = clientProxy.getData("asd", "asd");
+        JsonResponse jsonResponse = clientProxy.getData(query, "json");
         assertEquals(jsonResponseExpected, jsonResponse);
         EasyMock.verify(yahooWeatherClientMock);
 
