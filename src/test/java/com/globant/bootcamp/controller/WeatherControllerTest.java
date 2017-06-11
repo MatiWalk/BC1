@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 
@@ -34,12 +35,17 @@ public class WeatherControllerTest {
         locationExpected.setCity(city);
         locationExpected.setZone(zone);
         locationExpected.setCountry(country);
+
         YahooWeatherParser adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
         EasyMock.expect(adapterClientToParser.getData(EasyMock.anyObject())).andReturn(locationExpected);
         EasyMock.replay(adapterClientToParser);
+
         WeatherController weatherController = new WeatherController(adapterClientToParser);
         Location locationResult = (Location) weatherController.getLocationWeather(country, zone, city).getBody();
-        assertEquals(locationExpected, locationResult);
+
+        assertEquals(city, locationResult.getCity());
+        assertEquals(zone, locationResult.getZone());
+        assertEquals(country, locationResult.getCountry());
         EasyMock.verify(adapterClientToParser);
     }
 
@@ -47,11 +53,15 @@ public class WeatherControllerTest {
     @Test
     public void getLocationWeatherSadTest(){
         YahooWeatherParser adapterClientToParser = EasyMock.createMock(AdapterClientToParser.class);
+
         EasyMock.expect(adapterClientToParser.getData(EasyMock.anyObject())).andReturn(null);
         EasyMock.replay(adapterClientToParser);
+
         WeatherController weatherController = new WeatherController(adapterClientToParser);
-        HttpStatus status = weatherController.getLocationWeather(country, zone, city).getStatusCode();
-        assertEquals(HttpStatus.NOT_FOUND, status);
+        ResponseEntity responseEntity = weatherController.getLocationWeather(country, zone, city);
+
+        assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+        assertEquals("No data found for that location", responseEntity.getBody());
         EasyMock.verify(adapterClientToParser);
 
     }
